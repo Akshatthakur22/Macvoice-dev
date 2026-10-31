@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowUpRight, ShieldCheck } from "lucide-react";
 
 export function Footer() {
@@ -16,14 +15,23 @@ export function Footer() {
               className="inline-flex items-center gap-2.5 group w-fit"
               aria-label="MacVoice home"
             >
-              <div className="w-8 h-8 rounded-[8px] bg-[#0071E3] flex items-center justify-center text-white shadow-sm flex-shrink-0 group-hover:bg-[#0077ED] transition-colors">
-                <Image
-                  src="/brand/macvoice-symbol-mono-white.svg"
-                  alt="MacVoice"
-                  width={18}
-                  height={18}
-                  className="w-4 h-4 object-contain"
-                />
+              <div className="w-8 h-8 rounded-[8.5px] bg-gradient-to-b from-[#0A84FF] to-[#0071E3] flex items-center justify-center text-white shadow-sm flex-shrink-0 group-hover:scale-105 transition-all">
+                <svg
+                  className="w-[18px] h-[18px] text-white"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect x="8.5" y="2.5" width="7" height="11.5" rx="3.5" fill="currentColor" />
+                  <path
+                    d="M5.5 10.5C5.5 14.09 8.41 17 12 17C15.59 17 18.5 14.09 18.5 10.5"
+                    stroke="currentColor"
+                    strokeWidth="2.2"
+                    strokeLinecap="round"
+                  />
+                  <path d="M12 17V21" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+                  <path d="M8.5 21H15.5" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+                </svg>
               </div>
               <span className="font-semibold text-[20px] tracking-tight text-[#1D1D1F]">
                 MacVoice

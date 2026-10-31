@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { MacOSWindow } from "@/components/ui/MacOSWindow";
 import { ShortcutBadge } from "@/components/ui/ShortcutBadge";
@@ -187,13 +186,24 @@ export function LiveDemo() {
             <div className="p-5 space-y-4 text-xs">
               {/* App Identity */}
               <div className="flex items-center gap-3">
-                <Image
-                  src="/brand/macvoice-symbol.svg"
-                  alt="MacVoice Icon"
-                  width={28}
-                  height={28}
-                  className="w-7 h-7 object-contain"
-                />
+                <div className="w-8 h-8 rounded-[8.5px] bg-gradient-to-b from-[#0A84FF] to-[#0071E3] flex items-center justify-center text-white shadow-sm flex-shrink-0">
+                  <svg
+                    className="w-[18px] h-[18px] text-white"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect x="8.5" y="2.5" width="7" height="11.5" rx="3.5" fill="currentColor" />
+                    <path
+                      d="M5.5 10.5C5.5 14.09 8.41 17 12 17C15.59 17 18.5 14.09 18.5 10.5"
+                      stroke="currentColor"
+                      strokeWidth="2.2"
+                      strokeLinecap="round"
+                    />
+                    <path d="M12 17V21" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+                    <path d="M8.5 21H15.5" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+                  </svg>
+                </div>
                 <div>
                   <div className="font-bold text-sm text-[#1D1D1F]">MacVoice</div>
                   <div className="text-[11px] text-[#6E6E73]">

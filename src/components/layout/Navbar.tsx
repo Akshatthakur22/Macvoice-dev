@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Menu, X, ArrowDownToLine } from "lucide-react";
@@ -13,17 +12,25 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-[#E8E8ED] bg-[#FFFFFF]/80 backdrop-blur-xl transition-all">
       <Container className="flex h-14 sm:h-16 items-center justify-between">
-        {/* Brand Logo: Apple-Grade Solid Blue Squircle with Crisp White Symbol */}
-        <Link href="/" className="flex items-center gap-2.5 group" aria-label="MacVoice Home">
+        {/* Brand Logo: Apple-Grade Solid Blue Squircle with Unmistakable Mic Symbol */}
+        <Link href="/" className="flex items-center gap-3 group" aria-label="MacVoice Home">
           <div className="w-8 h-8 rounded-[8.5px] bg-gradient-to-b from-[#0A84FF] to-[#0071E3] flex items-center justify-center shadow-[0_2px_6px_rgba(0,113,227,0.28),inset_0_1px_0_rgba(255,255,255,0.35)] transition-all duration-200 group-hover:scale-105 group-hover:shadow-[0_3px_10px_rgba(0,113,227,0.38)]">
-            <Image
-              src="/brand/macvoice-symbol-mono-white.svg"
-              alt="MacVoice Icon"
-              width={19}
-              height={19}
-              className="w-[19px] h-[19px] object-contain drop-shadow-[0_1px_1px_rgba(0,0,0,0.1)]"
-              priority
-            />
+            <svg
+              className="w-[18px] h-[18px] text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.15)]"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect x="8.5" y="2.5" width="7" height="11.5" rx="3.5" fill="currentColor" />
+              <path
+                d="M5.5 10.5C5.5 14.09 8.41 17 12 17C15.59 17 18.5 14.09 18.5 10.5"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+              />
+              <path d="M12 17V21" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+              <path d="M8.5 21H15.5" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+            </svg>
           </div>
           <div className="flex items-baseline gap-1.5">
             <span className="font-bold text-[18px] tracking-[-0.03em] text-[#1D1D1F]">
