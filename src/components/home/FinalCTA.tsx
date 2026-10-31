@@ -26,12 +26,12 @@ export function FinalCTA() {
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1D1D1F] tracking-tight mb-4">
-            Your voice, straight to the cursor.
+            Ready to write at the speed of thought?
           </h2>
 
           <p className="text-[#6E6E73] text-base sm:text-lg mb-8 max-w-xl mx-auto leading-relaxed">
-            Stop switching windows and waiting on slow cloud models.
-            Experience live, local-first voice typing for macOS today.
+            Say goodbye to tired wrists, frustrating transcription apps, and never-ending monthly subscriptions.
+            Experience effortless voice typing on your Mac today.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
@@ -54,15 +54,17 @@ export function FinalCTA() {
             </Button>
           </div>
 
-          <div className="flex items-center justify-center gap-4 text-xs text-[#6E6E73]">
+          <div className="flex items-center justify-center gap-4 text-xs text-[#6E6E73] flex-wrap">
             <span className="flex items-center gap-1.5 font-medium">
               <ShieldCheck className="w-4 h-4 text-emerald-600" />
               14-Day Money Back Guarantee
             </span>
             <span className="text-[#D2D2D7]">•</span>
-            <span>784 KB DMG</span>
+            <span>Works in Every App</span>
             <span className="text-[#D2D2D7]">•</span>
-            <span>macOS 26+ Apple Silicon</span>
+            <span>No Monthly Fees ($9 Once)</span>
+            <span className="text-[#D2D2D7]">•</span>
+            <span>100% Private on Your Mac</span>
           </div>
         </div>
       </Container>

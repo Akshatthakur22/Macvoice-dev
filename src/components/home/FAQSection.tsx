@@ -20,6 +20,16 @@ export function FAQSection() {
         "Apple Dictation types out all your vocal fillers ('um', 'uh', hesitations), pops up an intrusive floating microphone bubble that covers your text, and frequently drops characters inside VS Code and terminals. Saying 'new line' in Slack or WhatsApp also accidentally fires your message. MacVoice fixes every one of these: it strips vocal fillers in under 0.1ms, has zero screen clutter, works across coding editors, and intelligently sends Shift+Return in chat apps.",
     },
     {
+      question: "How does MacVoice type into applications? Does it use copy-paste?",
+      answer:
+        "No. Unlike other speech tools that dump transcribed text into your system clipboard (NSPasteboard) and fire a simulated Cmd+V paste command, MacVoice uses deep macOS Quartz HID integration (CGEvent posted directly to .cghidEventTap). It synthesizes authentic hardware key-down and key-up event pairs with human typing cadence. Your existing clipboard contents (passwords, code snippets, links) remain 100% untouched.",
+    },
+    {
+      question: "Does MacVoice work on websites or software where copy-paste is disabled?",
+      answer:
+        "Yes, absolutely. Because MacVoice synthesizes genuine physical keyboard events directly into the macOS Window Server, web scripts with onpaste='return false;' or enterprise applications with locked context menus cannot block it. To the operating system and destination application, MacVoice's input is indistinguishable from physical fingers typing on an Apple Magic Keyboard.",
+    },
+    {
       question: "Why is the download only 784 KB? Are there hidden downloads?",
       answer:
         "Unlike Electron or Python-based tools that bundle gigabytes of local LLMs and heavy runtimes, MacVoice is written in pure native Swift. It directly calls Apple's high-performance SpeechAnalyzer frameworks built into macOS 26+. If your system has not previously downloaded Apple's speech recognition assets for your language, macOS will download them once in the background (~30 seconds) via system settings.",

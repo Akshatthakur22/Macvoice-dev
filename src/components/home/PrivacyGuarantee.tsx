@@ -8,27 +8,27 @@ export function PrivacyGuarantee() {
   const guarantees = [
     {
       icon: WifiOff,
-      title: "Zero Cloud Sockets",
+      title: "Never Uploaded to the Cloud",
       description:
-        "MacVoice contains no external networking libraries and initiates zero outbound sockets during transcription. Audio never leaves your physical device.",
+        "Your voice is processed entirely on your Mac. Nothing is ever sent to cloud servers, big tech companies, or used to train third-party AI models.",
     },
     {
       icon: Lock,
-      title: "In-Memory Audio Processing",
+      title: "No Audio Files Saved to Disk",
       description:
-        "Audio PCM buffers are processed live in resident RAM and wiped immediately. No recordings are ever written to disk, cache, or /tmp.",
+        "Once your words are typed out, the audio is instantly cleared from memory. No audio files or recordings ever sit on your computer's hard drive.",
     },
     {
       icon: FileText,
-      title: "Zero History Retention",
+      title: "Zero Dictation History",
       description:
-        "MacVoice does not maintain a database of what you say. The moment a character is typed to your cursor, it is flushed from application memory.",
+        "MacVoice is a keyboard, not a note recorder. We keep no logs, archives, or transcripts of what you say. Only the document you type in has your words.",
     },
     {
       icon: EyeOff,
-      title: "Zero Telemetry & Tracking",
+      title: "No Tracking or Accounts",
       description:
-        "No Google Analytics, no Mixpanel, no crash-reporting trackers, and no user accounts. Your dictation remains strictly confidential.",
+        "No accounts, no email spam, no passwords to remember, and zero analytics trackers. Download it, use it, and stay completely anonymous.",
     },
   ];
 

@@ -126,10 +126,10 @@ export default function PrivacyPage() {
 
               <div className="p-6 rounded-2xl bg-[#F5F5F7] border border-[#E8E8ED]">
                 <h3 className="text-base font-semibold text-[#1D1D1F] mb-1">
-                  Accessibility Permission
+                  Accessibility Permission (Quartz HID Keystroke Synthesis)
                 </h3>
-                <p className="text-xs text-[#6E6E73]">
-                  Required by macOS for <code className="text-[#1D1D1F] font-mono">CGEvent.post()</code> so MacVoice can synthesize keystrokes into whichever app holds current focus (e.g. VS Code, Slack, Safari). MacVoice never inspects, captures, or logs your existing keyboard activity.
+                <p className="text-xs text-[#6E6E73] leading-relaxed">
+                  Required by macOS for <code className="text-[#1D1D1F] font-mono">CGEvent.post()</code> so MacVoice can synthesize authentic hardware keystrokes into whichever app holds current focus (e.g. VS Code, Slack, Safari, or remote terminals). Unlike conventional speech tools that monitor or overwrite your clipboard (<code className="text-[#1D1D1F] font-mono">NSPasteboard</code>), MacVoice never touches your clipboard and never inspects, captures, or logs your existing typing activity.
                 </p>
               </div>
             </div>

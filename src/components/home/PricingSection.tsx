@@ -39,17 +39,17 @@ export function PricingSection() {
   };
 
   const features = [
-    "One-time purchase — Pay once, keep forever",
-    "No monthly or annual subscriptions",
-    "No user accounts, email capture, or phone-home tracking",
-    "Use on up to 5 of your personal Macs",
-    "Sub-150ms live streaming to cursor",
-    "Instant native Swift filler stripping ('um' / 'uh')",
-    "Chat-safe Shift+Return in Slack, WhatsApp, and Discord",
-    "Both Verbatim and Polished modes included",
-    "100% on-device in-memory audio processing",
-    "Includes all MacVoice v1.x feature and security updates",
-    "14-day no-questions-asked refund policy",
+    "Pay once ($9 USD) — Keep and own forever",
+    "No monthly subscriptions or hidden renewal fees",
+    "Works in all apps: Word, Notes, Slack, Safari, Docs, and more",
+    "Types into websites even where copy-paste is blocked",
+    "Never overwrites or tampers with your copied text",
+    "Automatically removes 'um' and 'uh' so drafts look polished",
+    "Chat-safe: won't accidentally send unfinished Slack messages",
+    "100% private: your voice never leaves your Mac",
+    "Instant real-time typing at your cursor as you speak",
+    "Install and use on up to 5 of your personal Macs",
+    "14-day no-questions-asked money-back guarantee",
   ];
 
   return (

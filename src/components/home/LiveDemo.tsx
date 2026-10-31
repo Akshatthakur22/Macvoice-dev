@@ -5,26 +5,30 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { MacOSWindow } from "@/components/ui/MacOSWindow";
 import { ShortcutBadge } from "@/components/ui/ShortcutBadge";
-import { RotateCcw, SendHorizontal, Check, Mic } from "lucide-react";
+import { RotateCcw, SendHorizontal, Check, Mic, Lock, CheckCircle2 } from "lucide-react";
 
-type DemoApp = "vscode" | "slack";
+type DemoApp = "notes" | "slack" | "secure-form";
 
-const vscodeScript = [
-  { speech: "export async function", text: "export async function", feature: "Live Cursor Streaming" },
-  { speech: " um verify session token", text: " verifySessionToken", feature: "Instant Filler Removal ('um' stripped)" },
-  { speech: " open paren req colon Request", text: "(req: Request", feature: "Technical Dictation" },
-  { speech: " close paren colon Promise", text: "): Promise", feature: "Symbol Formatting" },
-  { speech: " less than Session greater than", text: "<Session>", feature: "Bracket Normalization" },
+const notesScript = [
+  { speech: "hi team please review the draft before tomorrow", text: "Hi team, please review the draft before tomorrow.", feature: "Instant Speech-to-Text" },
+  { speech: " um dont forget to check the outline", text: " Don't forget to check the outline.", feature: "Removes 'Um' & Fixes Contractions ('dont' → 'Don't')" },
+  { speech: " it looks really promising", text: " It looks really promising!", feature: "Punctuation & Capitalization" },
 ];
 
 const slackScript = [
-  { speech: "hey team the database migrations are done", text: "Hey team, the database migrations are done.", feature: "Contraction & Grammar Polish" },
-  { speech: " new line ", text: "\n", feature: "Chat-Safe Shift+Enter" },
-  { speech: "dont forget to run pnpm dev", text: "Don't forget to run `pnpm dev` before testing.", feature: "Automatic Contraction Fix ('dont' → 'don't')" },
+  { speech: "hey everyone the project launch is scheduled for friday", text: "Hey everyone, the project launch is scheduled for Friday.", feature: "Natural Speaking Cadence" },
+  { speech: " new line ", text: "\n", feature: "Chat-Safe Line Break (Won't send early)" },
+  { speech: "let me know if you need anything before then", text: "Let me know if you need anything before then.", feature: "Paragraph Formatting" },
+];
+
+const secureFormScript = [
+  { speech: "confirm registration access code nine four two", text: "Confirm registration access code 942", feature: "Simulated Keyboard Keystrokes" },
+  { speech: " works even where copy paste is disabled", text: " — works even where copy-paste is blocked.", feature: "Bypasses Paste Restrictions" },
+  { speech: " and your clipboard stays untouched", text: " (Your copied text stays safe)", feature: "Zero Clipboard Overwrite" },
 ];
 
 export function LiveDemo() {
-  const [activeApp, setActiveApp] = useState<DemoApp>("vscode");
+  const [activeApp, setActiveApp] = useState<DemoApp>("notes");
   const [isPlaying, setIsPlaying] = useState(true);
   const [isListening, setIsListening] = useState(false);
   const [typedText, setTypedText] = useState("");
@@ -36,7 +40,12 @@ export function LiveDemo() {
     let charInterval: NodeJS.Timeout;
     let stepIndex = 0;
 
-    const script = activeApp === "vscode" ? vscodeScript : slackScript;
+    const script =
+      activeApp === "notes"
+        ? notesScript
+        : activeApp === "slack"
+        ? slackScript
+        : secureFormScript;
 
     const playNext = () => {
       if (!isPlaying) return;
@@ -87,19 +96,32 @@ export function LiveDemo() {
   return (
     <section id="demo" className="py-20 bg-[#F5F5F7] border-y border-[#E8E8ED]">
       <Container>
+        {/* Friendly Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <span className="text-[11px] font-bold tracking-[0.08em] text-[#0071E3] uppercase mb-2 block">
+            Interactive Preview
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1D1D1F] mb-3">
+            See it type in the apps you use every day.
+          </h2>
+          <p className="text-[#6E6E73] text-sm sm:text-base">
+            No switching windows. Press a shortcut, speak naturally, and watch text appear right where your cursor is.
+          </p>
+        </div>
+
         {/* Apple Segmented App Switcher & Replay */}
         <div className="flex flex-wrap items-center justify-between gap-4 mb-8 max-w-5xl mx-auto">
-          <div className="flex items-center p-1 rounded-full bg-[#E8E8ED]/80">
+          <div className="flex items-center p-1 rounded-full bg-[#E8E8ED]/80 flex-wrap gap-1">
             <button
               type="button"
-              onClick={() => setActiveApp("vscode")}
+              onClick={() => setActiveApp("notes")}
               className={`px-4 py-1.5 text-xs sm:text-[13px] font-medium rounded-full transition-all ${
-                activeApp === "vscode"
+                activeApp === "notes"
                   ? "bg-[#FFFFFF] text-[#1D1D1F] shadow-xs"
                   : "text-[#6E6E73] hover:text-[#1D1D1F]"
               }`}
             >
-              Code Editor (VS Code)
+              Writing Notes &amp; Docs
             </button>
             <button
               type="button"
@@ -110,7 +132,18 @@ export function LiveDemo() {
                   : "text-[#6E6E73] hover:text-[#1D1D1F]"
               }`}
             >
-              Chat App (Slack)
+              Messaging (Slack / WhatsApp)
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveApp("secure-form")}
+              className={`px-4 py-1.5 text-xs sm:text-[13px] font-medium rounded-full transition-all ${
+                activeApp === "secure-form"
+                  ? "bg-[#FFFFFF] text-[#1D1D1F] shadow-xs"
+                  : "text-[#6E6E73] hover:text-[#1D1D1F]"
+              }`}
+            >
+              Websites Where Paste is Blocked
             </button>
           </div>
 
@@ -125,11 +158,11 @@ export function LiveDemo() {
               className="inline-flex items-center gap-1.5 font-medium text-[#1D1D1F] hover:text-[#0071E3] transition-colors"
             >
               <RotateCcw className="w-3.5 h-3.5" />
-              Replay Demo
+              Replay
             </button>
             <span className="text-[#D2D2D7]">•</span>
             <div className="flex items-center gap-1.5">
-              <span>Trigger:</span>
+              <span>Shortcut:</span>
               <ShortcutBadge display="⌃⌥Space" size="sm" />
             </div>
           </div>
@@ -146,11 +179,11 @@ export function LiveDemo() {
                 <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] border border-[#DEA123]/30" />
                 <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F] border border-[#1AAB29]/30" />
               </div>
-              <span className="text-[11px] font-medium text-[#1D1D1F]">MacVoice Control</span>
+              <span className="text-[11px] font-medium text-[#1D1D1F]">MacVoice Mini</span>
               <div className="w-8" />
             </div>
 
-            {/* Window body matching MacVoice Swift main.swift */}
+            {/* Window body */}
             <div className="p-5 space-y-4 text-xs">
               {/* App Identity */}
               <div className="flex items-center gap-3">
@@ -164,7 +197,7 @@ export function LiveDemo() {
                 <div>
                   <div className="font-bold text-sm text-[#1D1D1F]">MacVoice</div>
                   <div className="text-[11px] text-[#6E6E73]">
-                    Local-First Voice Keyboard
+                    Instant Voice Keyboard
                   </div>
                 </div>
               </div>
@@ -180,33 +213,32 @@ export function LiveDemo() {
                     }`}
                   />
                   <span className="font-medium text-[#1D1D1F]">
-                    {isListening ? "Listening…" : "Idle (Ready)"}
+                    {isListening ? "Listening…" : "Ready to type"}
                   </span>
                 </div>
-                <span className="text-[10px] font-mono text-[#6E6E73]">
-                  macOS 26+
+                <span className="text-[10px] font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                  On-Device
                 </span>
               </div>
 
-              {/* Mode Picker Representation */}
-              <div className="space-y-1">
-                <label className="text-[11px] font-medium text-[#6E6E73] block">
-                  Transcription Mode
-                </label>
-                <div className="p-2 rounded-lg bg-[#FFFFFF] border border-[#D2D2D7] text-[#1D1D1F] font-medium flex items-center justify-between text-xs select-none">
-                  <span>Polished (Native Swift)</span>
-                  <span className="text-[#6E6E73] text-[10px]">▾</span>
-                </div>
+              {/* How it works simple callout */}
+              <div className="p-3 rounded-xl bg-[#EAF3FF]/60 border border-[#0071E3]/20 space-y-1">
+                <span className="text-[11px] font-semibold text-[#0071E3] block">
+                  How you use it:
+                </span>
+                <p className="text-[11px] text-[#1D1D1F] leading-relaxed">
+                  Click into any text field on your Mac, press your shortcut, and speak normally.
+                </p>
               </div>
 
               {/* Shortcut Info */}
               <div className="space-y-1">
                 <label className="text-[11px] font-medium text-[#6E6E73] block">
-                  Global Shortcut
+                  Keyboard Trigger
                 </label>
                 <div className="p-2 rounded-lg bg-[#F5F5F7] border border-[#E8E8ED] flex items-center justify-between text-xs">
                   <span className="font-mono text-[#1D1D1F]">⌃⌥Space</span>
-                  <span className="text-[10px] text-[#0071E3] font-medium">Record…</span>
+                  <span className="text-[10px] text-[#0071E3] font-medium">Customizable</span>
                 </div>
               </div>
 
@@ -214,11 +246,11 @@ export function LiveDemo() {
               <div className="pt-2 border-t border-[#E8E8ED] space-y-1.5 text-[11px] text-[#6E6E73]">
                 <div className="flex items-center gap-1.5 text-emerald-700">
                   <Check className="w-3.5 h-3.5" />
-                  <span>Microphone Authorized</span>
+                  <span>Microphone Ready</span>
                 </div>
                 <div className="flex items-center gap-1.5 text-emerald-700">
                   <Check className="w-3.5 h-3.5" />
-                  <span>Accessibility Granted</span>
+                  <span>Direct System Typing Enabled</span>
                 </div>
               </div>
             </div>
@@ -227,11 +259,23 @@ export function LiveDemo() {
           {/* Active Target Destination Window (8 cols) */}
           <div className="lg:col-span-8">
             <MacOSWindow
-              title={activeApp === "vscode" ? "auth.ts — src/lib — VS Code" : "#engineering — Slack"}
-              subtitle={activeApp === "vscode" ? "Line 42" : "Focused Input"}
+              title={
+                activeApp === "notes"
+                  ? "Project Update — Apple Notes"
+                  : activeApp === "slack"
+                  ? "#team-chat — Slack"
+                  : "Customer Portal (Safari)"
+              }
+              subtitle={
+                activeApp === "notes"
+                  ? "Clean document writing"
+                  : activeApp === "slack"
+                  ? "Chat-safe typing"
+                  : "Paste blocked by website"
+              }
               headerRight={
                 <div className="flex items-center gap-2">
-                  <span className="text-[11px] text-[#6E6E73]">Active Focus</span>
+                  <span className="text-[11px] text-[#6E6E73]">Your Cursor</span>
                 </div>
               }
             >
@@ -243,9 +287,9 @@ export function LiveDemo() {
                   </div>
                   <div>
                     <div className="text-[10px] font-bold uppercase tracking-wider text-[#6E6E73]">
-                      In-Memory Voice Stream
+                      What You're Saying
                     </div>
-                    <div className="text-[#1D1D1F] font-mono text-xs">
+                    <div className="text-[#1D1D1F] text-xs">
                       "{spokenAudioText || "Listening for speech…"}"
                     </div>
                   </div>
@@ -262,37 +306,33 @@ export function LiveDemo() {
               </div>
 
               {/* Target app contents */}
-              {activeApp === "vscode" ? (
-                <div className="min-h-[220px] bg-[#FAFAFC] rounded-xl p-4 font-mono text-sm leading-relaxed border border-[#E8E8ED]">
-                  <div className="text-[#6E6E73] text-xs mb-3">
-                    &#47;&#47; Focused line · Native keystrokes (CGEvent)
+              {activeApp === "notes" ? (
+                <div className="min-h-[220px] bg-[#FFFFFF] rounded-xl p-5 border border-[#E8E8ED] space-y-3 font-sans">
+                  <div className="text-xs font-semibold text-[#86868B] uppercase tracking-wider">
+                    Meeting Notes &middot; Today
                   </div>
-                  <div className="text-purple-600">
-                    import <span className="text-[#0071E3]">&#123; Request &#125;</span> from <span className="text-emerald-600">"next/server"</span>;
-                  </div>
-                  <div className="text-purple-600 mb-3">
-                    import <span className="text-[#0071E3]">&#123; type Session &#125;</span> from <span className="text-emerald-600">"@/types"</span>;
-                  </div>
-                  <div className="text-[#1D1D1F] flex items-baseline flex-wrap">
-                    <span className="text-[#A1A1A6] mr-2">42</span>
+                  <div className="text-[#1D1D1F] text-base leading-relaxed">
                     <span>{typedText}</span>
-                    <span className="inline-block w-2 h-4 bg-[#0071E3] ml-0.5 animate-cursor" />
+                    <span className="inline-block w-2 h-4 bg-[#0071E3] ml-0.5 animate-cursor align-middle" />
+                  </div>
+                  <div className="pt-4 text-xs text-[#86868B] border-t border-[#E8E8ED]">
+                    Automatically removes hesitations ("um", "uh") and cleans up punctuation.
                   </div>
                 </div>
-              ) : (
+              ) : activeApp === "slack" ? (
                 <div className="min-h-[220px] bg-[#F5F5F7] rounded-xl p-4 border border-[#E8E8ED] flex flex-col justify-between">
                   <div className="space-y-3">
                     <div className="flex items-start gap-3">
-                      <div className="w-7 h-7 rounded-full bg-purple-100 border border-purple-200 flex items-center justify-center text-xs font-bold text-purple-700">
-                        AK
+                      <div className="w-7 h-7 rounded-full bg-blue-100 border border-blue-200 flex items-center justify-center text-xs font-bold text-blue-700">
+                        AT
                       </div>
                       <div>
                         <div className="flex items-center gap-2">
-                          <span className="text-xs font-bold text-[#1D1D1F]">Akshat</span>
-                          <span className="text-[10px] text-[#6E6E73]">4:44 PM</span>
+                          <span className="text-xs font-bold text-[#1D1D1F]">Alex</span>
+                          <span className="text-[10px] text-[#6E6E73]">2:15 PM</span>
                         </div>
                         <div className="text-xs text-[#1D1D1F]">
-                          Preparing database release for staging...
+                          Hey, does anyone have an update on the client launch?
                         </div>
                       </div>
                     </div>
@@ -301,12 +341,12 @@ export function LiveDemo() {
                   {/* Slack Composer Field */}
                   <div className="mt-4 p-3 rounded-xl bg-[#FFFFFF] border border-[#D2D2D7] shadow-xs">
                     <div className="text-xs text-[#1D1D1F] whitespace-pre-wrap font-sans min-h-[48px]">
-                      {typedText || <span className="text-[#6E6E73] italic">Press ⌃⌥Space to dictate into #engineering...</span>}
+                      {typedText || <span className="text-[#6E6E73] italic">Press ⌃⌥Space and speak your reply...</span>}
                       <span className="inline-block w-1.5 h-3.5 bg-[#0071E3] ml-0.5 animate-cursor align-middle" />
                     </div>
                     <div className="mt-2 pt-2 border-t border-[#E8E8ED] flex items-center justify-between text-[11px] text-[#6E6E73]">
-                      <span className="text-emerald-600 font-mono text-[10px] font-medium">
-                        ✓ Shift+Return enabled (keeps message draft safe)
+                      <span className="text-emerald-600 text-[10px] font-medium">
+                        ✓ Saying "new line" adds a safe line break without sending the message
                       </span>
                       <button type="button" className="p-1 rounded-full bg-[#F5F5F7] text-[#6E6E73]">
                         <SendHorizontal className="w-3.5 h-3.5" />
@@ -314,18 +354,53 @@ export function LiveDemo() {
                     </div>
                   </div>
                 </div>
+              ) : (
+                /* Secure Paste-Blocked Form Window */
+                <div className="min-h-[220px] bg-[#FFFFFF] rounded-xl p-5 border border-[#E8E8ED] flex flex-col justify-between">
+                  <div className="space-y-3.5">
+                    <div className="flex items-center justify-between p-2.5 rounded-xl bg-amber-50/80 border border-amber-200/80 text-xs">
+                      <div className="flex items-center gap-2 text-amber-950 font-medium">
+                        <Lock className="w-3.5 h-3.5 text-amber-700 shrink-0" />
+                        <span>Restricted Website Field: <span className="font-semibold text-amber-800">Copy &amp; Paste Disabled</span></span>
+                      </div>
+                      <span className="text-[10px] font-mono text-amber-900 bg-amber-100 px-2 py-0.5 rounded font-semibold">
+                        Cmd+V Fails
+                      </span>
+                    </div>
+
+                    <div>
+                      <label className="text-[11px] font-bold text-[#1D1D1F] uppercase tracking-wider block mb-1.5">
+                        Registration Memo (Types like real keyboard keys)
+                      </label>
+                      <div className="p-3.5 rounded-xl bg-[#F5F5F7] border border-[#D2D2D7] text-xs text-[#1D1D1F] min-h-[58px] leading-relaxed">
+                        {typedText || <span className="text-[#6E6E73] italic font-sans">Press ⌃⌥Space. MacVoice types genuine keystrokes so paste blocks can't stop you...</span>}
+                        <span className="inline-block w-1.5 h-3.5 bg-[#0071E3] ml-0.5 animate-cursor align-middle" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-3 pt-3 border-t border-[#E8E8ED] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] text-[#6E6E73]">
+                    <span className="text-emerald-700 font-medium flex items-center gap-1.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                      Simulates real keyboard typing: Bypasses website paste restrictions
+                    </span>
+                    <span className="font-medium text-[10px] text-[#6E6E73] bg-[#F5F5F7] px-2 py-0.5 rounded border border-[#E8E8ED]">
+                      Clipboard safe
+                    </span>
+                  </div>
+                </div>
               )}
 
               {/* Bottom Feature Callout */}
               <div className="mt-4 flex items-center justify-between text-xs text-[#6E6E73] px-1">
                 <div className="flex items-center gap-2">
-                  <span className="text-[#1D1D1F] font-medium">Active Capability:</span>
-                  <span className="px-2.5 py-0.5 rounded-full bg-[#FFFFFF] border border-[#D2D2D7] text-[#1D1D1F] font-mono text-[11px]">
+                  <span className="text-[#1D1D1F] font-medium">What's happening:</span>
+                  <span className="px-2.5 py-0.5 rounded-full bg-[#FFFFFF] border border-[#D2D2D7] text-[#1D1D1F] text-[11px] font-medium">
                     {activeFeature}
                   </span>
                 </div>
                 <div className="text-[#6E6E73]">
-                  Sub-150ms · Zero Cloud Audio
+                  Works instantly in any Mac app
                 </div>
               </div>
             </MacOSWindow>

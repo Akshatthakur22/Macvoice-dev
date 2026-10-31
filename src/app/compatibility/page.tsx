@@ -48,6 +48,18 @@ export default function CompatibilityPage() {
       notes: "Live streaming into Markdown notes with bullet lists and section headers.",
       testedOn: "macOS Notes & Obsidian 1.7+",
     },
+    {
+      app: "Paste-Disabled Web Inputs & Secure Forms",
+      status: "Verified (Immune to Paste Blocks)",
+      notes: "Bypasses JavaScript onpaste='return false;' and locked context menus. Injected as true hardware keystrokes directly via WindowServer.",
+      testedOn: "Safari, Chrome, Enterprise Intranets",
+    },
+    {
+      app: "Remote Desktops & VDI (Citrix / RDP / AWS)",
+      status: "Verified (Hardware CGEvent)",
+      notes: "Virtual desktops block clipboard pass-through, but receive MacVoice's synthetic keystrokes as physical client keyboard input.",
+      testedOn: "Citrix Workspace & Microsoft Remote Desktop",
+    },
   ];
 
   return (

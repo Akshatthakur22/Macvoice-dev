@@ -4,24 +4,24 @@ import { Container } from "@/components/ui/Container";
 export function MetricsBar() {
   const metrics = [
     {
-      value: "784 KB",
-      label: "DMG Package Size",
-      detail: "Smaller than a single screenshot. No Python, Electron, or gigabyte model downloads.",
+      value: "3x Faster",
+      label: "Than Typing by Hand",
+      detail: "Speak effortlessly at 150+ words per minute. Draft emails, documents, and messages without tiring your wrists.",
     },
     {
-      value: "~60 MB",
-      label: "Resident RAM",
-      detail: "Native SpeechAnalyzer framework. Zero battery drain or system throttling.",
+      value: "Instant",
+      label: "Real-Time Typing",
+      detail: "Words appear right at your cursor as you talk. No waiting around for an AI recording to finish processing.",
     },
     {
-      value: "< 150 ms",
-      label: "Cursor Latency",
-      detail: "Words stream progressively to your cursor while speaking, without batch delay.",
+      value: "100% Private",
+      label: "Never Leaves Your Mac",
+      detail: "Your voice is processed completely on-device. Zero audio is ever uploaded to cloud servers or used to train models.",
     },
     {
-      value: "0 Bytes",
-      label: "Cloud Exfiltration",
-      detail: "Audio is processed purely in RAM and immediately released. Zero internet required.",
+      value: "$9 Once",
+      label: "No Subscriptions",
+      detail: "Stop paying $15 every month for voice tools. Pay once, own it forever, and install on up to 5 of your Macs.",
     },
   ];
 
@@ -31,7 +31,7 @@ export function MetricsBar() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {metrics.map((m, idx) => (
             <div key={idx} className="space-y-1.5">
-              <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1D1D1F] tracking-tight font-mono">
+              <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1D1D1F] tracking-tight">
                 {m.value}
               </div>
               <div className="text-xs font-semibold uppercase tracking-wider text-[#0071E3] pt-0.5">

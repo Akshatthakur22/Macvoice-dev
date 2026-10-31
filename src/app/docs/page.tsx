@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ShortcutBadge } from "@/components/ui/ShortcutBadge";
-import { BookOpen, Settings, Sliders, ShieldAlert, Trash2 } from "lucide-react";
+import { BookOpen, Settings, Sliders, ShieldAlert, Trash2, Keyboard } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Documentation & User Guide — MacVoice",
@@ -101,6 +101,32 @@ export default function DocsPage() {
             </div>
           </section>
 
+          {/* Hardware Keystroke Insertion Architecture */}
+          <section id="keystrokes" className="space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="p-2.5 rounded-2xl bg-[#EAF3FF] text-[#0071E3] border border-[#0071E3]/20">
+                <Keyboard className="w-5 h-5" />
+              </div>
+              <h2 className="text-xl font-bold text-[#1D1D1F]">
+                4. Simulated Hardware Keystrokes (CGEvent vs. Clipboard Pasting)
+              </h2>
+            </div>
+            <p className="text-[#6E6E73]">
+              Unlike common dictation software that dumps text onto your clipboard (<code className="text-[#1D1D1F] font-mono text-xs">NSPasteboard</code>) and simulates a <code className="text-[#1D1D1F] font-mono text-xs">Cmd+V</code> keystroke, MacVoice uses native macOS Quartz Event Taps (<code className="text-[#1D1D1F] font-mono text-xs">CGEvent</code>).
+            </p>
+            <div className="p-6 rounded-3xl bg-[#F5F5F7] border border-[#E8E8ED] space-y-3 text-xs text-[#1D1D1F]">
+              <p>
+                <strong>• Immune to Copy-Paste Blocks:</strong> Works effortlessly inside secure forms, banking fields, online examination portals, and remote desktops (Citrix, VMware Horizon, AWS WorkSpaces) where pasting is blocked by <code className="font-mono text-[11px] bg-[#FFFFFF] px-1.5 py-0.5 rounded border border-[#E8E8ED]">onpaste="return false;"</code>.
+              </p>
+              <p>
+                <strong>• Preserves Your System Clipboard:</strong> Whatever you previously copied (links, passwords, code snippets) stays intact on your clipboard. MacVoice never touches or overwrites your system clipboard.
+              </p>
+              <p>
+                <strong>• Progressive Human Cadence:</strong> Keystrokes are emitted character-by-character as you speak, providing natural real-time streaming without trigger-happy bot detection or jarring bulk paste delays.
+              </p>
+            </div>
+          </section>
+
           {/* Troubleshooting Permissions */}
           <section id="permissions" className="space-y-4">
             <div className="flex items-center gap-3">
@@ -108,7 +134,7 @@ export default function DocsPage() {
                 <ShieldAlert className="w-5 h-5" />
               </div>
               <h2 className="text-xl font-bold text-[#1D1D1F]">
-                4. Troubleshooting Permissions
+                5. Troubleshooting Permissions
               </h2>
             </div>
             <p className="text-xs text-[#6E6E73]">
@@ -134,7 +160,7 @@ export default function DocsPage() {
                 <Trash2 className="w-5 h-5" />
               </div>
               <h2 className="text-xl font-bold text-[#1D1D1F]">
-                5. Clean Uninstallation
+                6. Clean Uninstallation
               </h2>
             </div>
             <p className="text-xs text-[#6E6E73] leading-relaxed">
