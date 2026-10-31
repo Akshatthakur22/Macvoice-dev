@@ -16,3 +16,4 @@ export const MACVOICE_CURRENCY = "usd";
 export const MACVOICE_PRODUCT_NAME = "MacVoice for macOS — Lifetime License";
 export const MACVOICE_PRODUCT_DESCRIPTION =
   "One-time purchase for macOS 26+. 100% on-device voice typing. All v1.x updates included. Up to 5 of your personal Macs.";
+
