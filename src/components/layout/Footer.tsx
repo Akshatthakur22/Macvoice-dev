@@ -272,9 +272,35 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Subtle Architectural Bleed Wordmark */}
-      <div className="footer-bleed-wrap" aria-hidden="true">
-        <span className="footer-bleed-text">MacVoice</span>
+      {/* Colossal Architectural Bleed Watermark Wordmark (matching EasyDocs) */}
+      <div
+        className="w-full overflow-hidden text-center select-none pointer-events-none mt-10 sm:mt-14"
+        style={{
+          width: "100%",
+          overflow: "hidden",
+          textAlign: "center",
+          lineHeight: 0.72,
+          userSelect: "none",
+          pointerEvents: "none",
+        }}
+        aria-hidden="true"
+      >
+        <span
+          className="inline-block select-none pointer-events-none font-black tracking-tighter"
+          style={{
+            display: "inline-block",
+            fontSize: "clamp(84px, 19vw, 260px)",
+            fontWeight: 850,
+            letterSpacing: "-0.055em",
+            lineHeight: 0.72,
+            color: "#E5E5EA",
+            marginBottom: "-0.14em",
+            whiteSpace: "nowrap",
+            fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif',
+          }}
+        >
+          MacVoice
+        </span>
       </div>
     </footer>
   );
