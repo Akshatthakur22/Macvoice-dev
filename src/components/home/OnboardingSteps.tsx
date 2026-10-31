@@ -33,7 +33,7 @@ export function OnboardingSteps() {
   ];
 
   return (
-    <section className="py-24 bg-[#F5F5F7] border-b border-[#E8E8ED]">
+    <section id="how-it-works" className="py-24 bg-[#F5F5F7] border-b border-[#E8E8ED]">
       <Container>
         <SectionHeader
           eyebrow="Frictionless Onboarding"

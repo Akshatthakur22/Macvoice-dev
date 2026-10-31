@@ -1,226 +1,281 @@
 import React from "react";
 import Link from "next/link";
-import { Container } from "@/components/ui/Container";
+import Image from "next/image";
+import { ArrowUpRight, ShieldCheck } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="border-t border-[#E8E8ED] bg-[#F5F5F7] text-[#6E6E73] text-[12px] leading-relaxed pt-16 pb-12">
-      <Container>
-        {/* Four-Column Layout on Desktop, Two-Column on Tablet, Single-Column on Mobile */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 pb-12 border-b border-[#E8E8ED]">
-          {/* Column 1: Product & Story */}
-          <div className="space-y-3">
-            <h4 className="text-[11px] font-semibold uppercase tracking-wider text-[#1D1D1F]">
-              Product
-            </h4>
-            <ul className="space-y-2.5 text-[13px]">
-              <li>
-                <Link
-                  href="/"
-                  className="hover:text-[#1D1D1F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0071E3] rounded-sm transition-colors duration-150"
-                >
-                  Overview
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#features"
-                  className="hover:text-[#1D1D1F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0071E3] rounded-sm transition-colors duration-150"
-                >
-                  Core Capabilities
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#modes"
-                  className="hover:text-[#1D1D1F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0071E3] rounded-sm transition-colors duration-150"
-                >
-                  Verbatim & Polished Modes
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#compare"
-                  className="hover:text-[#1D1D1F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0071E3] rounded-sm transition-colors duration-150"
-                >
-                  Benchmark Comparison
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#faq"
-                  className="hover:text-[#1D1D1F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0071E3] rounded-sm transition-colors duration-150"
-                >
-                  Frequently Asked Questions
-                </Link>
-              </li>
-            </ul>
+    <footer className="w-full border-t border-[#E8E8ED] bg-[#FFFFFF] overflow-hidden pt-14 pb-0">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Main Directory Grid: Left Brand Column + 4 Right Navigation Columns */}
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(280px,360px)_1fr] gap-12 lg:gap-16 items-start">
+          {/* Left Brand & Attribution Column */}
+          <div className="flex flex-col gap-3.5">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2.5 group w-fit"
+              aria-label="MacVoice home"
+            >
+              <div className="w-8 h-8 rounded-[8px] bg-[#0071E3] flex items-center justify-center text-white shadow-sm flex-shrink-0 group-hover:bg-[#0077ED] transition-colors">
+                <Image
+                  src="/brand/macvoice-symbol-mono-white.svg"
+                  alt="MacVoice"
+                  width={18}
+                  height={18}
+                  className="w-4 h-4 object-contain"
+                />
+              </div>
+              <span className="font-semibold text-[20px] tracking-tight text-[#1D1D1F]">
+                MacVoice
+              </span>
+            </Link>
+
+            <p className="text-[13px] text-[#6E6E73] leading-relaxed max-w-[330px]">
+              Free, local-first voice typing keyboard for macOS. Speak naturally and get text at your cursor with zero server uploads.
+            </p>
+
+            <div className="pt-0.5">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#f2faf4] text-[#287a3e] border border-[#d4e8da] text-[11.5px] font-semibold whitespace-nowrap">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#287a3e]" strokeWidth={2.2} />
+                100% On-Device Engine
+              </span>
+            </div>
+
+            <p className="text-[12px] leading-relaxed text-[#86868B] pt-1">
+              © 2026 MacVoice. Lifetime license ($9 USD).
+              <br />
+              Created by{" "}
+              <a
+                href="https://akshatt.in/"
+                target="_blank"
+                rel="noreferrer"
+                className="text-[#1D1D1F] font-semibold hover:text-[#0071E3] hover:underline transition-colors"
+              >
+                Akshat Thakur
+              </a>.
+            </p>
           </div>
 
-          {/* Column 2: Documentation & Setup */}
-          <div className="space-y-3">
-            <h4 className="text-[11px] font-semibold uppercase tracking-wider text-[#1D1D1F]">
-              Documentation
-            </h4>
-            <ul className="space-y-2.5 text-[13px]">
-              <li>
-                <Link
-                  href="/docs#quickstart"
-                  className="hover:text-[#1D1D1F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0071E3] rounded-sm transition-colors duration-150"
-                >
-                  Quickstart Guide
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/docs#shortcuts"
-                  className="hover:text-[#1D1D1F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0071E3] rounded-sm transition-colors duration-150"
-                >
-                  Shortcut Configuration
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/docs#permissions"
-                  className="hover:text-[#1D1D1F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0071E3] rounded-sm transition-colors duration-150"
-                >
-                  macOS Permissions Setup
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/docs#uninstall"
-                  className="hover:text-[#1D1D1F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0071E3] rounded-sm transition-colors duration-150"
-                >
-                  Clean Uninstallation
-                </Link>
-              </li>
-            </ul>
-          </div>
+          {/* 4 Directory Navigation Columns */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 lg:gap-8">
+            {/* Column 1: PRODUCT */}
+            <nav aria-label="Product navigation" className="flex flex-col items-start gap-2.5">
+              <h2 className="text-[11px] font-bold tracking-[0.08em] text-[#1D1D1F] uppercase mb-1">
+                PRODUCT
+              </h2>
+              <Link
+                href="/"
+                className="text-[13px] text-[#6E6E73] hover:text-[#0071E3] transition-colors"
+              >
+                Overview
+              </Link>
+              <Link
+                href="/#how-it-works"
+                className="text-[13px] text-[#6E6E73] hover:text-[#0071E3] transition-colors"
+              >
+                How It Works
+              </Link>
+              <Link
+                href="/#features"
+                className="text-[13px] text-[#6E6E73] hover:text-[#0071E3] transition-colors"
+              >
+                Features &amp; Sizing
+              </Link>
+              <Link
+                href="/#compare"
+                className="text-[13px] text-[#6E6E73] hover:text-[#0071E3] transition-colors"
+              >
+                Competitor Comparison
+              </Link>
+              <Link
+                href="/#modes"
+                className="text-[13px] text-[#6E6E73] hover:text-[#0071E3] transition-colors"
+              >
+                Two Voice Modes
+              </Link>
+              <Link
+                href="/#faq"
+                className="text-[13px] text-[#6E6E73] hover:text-[#0071E3] transition-colors"
+              >
+                FAQ &amp; Guide
+              </Link>
+            </nav>
 
-          {/* Column 3: Platform & Architecture */}
-          <div className="space-y-3">
-            <h4 className="text-[11px] font-semibold uppercase tracking-wider text-[#1D1D1F]">
-              Platform & Architecture
-            </h4>
-            <ul className="space-y-2.5 text-[13px]">
-              <li>
-                <Link
-                  href="/compatibility"
-                  className="hover:text-[#1D1D1F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0071E3] rounded-sm transition-colors duration-150"
-                >
-                  Compatibility Matrix
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/compatibility#requirements"
-                  className="hover:text-[#1D1D1F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0071E3] rounded-sm transition-colors duration-150"
-                >
-                  System Requirements (macOS 26+)
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/privacy#architecture"
-                  className="hover:text-[#1D1D1F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0071E3] rounded-sm transition-colors duration-150"
-                >
-                  Air-Gap Architecture
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/privacy#audio"
-                  className="hover:text-[#1D1D1F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0071E3] rounded-sm transition-colors duration-150"
-                >
-                  In-Memory Audio Processing
-                </Link>
-              </li>
-            </ul>
-          </div>
+            {/* Column 2: TRUST & PRIVACY */}
+            <nav aria-label="Trust &amp; Privacy" className="flex flex-col items-start gap-2.5">
+              <h2 className="text-[11px] font-bold tracking-[0.08em] text-[#1D1D1F] uppercase mb-1">
+                TRUST &amp; PRIVACY
+              </h2>
+              <Link
+                href="/privacy#architecture"
+                className="text-[13px] text-[#6E6E73] hover:text-[#0071E3] transition-colors"
+              >
+                About &amp; Architecture
+              </Link>
+              <Link
+                href="/privacy"
+                className="text-[13px] text-[#6E6E73] hover:text-[#0071E3] transition-colors"
+              >
+                Privacy Guarantee
+              </Link>
+              <Link
+                href="/privacy#permissions"
+                className="text-[13px] text-[#6E6E73] hover:text-[#0071E3] transition-colors"
+              >
+                Permissions Rationale
+              </Link>
+              <Link
+                href="/privacy#network"
+                className="text-[13px] text-[#6E6E73] hover:text-[#0071E3] transition-colors"
+              >
+                Zero Network Telemetry
+              </Link>
+              <Link
+                href="/compatibility#requirements"
+                className="text-[13px] text-[#6E6E73] hover:text-[#0071E3] transition-colors"
+              >
+                60MB RAM Footprint
+              </Link>
+            </nav>
 
-          {/* Column 4: Licensing & Legal */}
-          <div className="space-y-3">
-            <h4 className="text-[11px] font-semibold uppercase tracking-wider text-[#1D1D1F]">
-              License & Legal
-            </h4>
-            <ul className="space-y-2.5 text-[13px]">
-              <li>
-                <Link
-                  href="/pricing"
-                  className="hover:text-[#1D1D1F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0071E3] rounded-sm transition-colors duration-150"
-                >
-                  Lifetime License ($9 USD)
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/terms"
-                  className="hover:text-[#1D1D1F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0071E3] rounded-sm transition-colors duration-150"
-                >
-                  Terms of Sale & License
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/privacy"
-                  className="hover:text-[#1D1D1F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0071E3] rounded-sm transition-colors duration-150"
-                >
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/terms#refund"
-                  className="hover:text-[#1D1D1F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0071E3] rounded-sm transition-colors duration-150"
-                >
-                  14-Day Refund Policy
-                </Link>
-              </li>
-            </ul>
+            {/* Column 3: RESOURCES */}
+            <nav aria-label="Resources" className="flex flex-col items-start gap-2.5">
+              <h2 className="text-[11px] font-bold tracking-[0.08em] text-[#1D1D1F] uppercase mb-1">
+                RESOURCES
+              </h2>
+              <Link
+                href="/docs"
+                className="text-[13px] text-[#6E6E73] hover:text-[#0071E3] transition-colors"
+              >
+                Documentation
+              </Link>
+              <Link
+                href="/compatibility"
+                className="text-[13px] text-[#6E6E73] hover:text-[#0071E3] transition-colors"
+              >
+                Compatibility Matrix
+              </Link>
+              <Link
+                href="/terms"
+                className="text-[13px] text-[#6E6E73] hover:text-[#0071E3] transition-colors"
+              >
+                Terms of Sale
+              </Link>
+              <Link
+                href="/docs#quickstart"
+                className="text-[13px] text-[#6E6E73] hover:text-[#0071E3] transition-colors"
+              >
+                Quickstart Guide
+              </Link>
+              <Link
+                href="/success"
+                className="text-[13px] text-[#6E6E73] hover:text-[#0071E3] transition-colors"
+              >
+                DMG Checksum (SHA-256)
+              </Link>
+            </nav>
+
+            {/* Column 4: CONNECT */}
+            <nav aria-label="Connect with creator" className="flex flex-col items-start gap-2.5">
+              <h2 className="text-[11px] font-bold tracking-[0.08em] text-[#1D1D1F] uppercase mb-1">
+                CONNECT
+              </h2>
+              <a
+                href="https://akshatt.in/"
+                target="_blank"
+                rel="noreferrer"
+                className="text-[13px] text-[#6E6E73] hover:text-[#0071E3] transition-colors inline-flex items-center gap-1 group"
+              >
+                Akshat Thakur
+                <ArrowUpRight className="w-3 h-3 text-[#86868B] group-hover:text-[#0071E3] transition-colors" />
+              </a>
+              <a
+                href="https://github.com/Akshatthakur22"
+                target="_blank"
+                rel="noreferrer"
+                className="text-[13px] text-[#6E6E73] hover:text-[#0071E3] transition-colors inline-flex items-center gap-1 group"
+              >
+                GitHub
+                <ArrowUpRight className="w-3 h-3 text-[#86868B] group-hover:text-[#0071E3] transition-colors" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/akshatthakur22/"
+                target="_blank"
+                rel="noreferrer"
+                className="text-[13px] text-[#6E6E73] hover:text-[#0071E3] transition-colors inline-flex items-center gap-1 group"
+              >
+                LinkedIn
+                <ArrowUpRight className="w-3 h-3 text-[#86868B] group-hover:text-[#0071E3] transition-colors" />
+              </a>
+              <a
+                href="mailto:akshatthakur22@gmail.com"
+                className="text-[13px] text-[#6E6E73] hover:text-[#0071E3] transition-colors inline-flex items-center gap-1 group"
+              >
+                Email
+                <ArrowUpRight className="w-3 h-3 text-[#86868B] group-hover:text-[#0071E3] transition-colors" />
+              </a>
+            </nav>
           </div>
         </div>
 
-        {/* Short Brand & Trademark Statement */}
-        <div className="pt-8 pb-6 text-[11px] text-[#6E6E73] leading-relaxed max-w-4xl space-y-1.5">
-          <p>
-            MacVoice is a focused, local-first voice keyboard for macOS. Designed to turn natural speech into text directly at your cursor with zero cloud servers and zero subscriptions.
-          </p>
-          <p>
-            Apple, Mac, macOS, and Apple Silicon are trademarks of Apple Inc., registered in the U.S. and other countries. MacVoice is an independent software product and is not affiliated with or endorsed by Apple Inc.
-          </p>
-        </div>
-
-        {/* Bottom Bar: Copyright, Creator Attribution, and Legal Links */}
-        <div className="pt-6 border-t border-[#E8E8ED] flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-[#6E6E73]">
-          <div className="flex flex-col sm:flex-row items-center gap-1.5 sm:gap-2 text-center sm:text-left">
-            <span>© 2026 MacVoice. All rights reserved.</span>
-            <span className="hidden sm:inline text-[#D2D2D7]">•</span>
-            <span>Crafted for Mac power users by Akshat Thakur.</span>
+        {/* Divider & Sub-footer Bar */}
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pt-7 pb-6 mt-12 border-t border-[#E8E8ED] text-[12px]">
+          <div className="max-w-[540px] text-[#86868B] leading-relaxed">
+            MacVoice is built for software engineers, writers, and Mac users who need secure, instant voice typing.
           </div>
-
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-2.5 flex-wrap text-[12px]">
             <Link
               href="/privacy"
-              className="hover:text-[#1D1D1F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0071E3] rounded-sm transition-colors duration-150"
+              className="text-[#6E6E73] hover:text-[#1D1D1F] transition-colors"
             >
-              Privacy Policy
+              Privacy
             </Link>
+            <span aria-hidden="true" className="text-[#D2D2D7]">
+              &middot;
+            </span>
             <Link
-              href="/terms"
-              className="hover:text-[#1D1D1F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0071E3] rounded-sm transition-colors duration-150"
+              href="/privacy#architecture"
+              className="text-[#6E6E73] hover:text-[#1D1D1F] transition-colors"
             >
-              Terms of Sale
+              Architecture
             </Link>
+            <span aria-hidden="true" className="text-[#D2D2D7]">
+              &middot;
+            </span>
+            <a
+              href="https://github.com/Akshatthakur22"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#6E6E73] hover:text-[#1D1D1F] transition-colors"
+            >
+              GitHub
+            </a>
+            <span aria-hidden="true" className="text-[#D2D2D7]">
+              &middot;
+            </span>
             <Link
               href="/compatibility"
-              className="hover:text-[#1D1D1F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0071E3] rounded-sm transition-colors duration-150"
+              className="text-[#6E6E73] hover:text-[#1D1D1F] transition-colors"
             >
               Compatibility
             </Link>
+            <span aria-hidden="true" className="text-[#D2D2D7]">
+              &middot;
+            </span>
+            <a
+              href="mailto:akshatthakur22@gmail.com"
+              className="text-[#6E6E73] hover:text-[#1D1D1F] transition-colors"
+            >
+              Contact
+            </a>
           </div>
         </div>
-      </Container>
+      </div>
+
+      {/* Subtle Architectural Bleed Wordmark */}
+      <div className="footer-bleed-wrap" aria-hidden="true">
+        <span className="footer-bleed-text">MacVoice</span>
+      </div>
     </footer>
   );
 }

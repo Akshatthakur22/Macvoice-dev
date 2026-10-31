@@ -97,3 +97,27 @@ dialog::backdrop {
 .animate-wave-3 { animation: soundwave 0.8s ease-in-out infinite 0.4s; }
 .animate-wave-4 { animation: soundwave 0.8s ease-in-out infinite 0.15s; }
 .animate-wave-5 { animation: soundwave 0.8s ease-in-out infinite 0.3s; }
+
+/* Apple-style Architectural Wordmark Bleed */
+.footer-bleed-wrap {
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+  margin-top: 28px;
+  line-height: 0.75;
+  user-select: none;
+  pointer-events: none;
+}
+
+.footer-bleed-text {
+  display: inline-block;
+  font-size: clamp(68px, 16vw, 210px);
+  font-weight: 850;
+  letter-spacing: -0.05em;
+  line-height: 0.75;
+  color: #E5E5EA;
+  margin-bottom: -0.12em;
+  white-space: nowrap;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+}
+
