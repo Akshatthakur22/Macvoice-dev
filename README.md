@@ -1,223 +1,134 @@
-# MacVoice Website
+<p align="center">
+  <img src="public/brand/macvoice-icon-light-1024.png" width="100" height="100" alt="MacVoice Logo" style="border-radius: 24px; box-shadow: 0 10px 30px rgba(0, 113, 227, 0.28);" />
+</p>
 
-**The official product and purchase platform for MacVoice — the local-first voice keyboard for macOS.**
+<h1 align="center">MacVoice — Type at the Speed of Thought</h1>
 
-Built with Next.js 16 (App Router), TypeScript, Tailwind CSS v4, and Stripe checkout integration.
+<p align="center">
+  <strong>The ultra-lightweight, local-first voice keyboard for macOS.</strong><br>
+  Speak naturally and watch clean, punctuated text appear at your cursor in real time.<br>
+  Works in any app · Types even where copy-paste is blocked · Removes "ums" automatically · Zero cloud servers.
+</p>
 
----
-
-## 1. Project Overview
-
-MacVoice is an ultra-lightweight, on-device voice typing utility for Mac power users that streams words live to the cursor across VS Code, Slack, Obsidian, and every native macOS app.
-
-This repository contains the complete production website, visual storytelling system, and secure one-time purchase ($9 USD) infrastructure that delivers the verified `MacVoice.dmg` release package.
-
-### Key Highlights
-- **Apple-grade Visual Hierarchy & Design System:** Tailored typography scale, graphite and surface neutrals, primary blue `#0A84FF` accents, and realistic interactive macOS window simulators.
-- **Zero Cloud Architecture Disclosed Honestly:** 100% on-device speech processing using Apple's native `SpeechAnalyzer` framework, zero telemetry, zero accounts.
-- **Functional $9 Purchase Infrastructure:** Stripe Checkout integration verifying server-side payments before issuing tamper-proof HMAC-SHA256 download tokens for `MacVoice.dmg`.
-- **Chat-Aware Safety Moat:** Highlights MacVoice's intelligent Shift+Return behavior that prevents premature message sends in Slack, Teams, and WhatsApp.
-- **Two Distinct Modes:** Full interactive side-by-side comparison of Verbatim Mode (raw speed) vs Polished Mode (instant filler removal in <0.1ms).
+<p align="center">
+  <a href="https://macvoice.app"><img src="https://img.shields.io/badge/Official%20Website-macvoice.app-0071E3?style=for-the-badge&logo=apple&logoColor=white" alt="Official Website" /></a>
+  <a href="https://macvoice.app/pricing"><img src="https://img.shields.io/badge/Buy%20Once-%249%20USD%20Forever-059669?style=for-the-badge" alt="Price" /></a>
+  <img src="https://img.shields.io/badge/Platform-macOS%2026%2B%20Apple%20Silicon-1D1D1F?style=for-the-badge&logo=apple&logoColor=white" alt="Platform" />
+  <img src="https://img.shields.io/badge/Privacy-100%25%20On--Device-2563EB?style=for-the-badge" alt="100% Private" />
+</p>
 
 ---
 
-## 2. Project Structure
+## 💡 Why MacVoice?
 
-```
-├── public/
-│   ├── brand/                      # Official MacVoice SVG symbols, logos, and PNG icons
-│   │   ├── macvoice-symbol.svg
-│   │   ├── macvoice-logo-dark.svg
-│   │   ├── macvoice-icon-dark-1024.png
-│   │   └── macvoice-favicon-32.png
-│   ├── releases/                   # Verified release package
-│   │   └── MacVoice.dmg            # Official 737 KB DMG release binary
-│   └── favicon.ico
-├── src/
-│   ├── app/
-│   │   ├── api/
-│   │   │   ├── checkout/route.ts   # Stripe Checkout API ($9.00 USD one-time)
-│   │   │   ├── webhook/route.ts    # Cryptographic Stripe webhook signature verification
-│   │   │   └── download/route.ts   # Server-side authorized DMG streaming endpoint
-│   │   ├── compatibility/page.tsx  # Documented destination compatibility matrix
-│   │   ├── docs/page.tsx           # Setup guide, shortcut customization, permission troubleshooting
-│   │   ├── pricing/page.tsx        # One-time $9 license breakdown & economics
-│   │   ├── privacy/page.tsx        # Full Air-Gap Architecture & Privacy Constitution
-│   │   ├── success/
-│   │   │   ├── page.tsx            # Post-purchase download page with Suspense
-│   │   │   └── SuccessContent.tsx  # Verified purchase token handler & DMG download CTA
-│   │   ├── terms/page.tsx          # Terms of Sale, 5-Mac entitlement, refund terms
-│   │   ├── globals.css             # Apple font stacks, CSS variables, Modern Web Guidance modals
-│   │   ├── layout.tsx              # SEO metadata, OpenGraph tags, sticky navbar, and footer
-│   │   └── page.tsx                # Homepage assembling all 10 core conversion sections
-│   ├── components/
-│   │   ├── home/
-│   │   │   ├── Hero.tsx            # High-impact hero, pill badge, dual CTAs, trust metrics
-│   │   │   ├── LiveDemo.tsx        # Interactive macOS simulator (VS Code & Slack streaming)
-│   │   │   ├── MetricsBar.tsx      # 784 KB, ~60 MB RAM, <150ms latency, 0 Bytes cloud
-│   │   │   ├── CorePillars.tsx     # The 3 pillars (Streaming, Swift Polisher, Chat-Safe)
-│   │   │   ├── TwoModes.tsx        # Interactive Verbatim vs Polished mode showcase
-│   │   │   ├── ComparisonTable.tsx # MacVoice vs Apple Dictation vs Wispr Flow vs Superwhisper
-│   │   │   ├── PrivacyGuarantee.tsx# 4-part air-gap architecture and permission rationale
-│   │   │   ├── OnboardingSteps.tsx # 3-step setup walkthrough
-│   │   │   ├── PricingSection.tsx  # $9 One-Time card with feature checklist & Stripe trigger
-│   │   │   ├── FAQSection.tsx      # Expandable accordion answering technical objections
-│   │   │   └── FinalCTA.tsx        # Closing conversion card with system requirements
-│   │   ├── layout/
-│   │   │   ├── Navbar.tsx          # Sticky glass navbar with responsive navigation
-│   │   │   └── Footer.tsx          # Technical footer with SHA-256 checksum and legal links
-│   │   └── ui/
-│   │       ├── Badge.tsx           # Apple-style pill badge
-│   │       ├── Button.tsx          # Tactile Apple-grade buttons (Primary, Secondary, Outline)
-│   │       ├── Container.tsx       # Standardized layout containers (narrow, default, wide)
-│   │       ├── Dialog.tsx          # Accessible <dialog> modal (Modern Web Guidance compliant)
-│   │       ├── MacOSWindow.tsx     # Realistic macOS window frame with traffic lights
-│   │       ├── SectionHeader.tsx   # Consistent section headings with eyebrow and subtext
-│   │       └── ShortcutBadge.tsx   # Native physical key styling (⌃⌥Space)
-│   └── lib/
-│       ├── downloadToken.ts        # HMAC-SHA256 token generator and validator
-│       ├── stripe.ts               # Stripe client initialization and product constants
-│       └── utils.ts                # Utility classes combining and currency formatters
-├── .env.example                    # Documented configuration variables
-├── package.json
-└── tsconfig.json
-```
+Typing all day is exhausting. Your brain moves at **150+ words per minute**, but fingers can only type at 40–60 WPM. 
+
+Existing dictation tools are frustrating:
+- **Cloud apps (Wispr, etc.)** charge you **$144/year**, upload your private voice to cloud GPUs, and use a lazy clipboard hack (`Cmd+V`) that wipes whatever code or password you had copied.
+- **Built-in Apple Dictation** writes down every vocal hesitation ("um", "uh"), has no chat safety, and frequently drops letters in developer editors.
+- **Heavy local AI tools** bundle gigabytes of models, eat up 1.5 GB of RAM, and heat up your laptop.
+
+**MacVoice solves all of this.** It is a pure native Swift utility (784 KB DMG, ~60 MB RAM) that collaborates directly with macOS WindowServer at the hardware level.
 
 ---
 
-## 3. Design System & Component Documentation
+## ⚡ The Four Superpowers
 
-| Token Name | Hex Value | Semantic Usage |
-| :--- | :--- | :--- |
-| **Canvas Background** | `#090E17` | Apple-inspired deep canvas dark aesthetic |
-| **Surface Elevated** | `#111724` | Cards, feature blocks, and macOS window bodies |
-| **Surface Highlight** | `#161E31` | Hover states and table header backgrounds |
-| **Primary Blue** | `#0A84FF` | Primary action buttons, active recording indicators, key brand accents |
-| **Light Blue** | `#64D2FF` | Waveform highlights, gradient text endings, badge borders |
-| **Text Primary** | `#F8FAFC` | Headings, active values, high-contrast readable text |
-| **Text Secondary** | `#94A3B8` | Body copy, explanatory descriptions, table text |
-| **Text Muted** | `#64748B` | Footers, timestamps, legal microcopy |
+### 1. ⌨️ Genuine Keyboard Keystrokes (Not a Clipboard Paste Hack)
+Most voice tools simply copy transcribed text to your system clipboard (`NSPasteboard`) and press `Cmd+V`. 
+- **The problem:** When you type into secure enterprise forms, banking portals, online exam platforms, or remote desktops (Citrix/VDI) where paste is disabled (`onpaste="return false;"`), **those tools fail completely**. Plus, they wipe your clipboard history.
+- **The MacVoice difference:** MacVoice synthesizes authentic hardware key-down/up event pairs via macOS Quartz HID (`CGEvent` directly posted to `.cghidEventTap`). To any website or desktop app, it is indistinguishable from physical fingers typing on an Apple Magic Keyboard. **It works everywhere, bypasses paste blocks, and leaves your clipboard untouched.**
 
-### Accessible Modal & Scroll Behavior
-Compliant with `modern-web-guidance`:
-- Native HTML `<dialog>` element handles focus trapping and Esc dismissal natively without custom ARIA role overrides.
-- Background page scrolling is contained via CSS `overscroll-behavior: contain` on `dialog:modal` and `dialog::backdrop` without layout-shifting `overflow: hidden` hacks on the body.
+### 2. 🚀 Zero Waiting (<150ms Real-Time Streaming)
+No waiting around for an AI audio recording to finish processing. Words stream progressively into your focused text field character-by-character the moment you utter each syllable.
+
+### 3. 🪄 Instant Filler Removal (<0.1ms Native Swift Polish)
+We all pause and hesitate when speaking. MacVoice's native Swift polisher automatically strips hesitations ("um", "uh", throat clears), fixes unpunctuated contractions ("dont" → "don't"), and formats proper sentence capitalization in less than 0.1 milliseconds with 0 extra RAM.
+
+### 4. 💬 Chat-Safe Typing (Never Accidental Sends in Slack)
+Saying "new line" in Slack, WhatsApp, Teams, or Discord usually presses Enter and accidentally fires an unfinished message. MacVoice intelligently recognizes chat apps and automatically injects a safe `Shift + Return` line break, keeping your drafts safe.
 
 ---
 
-## 4. Environment Variables
+## 📊 Objective Benchmark Comparison
 
-Create a `.env.local` file with the following keys:
+| Capability | MacVoice (macOS) | Apple Built-in Dictation | Wispr Flow | Superwhisper |
+| :--- | :--- | :--- | :--- | :--- |
+| **How Words Are Typed** | **Real Keystrokes (Quartz CGEvent)** | Accessibility insertion | Clipboard paste (`Cmd+V`) | Clipboard paste (`Cmd+V`) |
+| **Works Where Paste is Blocked** | **Yes (Immune to restrictions)** | Partial | ❌ Fails completely | ❌ Fails completely |
+| **Overwrites What You Copied?** | **Never (Clipboard safe)** | Never | ❌ Overwrites clipboard | ❌ Overwrites clipboard |
+| **Removes "Um" & "Uh" Hesitations** | **Instant (<0.1ms Swift)** | ❌ None (types stutters) | Cloud AI LLM | Local LLM |
+| **Typing Latency** | **< 150ms Live Streaming** | ~200ms | ~1.0s cloud loop | 2.5s batch wait |
+| **Safe in Slack / WhatsApp / Teams** | **Yes (Chat-Aware Shift+Return)** | ❌ Sends message early | ❌ Sends message early | ❌ Sends message early |
+| **Voice Privacy** | **100% On-Device (0 bytes cloud)** | Apple Cloud / Local | Cloud server GPUs | 100% On-Device |
+| **App Size & Memory** | **784 KB (~60 MB RAM)** | Built-in | ~80 MB (~180 MB RAM) | 1.5 GB+ (500 MB–1.8 GB RAM) |
+| **Pricing Model** | **$9 USD One-Time (Own forever)** | Free with macOS | $144 / year subscription | $250 lifetime |
+
+---
+
+## 🎬 Two Dictation Modes
+
+Switch seamlessly with a single click:
+- **Verbatim Mode (Raw Speed):** Direct speech-to-text path with minimal processing. Ideal for coding, shell commands, variable names, and technical terms.
+- **Polished Mode (Smart Cleanup):** In-process Swift grammar normalization. Strips vocal fillers, fixes contractions, and ensures publication-ready prose for Slack, emails, and notes.
+
+---
+
+## 🔒 Privacy by Architecture (Not Just Policy)
+
+- **0 Bytes Outbound Network Traffic:** Links only to native Apple system frameworks (`AppKit`, `Speech`, `CoreGraphics`, `Carbon`). Contains zero tracking SDKs, zero analytics, and zero external network calls.
+- **In-Memory Audio Processing:** Audio PCM buffers are processed live in resident RAM and wiped immediately. Zero audio files are ever written to disk, cache, or `/tmp`.
+- **Zero Dictation History:** MacVoice acts as an input keyboard, not a note-taking app. It retains no logs or database of what you say.
+
+---
+
+## 🚀 30-Second Quickstart
+
+1. **Download:** Grab `MacVoice.dmg` (784 KB) from your [purchase confirmation page](https://macvoice.app/pricing).
+2. **Install:** Double-click and drag **MacVoice.app** into your `/Applications` folder.
+3. **Grant Permissions:** Approve standard macOS prompts for **Microphone** (to transcribe audio locally) and **Accessibility** (to type simulated keystrokes into other apps).
+4. **Speak:** Click into any text field in VS Code, Slack, Word, or Safari, press <kbd>Control</kbd> + <kbd>Option</kbd> + <kbd>Space</kbd>, and begin speaking!
+
+---
+
+## 🛠 Repository & Website Architecture
+
+This repository powers the official marketing and checkout platform for MacVoice:
+
+- **Framework:** Next.js 16 (App Router) + React 19 + TypeScript
+- **Styling:** Tailwind CSS v4 + Apple Pure White Design System (`#FFFFFF`, `#F5F5F7`, `#E8E8ED`, `#0071E3`)
+- **Checkout & Licensing:** Stripe Checkout integration verifying server-side payments and issuing tamper-proof HMAC-SHA256 download tokens for `MacVoice.dmg`
+- **Interactive Simulators:** Dual-window macOS simulator with real-time text streaming and native control window
+
+### Local Development
 
 ```bash
-# Stripe Secret Key (from Stripe Dashboard > Developers > API keys)
-STRIPE_SECRET_KEY=sk_live_... (or sk_test_... for sandbox testing)
+# Clone the repository
+git clone https://github.com/Akshatthakur22/Macvoice-dev.git
+cd Macvoice-dev
 
-# Stripe Webhook Secret (from Stripe Dashboard > Developers > Webhooks)
-STRIPE_WEBHOOK_SECRET=whsec_...
+# Install dependencies
+pnpm install
 
-# Download Token Signing Key (64-character random string)
-DOWNLOAD_SIGNING_SECRET=your_tamper_proof_secret_signing_key_here
-
-# Release Package Path Override (optional, defaults to public/releases/MacVoice.dmg)
-# DMG_FILE_PATH=/absolute/path/to/MacVoice.dmg
+# Start local development server
+pnpm dev
 ```
 
----
-
-## 5. Payment Provider Setup Instructions (Stripe)
-
-1. **Create Stripe Account:** Sign up at [stripe.com](https://stripe.com).
-2. **Retrieve API Keys:** Go to **Developers > API Keys** and copy the Secret Key (`sk_test_...` or `sk_live_...`). Add it as `STRIPE_SECRET_KEY`.
-3. **Configure Webhook Endpoint:**
-   - In Stripe Dashboard, go to **Developers > Webhooks** and click **Add Endpoint**.
-   - URL: `https://your-domain.com/api/webhook`
-   - Select events to listen to: `checkout.session.completed`.
-   - Copy the **Signing Secret** (`whsec_...`) and set it as `STRIPE_WEBHOOK_SECRET`.
-4. **Local Webhook Testing:**
-   ```bash
-   stripe listen --forward-to localhost:3000/api/webhook
-   ```
-5. **Production Behavior:**
-   - In production (`NODE_ENV=production`), if `STRIPE_SECRET_KEY` is omitted, `/api/checkout` returns HTTP 503 instead of simulating fake payment, preserving financial security.
+Open [http://localhost:3000](http://localhost:3000) to view the live website.
 
 ---
 
-## 6. DMG Upload & Release Instructions
+## 👨‍💻 Created by
 
-1. **Compile & Notarize Binary:**
-   - The native Swift binary is built from the `Typer` repository using `scripts/create_dmg.sh`.
-   - Codesign with your Apple Developer ID:
-     ```bash
-     codesign --deep --force --verify --verbose --sign "Developer ID Application: Your Name (TEAM_ID)" MacVoice.app
-     ```
-   - Package into DMG and submit to Apple Notary Service:
-     ```bash
-     xcrun notarytool submit MacVoice.dmg --keychain-profile "macvoice-notary" --wait
-     xcrun stapler staple MacVoice.dmg
-     ```
-2. **Place in Website Repository:**
-   - Copy the stapled DMG to `public/releases/MacVoice.dmg`.
-   - Verify SHA-256 hash:
-     ```bash
-     shasum -a 256 public/releases/MacVoice.dmg
-     ```
-   - The verified checksum (`c65640421934f518328b17a75a518e2ba36b7bb3dedd15ffeff4c30d8d1c7515`) is displayed on the website footer and success confirmation page.
+Crafted with care by **Akshat Thakur**.
+
+- **Portfolio:** [akshatt.in](https://akshatt.in/)
+- **GitHub:** [@Akshatthakur22](https://github.com/Akshatthakur22)
+- **LinkedIn:** [linkedin.com/in/akshatthakur22](https://www.linkedin.com/in/akshatthakur22/)
+- **Contact:** [akshatthakur22@gmail.com](mailto:akshatthakur22@gmail.com)
 
 ---
 
-## 7. Vercel Deployment Instructions
-
-1. **Push to GitHub:**
-   ```bash
-   git add .
-   git commit -m "feat: complete MacVoice website and payment delivery platform"
-   git push origin main
-   ```
-2. **Import into Vercel:**
-   - Connect your GitHub repository to [vercel.com](https://vercel.com).
-   - Framework Preset: **Next.js**.
-   - Build Command: `pnpm build` (or `next build`).
-   - Output Directory: `.next`.
-3. **Configure Environment Variables in Vercel:**
-   - `STRIPE_SECRET_KEY`
-   - `STRIPE_WEBHOOK_SECRET`
-   - `DOWNLOAD_SIGNING_SECRET`
-4. **Assign Custom Domain:** Add `macvoice.app` under Project Settings > Domains.
-
----
-
-## 8. SEO & Performance Checklist
-
-- [x] Standard OpenGraph tags (`og:title`, `og:description`, `og:image`, `og:url`).
-- [x] Twitter Card summary large image metadata.
-- [x] Semantic HTML5 document outline (`<header>`, `<main>`, `<section>`, `<footer>`, `<table>`).
-- [x] High-resolution SVG favicon & Apple Touch Icon (`macvoice-icon-dark-1024.png`).
-- [x] High-contrast text exceeding WCAG AAA standards.
-- [x] Zero external heavy fonts — uses native Apple System font stack (`-apple-system, SF Pro Display`).
-- [x] Zero client-side tracking or external telemetry scripts.
-
----
-
-## 9. Testing & Quality Verification
-
-| Test Suite | Command | Result |
-| :--- | :--- | :--- |
-| **Production Build** | `pnpm build` | **PASSED** (14 static & dynamic routes compiled) |
-| **TypeScript Compilation** | `pnpm tsc` | **PASSED** (0 type errors) |
-| **ESLint Quality Gate** | `pnpm lint` | **PASSED** (0 errors, 0 warnings) |
-| **Direct Unauthorized Download** | `curl -i http://localhost:3005/api/download` | **HTTP 403 Forbidden** (Correctly blocked) |
-| **Tampered Token Download** | `curl -i http://localhost:3005/api/download?token=fake` | **HTTP 403 Forbidden** (Cryptographically rejected) |
-| **Signed Token Authorized Download** | `curl -s "http://localhost:3005/api/download?token=..."` | **HTTP 200 OK** (Exact SHA-256 match verified) |
-| **Production Checkout Guard** | `curl -X POST http://localhost:3005/api/checkout` | **HTTP 503** (Refuses fake simulation in production) |
-
----
-
-## 10. Remaining Blockers & Human Decisions
-
-1. **Stripe Account Activation:**
-   - Founder must create an active Stripe account and input real production keys (`STRIPE_SECRET_KEY` and `STRIPE_WEBHOOK_SECRET`).
-2. **Apple Developer ID Certificate & Notarization:**
-   - The app must be signed with a valid Apple Developer ID Certificate ($99/year Apple Developer Program) and notarized via `xcrun notarytool` before public launch to avoid Gatekeeper warnings on user Macs.
-3. **Domain DNS Mapping:**
-   - Point your DNS records for `macvoice.app` to Vercel CNAME `cname.vercel-dns.com`.
+<p align="center">
+  <sub>© 2026 MacVoice. Built for software engineers, writers, and Mac power users. Apple, Mac, and macOS are trademarks of Apple Inc.</sub>
+</p>
