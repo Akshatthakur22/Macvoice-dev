@@ -26,15 +26,15 @@ export function SectionHeader({
       {...props}
     >
       {eyebrow ? (
-        <span className="text-xs sm:text-sm font-semibold tracking-wider uppercase text-blue-400 mb-3 inline-block">
+        <span className="text-xs sm:text-sm font-semibold tracking-wide uppercase text-[#0071E3] mb-3 inline-block">
           {eyebrow}
         </span>
       ) : null}
-      <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4">
+      <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#1D1D1F] mb-4">
         {title}
       </h2>
       {description ? (
-        <p className="text-base sm:text-lg text-slate-400 leading-relaxed max-w-2xl mx-auto">
+        <p className="text-base sm:text-lg text-[#6E6E73] leading-relaxed max-w-2xl mx-auto">
           {description}
         </p>
       ) : null}

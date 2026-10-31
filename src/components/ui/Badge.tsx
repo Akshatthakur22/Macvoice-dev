@@ -13,15 +13,15 @@ export function Badge({
   ...props
 }: BadgeProps) {
   const variantStyles = {
-    blue: "bg-blue-500/10 text-blue-400 border-blue-500/20",
-    neutral: "bg-white/5 text-slate-300 border-white/10",
-    emerald: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+    blue: "bg-[#EAF3FF] text-[#0071E3] border-[#0071E3]/25",
+    neutral: "bg-[#F5F5F7] text-[#1D1D1F] border-[#E8E8ED]",
+    emerald: "bg-[#EDFDF5] text-[#059669] border-[#A7F3D0]",
   };
 
   return (
     <div
       className={cn(
-        "inline-flex items-center gap-2 px-3 py-1 text-xs font-medium rounded-full border transition-colors",
+        "inline-flex items-center gap-2 px-3.5 py-1 text-xs font-medium rounded-full border transition-colors select-none",
         variantStyles[variant],
         className
       )}

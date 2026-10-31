@@ -2,38 +2,35 @@
 
 @layer base {
   :root {
-    --bg-canvas: #090e17;
-    --surface-elevated: #111724;
-    --surface-card: #151c2c;
-    --surface-card-hover: #1c253b;
-    --surface-border: rgba(255, 255, 255, 0.09);
-    --surface-border-highlight: rgba(10, 132, 255, 0.35);
-    --brand-primary: #0A84FF;
-    --brand-primary-hover: #0071E3;
-    --brand-accent: #64D2FF;
-    --brand-graphite: #1D1D1F;
-    --text-primary: #F8FAFC;
-    --text-secondary: #94A3B8;
-    --text-muted: #64748B;
+    --bg-pure-white: #FFFFFF;
+    --bg-apple-light-grey: #F5F5F7;
+    --border-soft-grey: #E8E8ED;
+    --border-mid-grey: #D2D2D7;
+    --text-secondary-grey: #6E6E73;
+    --text-primary-black: #1D1D1F;
+    --apple-blue: #0071E3;
+    --apple-blue-hover: #0077ED;
+    --soft-blue-highlight: #EAF3FF;
   }
 
   * {
-    border-color: var(--surface-border);
+    border-color: var(--border-soft-grey);
   }
 
   html {
-    color-scheme: dark;
-    background-color: var(--bg-canvas);
-    color: var(--text-primary);
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color-scheme: light;
+    background-color: var(--bg-pure-white);
+    color: var(--text-primary-black);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
+    letter-spacing: -0.011em;
   }
 
   body {
-    background-color: var(--bg-canvas);
-    color: var(--text-primary);
+    background-color: var(--bg-pure-white);
+    color: var(--text-primary-black);
     overflow-x: hidden;
     min-height: 100vh;
   }
@@ -43,7 +40,7 @@
   }
 }
 
-/* Modern Web Guidance: Dialog Modal Scroll Prevention */
+/* Modern Web Guidance: Native <dialog> Modal Scroll Prevention */
 dialog:modal {
   overscroll-behavior: contain;
 }
@@ -51,31 +48,32 @@ dialog:modal {
 dialog::backdrop {
   overflow: hidden;
   overscroll-behavior: contain;
-  background: rgba(3, 7, 18, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
-/* Apple-style subtle selection */
+/* Apple-style subtle text selection */
 ::selection {
-  background-color: rgba(10, 132, 255, 0.35);
-  color: #FFFFFF;
+  background-color: rgba(0, 113, 227, 0.18);
+  color: #1D1D1F;
 }
 
-/* Custom subtle scrollbar */
+/* Apple-style discreet scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #090e17;
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
-  border-radius: 4px;
+  background: #D2D2D7;
+  border-radius: 9999px;
+  border: 2px solid #FFFFFF;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #A1A1A6;
 }
 
 /* Cursor pulse animation */

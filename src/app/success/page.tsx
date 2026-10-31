@@ -11,12 +11,12 @@ export const metadata: Metadata = {
 
 export default function SuccessPage() {
   return (
-    <div className="py-16 sm:py-24">
+    <div className="py-16 sm:py-24 bg-[#FFFFFF]">
       <Container size="narrow">
         <Suspense
           fallback={
-            <div className="text-center py-20 text-slate-400">
-              <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-blue-500 border-r-transparent mb-4" />
+            <div className="text-center py-20 text-[#6E6E73]">
+              <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-[#0071E3] border-r-transparent mb-4" />
               <p>Loading your verified order...</p>
             </div>
           }

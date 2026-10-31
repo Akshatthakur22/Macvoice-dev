@@ -33,7 +33,7 @@ export function PrivacyGuarantee() {
   ];
 
   return (
-    <section id="privacy" className="py-24 bg-[#070b12] border-t border-white/[0.06]">
+    <section id="privacy" className="py-24 bg-[#FFFFFF]">
       <Container>
         <SectionHeader
           eyebrow="Air-Gap Security"
@@ -48,16 +48,16 @@ export function PrivacyGuarantee() {
             return (
               <div
                 key={idx}
-                className="p-6 rounded-2xl bg-[#111726] border border-white/[0.08] flex flex-col justify-between"
+                className="p-6 rounded-3xl bg-[#F5F5F7] border border-[#E8E8ED] flex flex-col justify-between hover:border-[#D2D2D7] transition-all"
               >
                 <div>
-                  <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center mb-4">
+                  <div className="w-10 h-10 rounded-2xl bg-[#EAF3FF] border border-[#0071E3]/20 text-[#0071E3] flex items-center justify-center mb-4">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <h3 className="text-base font-bold text-white mb-2">
+                  <h3 className="text-base font-bold text-[#1D1D1F] mb-2">
                     {g.title}
                   </h3>
-                  <p className="text-xs text-slate-400 leading-relaxed">
+                  <p className="text-xs text-[#6E6E73] leading-relaxed">
                     {g.description}
                   </p>
                 </div>
@@ -67,43 +67,45 @@ export function PrivacyGuarantee() {
         </div>
 
         {/* Transparent Permissions Card */}
-        <div className="max-w-4xl mx-auto p-6 sm:p-8 rounded-2xl bg-[#0f1422] border border-white/10 shadow-lg">
+        <div className="max-w-4xl mx-auto p-8 rounded-3xl bg-[#F5F5F7] border border-[#E8E8ED] shadow-sm">
           <div className="flex items-center gap-3 mb-4">
-            <KeyRound className="w-5 h-5 text-blue-400" />
-            <h3 className="text-lg font-bold text-white">
+            <div className="p-2 rounded-xl bg-[#EAF3FF] text-[#0071E3]">
+              <KeyRound className="w-5 h-5" />
+            </div>
+            <h3 className="text-lg font-bold text-[#1D1D1F]">
               Transparent macOS Permission Rationale
             </h3>
           </div>
-          <p className="text-xs sm:text-sm text-slate-300 mb-6 leading-relaxed">
+          <p className="text-sm text-[#6E6E73] mb-6 leading-relaxed">
             macOS requires user authorization before any utility can capture audio or send synthetic keystrokes.
             MacVoice requests only the two strictly necessary permissions:
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 rounded-xl bg-slate-900/90 border border-slate-800">
+            <div className="p-5 rounded-2xl bg-[#FFFFFF] border border-[#E8E8ED]">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-bold text-white">1. Microphone Access</span>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Required</span>
+                <span className="text-xs font-bold text-[#1D1D1F]">1. Microphone Access</span>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">Required</span>
               </div>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Passed directly to Apple's native <code className="text-slate-300 font-mono">SpeechAnalyzer</code> framework to perform local speech-to-text. Never stored or streamed anywhere.
+              <p className="text-xs text-[#6E6E73] leading-relaxed">
+                Passed directly to Apple's native <code className="text-[#1D1D1F] font-mono">SpeechAnalyzer</code> framework to perform local speech-to-text. Never stored or streamed anywhere.
               </p>
             </div>
 
-            <div className="p-4 rounded-xl bg-slate-900/90 border border-slate-800">
+            <div className="p-5 rounded-2xl bg-[#FFFFFF] border border-[#E8E8ED]">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-bold text-white">2. Accessibility Access</span>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Required</span>
+                <span className="text-xs font-bold text-[#1D1D1F]">2. Accessibility Access</span>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">Required</span>
               </div>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Required for <code className="text-slate-300 font-mono">CGEvent.post()</code> so MacVoice can insert Unicode keystrokes directly into whatever app has focus without clobbering your clipboard.
+              <p className="text-xs text-[#6E6E73] leading-relaxed">
+                Required for <code className="text-[#1D1D1F] font-mono">CGEvent.post()</code> so MacVoice can insert Unicode keystrokes directly into whatever app has focus without clobbering your clipboard.
               </p>
             </div>
           </div>
 
-          <div className="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+          <div className="mt-6 pt-4 border-t border-[#E8E8ED] flex items-center justify-between text-xs text-[#6E6E73]">
             <span>Audit our technical architecture:</span>
-            <Link href="/privacy" className="text-blue-400 hover:text-blue-300 font-medium">
+            <Link href="/privacy" className="text-[#0071E3] hover:text-[#0077ED] font-medium">
               Read the full Air-Gap Architecture Report →
             </Link>
           </div>

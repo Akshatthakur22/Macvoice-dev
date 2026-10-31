@@ -31,7 +31,7 @@ export function ShortcutBadge({
         <kbd
           key={idx}
           className={cn(
-            "rounded border border-slate-700/80 bg-slate-800/80 text-slate-200 shadow-[0_1px_2px_rgba(0,0,0,0.4)] transition-all",
+            "rounded-md border border-[#D2D2D7] bg-[#FFFFFF] text-[#1D1D1F] shadow-[0_1px_2px_rgba(0,0,0,0.06)] font-medium select-none transition-all",
             sizeClasses[size]
           )}
         >

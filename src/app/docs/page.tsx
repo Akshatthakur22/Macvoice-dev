@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function DocsPage() {
   return (
-    <div className="py-16 sm:py-24">
+    <div className="py-16 sm:py-24 bg-[#FFFFFF]">
       <Container size="narrow">
         <SectionHeader
           eyebrow="User Manual"
@@ -21,20 +21,20 @@ export default function DocsPage() {
           description="Everything you need to configure, operate, and troubleshoot MacVoice on your Mac."
         />
 
-        <div className="space-y-12 text-slate-300 text-sm leading-relaxed">
+        <div className="space-y-12 text-[#1D1D1F] text-sm leading-relaxed">
           {/* Quickstart */}
           <section className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/20">
+              <div className="p-2.5 rounded-2xl bg-[#EAF3FF] text-[#0071E3] border border-[#0071E3]/20">
                 <BookOpen className="w-5 h-5" />
               </div>
-              <h2 className="text-xl font-bold text-white">
+              <h2 className="text-xl font-bold text-[#1D1D1F]">
                 1. Installation & Quickstart
               </h2>
             </div>
-            <ol className="list-decimal list-inside space-y-3 pl-2 text-slate-300">
+            <ol className="list-decimal list-inside space-y-3 pl-2 text-[#6E6E73]">
               <li>
-                Download <code className="text-blue-300 font-mono">MacVoice.dmg</code> from your purchase confirmation page.
+                Download <code className="text-[#0071E3] font-mono bg-[#EAF3FF] px-1.5 py-0.5 rounded">MacVoice.dmg</code> from your purchase confirmation page.
               </li>
               <li>
                 Double-click the DMG to open it, and drag <strong>MacVoice.app</strong> into your <strong>/Applications</strong> folder.
@@ -51,25 +51,25 @@ export default function DocsPage() {
           {/* Shortcut Customization */}
           <section className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/20">
+              <div className="p-2.5 rounded-2xl bg-[#EAF3FF] text-[#0071E3] border border-[#0071E3]/20">
                 <Settings className="w-5 h-5" />
               </div>
-              <h2 className="text-xl font-bold text-white">
+              <h2 className="text-xl font-bold text-[#1D1D1F]">
                 2. Customizing Your Keyboard Shortcut
               </h2>
             </div>
-            <p>
+            <p className="text-[#6E6E73]">
               The default global trigger is <ShortcutBadge display="⌃⌥Space" size="sm" /> (Control + Option + Space).
               You can change this to any combination with modifiers:
             </p>
-            <div className="p-5 rounded-2xl bg-[#111726] border border-white/[0.08] space-y-2">
-              <p className="text-xs text-slate-300">
+            <div className="p-6 rounded-3xl bg-[#F5F5F7] border border-[#E8E8ED] space-y-2.5">
+              <p className="text-xs text-[#1D1D1F]">
                 1. Click the <strong>MacVoice icon</strong> in your macOS menu bar.
               </p>
-              <p className="text-xs text-slate-300">
+              <p className="text-xs text-[#1D1D1F]">
                 2. Select <strong>Settings…</strong> from the dropdown.
               </p>
-              <p className="text-xs text-slate-300">
+              <p className="text-xs text-[#1D1D1F]">
                 3. Click the <strong>Record Shortcut</strong> button and press your desired key combination (e.g., <ShortcutBadge display="⌥Space" size="sm" /> or <ShortcutBadge display="⌘⇧D" size="sm" />).
               </p>
             </div>
@@ -78,23 +78,23 @@ export default function DocsPage() {
           {/* Modes Reference */}
           <section className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/20">
+              <div className="p-2.5 rounded-2xl bg-[#EAF3FF] text-[#0071E3] border border-[#0071E3]/20">
                 <Sliders className="w-5 h-5" />
               </div>
-              <h2 className="text-xl font-bold text-white">
+              <h2 className="text-xl font-bold text-[#1D1D1F]">
                 3. Two Dictation Modes
               </h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="p-5 rounded-2xl bg-[#111726] border border-white/[0.08]">
-                <h3 className="font-semibold text-white mb-2">Verbatim Mode</h3>
-                <p className="text-xs text-slate-400 leading-relaxed">
+              <div className="p-6 rounded-3xl bg-[#F5F5F7] border border-[#E8E8ED]">
+                <h3 className="font-semibold text-[#1D1D1F] mb-2">Verbatim Mode</h3>
+                <p className="text-xs text-[#6E6E73] leading-relaxed">
                   Passes the exact raw recognizer output directly to your cursor with minimal processing. Best for coding, shell commands, variable names, and technical terms.
                 </p>
               </div>
-              <div className="p-5 rounded-2xl bg-[#111726] border border-white/[0.08]">
-                <h3 className="font-semibold text-white mb-2">Polished Mode</h3>
-                <p className="text-xs text-slate-400 leading-relaxed">
+              <div className="p-6 rounded-3xl bg-[#F5F5F7] border border-[#E8E8ED]">
+                <h3 className="font-semibold text-[#1D1D1F] mb-2">Polished Mode</h3>
+                <p className="text-xs text-[#6E6E73] leading-relaxed">
                   Strips vocal fillers ("um", "uh"), normalizes contractions ("dont" → "don't"), and formats capitalization in &lt;0.1ms using native Swift logic. Best for Slack, emails, and documents.
                 </p>
               </div>
@@ -104,17 +104,17 @@ export default function DocsPage() {
           {/* Troubleshooting Permissions */}
           <section className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/20">
+              <div className="p-2.5 rounded-2xl bg-[#EAF3FF] text-[#0071E3] border border-[#0071E3]/20">
                 <ShieldAlert className="w-5 h-5" />
               </div>
-              <h2 className="text-xl font-bold text-white">
+              <h2 className="text-xl font-bold text-[#1D1D1F]">
                 4. Troubleshooting Permissions
               </h2>
             </div>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-[#6E6E73]">
               If MacVoice does not type text into your active window:
             </p>
-            <div className="p-5 rounded-2xl bg-[#111726] border border-white/[0.08] space-y-3 text-xs text-slate-300">
+            <div className="p-6 rounded-3xl bg-[#F5F5F7] border border-[#E8E8ED] space-y-3 text-xs text-[#1D1D1F]">
               <p>
                 <strong>1. Verify Accessibility Permission:</strong> Open macOS <em>System Settings &gt; Privacy & Security &gt; Accessibility</em>. Ensure the toggle next to <strong>MacVoice</strong> is turned <strong>ON</strong>. If it was already on, toggle it off and back on to refresh the macOS permission cache.
               </p>
@@ -130,17 +130,17 @@ export default function DocsPage() {
           {/* Uninstall */}
           <section className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/20">
+              <div className="p-2.5 rounded-2xl bg-[#EAF3FF] text-[#0071E3] border border-[#0071E3]/20">
                 <Trash2 className="w-5 h-5" />
               </div>
-              <h2 className="text-xl font-bold text-white">
+              <h2 className="text-xl font-bold text-[#1D1D1F]">
                 5. Clean Uninstallation
               </h2>
             </div>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <p className="text-xs text-[#6E6E73] leading-relaxed">
               Because MacVoice does not install background daemons, system extensions, or kernel plugins, uninstallation is effortless:
             </p>
-            <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 font-mono">
+            <div className="p-5 rounded-2xl bg-[#F5F5F7] border border-[#E8E8ED] text-xs text-[#1D1D1F] font-mono leading-relaxed">
               1. Quit MacVoice from the menu bar.<br />
               2. Drag /Applications/MacVoice.app to Trash.<br />
               3. (Optional) Remove saved shortcuts: rm -rf ~/Library/Preferences/com.typer.voicetyping.plist

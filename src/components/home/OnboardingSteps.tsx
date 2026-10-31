@@ -33,7 +33,7 @@ export function OnboardingSteps() {
   ];
 
   return (
-    <section className="py-24 bg-[#090e17] border-t border-white/[0.06]">
+    <section className="py-24 bg-[#F5F5F7] border-b border-[#E8E8ED]">
       <Container>
         <SectionHeader
           eyebrow="Frictionless Onboarding"
@@ -47,34 +47,34 @@ export function OnboardingSteps() {
             return (
               <div
                 key={idx}
-                className="relative p-6 rounded-2xl bg-[#111726] border border-white/[0.08] flex flex-col justify-between hover:border-blue-500/30 transition-all hover:-translate-y-1"
+                className="relative p-8 rounded-3xl bg-[#FFFFFF] border border-[#E8E8ED] flex flex-col justify-between shadow-[0_2px_10px_rgba(0,0,0,0.03)] hover:border-[#D2D2D7] transition-all"
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <span className="font-mono text-3xl font-extrabold text-blue-400/40">
+                    <span className="font-mono text-3xl font-extrabold text-[#D2D2D7]">
                       {s.num}
                     </span>
-                    <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">
+                    <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-[#F5F5F7] text-[#6E6E73] border border-[#E8E8ED]">
                       {s.badge}
                     </span>
                   </div>
 
-                  <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center mb-4">
+                  <div className="w-11 h-11 rounded-2xl bg-[#EAF3FF] border border-[#0071E3]/20 text-[#0071E3] flex items-center justify-center mb-5">
                     <Icon className="w-5 h-5" />
                   </div>
 
-                  <h3 className="text-lg font-bold text-white mb-2 leading-snug">
+                  <h3 className="text-lg font-bold text-[#1D1D1F] mb-2 leading-snug">
                     {s.title}
                   </h3>
 
-                  <p className="text-xs text-slate-400 leading-relaxed mb-4">
+                  <p className="text-xs text-[#6E6E73] leading-relaxed mb-4">
                     {s.detail}
                   </p>
                 </div>
 
                 {idx === 2 && (
-                  <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between text-xs">
-                    <span className="text-slate-400">Default hotkey:</span>
+                  <div className="pt-4 border-t border-[#E8E8ED] flex items-center justify-between text-xs">
+                    <span className="text-[#6E6E73]">Default hotkey:</span>
                     <ShortcutBadge display="⌃⌥Space" size="sm" />
                   </div>
                 )}

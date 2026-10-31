@@ -22,23 +22,23 @@ export function Button({
   ...props
 }: ButtonProps) {
   const baseClasses =
-    "inline-flex items-center justify-center font-medium transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none select-none rounded-xl";
+    "inline-flex items-center justify-center font-medium transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0071E3] disabled:opacity-40 disabled:pointer-events-none select-none";
 
   const sizeClasses = {
-    sm: "text-xs px-3 py-1.5 gap-1.5 rounded-lg",
-    md: "text-sm px-4 py-2 gap-2 rounded-xl",
-    lg: "text-base px-6 py-3.5 gap-2.5 rounded-2xl font-semibold shadow-lg",
+    sm: "text-xs px-3.5 py-1.5 gap-1.5 rounded-full",
+    md: "text-sm px-5 py-2 gap-2 rounded-full",
+    lg: "text-base px-7 py-3.5 gap-2.5 rounded-full font-medium shadow-sm",
   };
 
   const variantClasses = {
     primary:
-      "bg-[#0A84FF] hover:bg-[#0071E3] active:bg-[#005bb5] text-white shadow-[0_2px_12px_rgba(10,132,255,0.35)] border border-blue-400/30 hover:shadow-[0_4px_20px_rgba(10,132,255,0.45)] hover:-translate-y-0.5 active:translate-y-0",
+      "bg-[#0071E3] hover:bg-[#0077ED] active:bg-[#0062C4] text-white shadow-[0_1px_2px_rgba(0,113,227,0.3)] hover:shadow-[0_4px_14px_rgba(0,113,227,0.35)]",
     secondary:
-      "bg-white/10 hover:bg-white/15 active:bg-white/5 text-slate-100 border border-white/15 backdrop-blur-md hover:border-white/25",
+      "bg-[#F5F5F7] hover:bg-[#E8E8ED] active:bg-[#D2D2D7] text-[#1D1D1F] border border-[#E8E8ED]",
     outline:
-      "bg-transparent hover:bg-slate-800/60 text-slate-200 border border-slate-700/80 hover:border-slate-600",
+      "bg-transparent hover:bg-[#F5F5F7] text-[#1D1D1F] border border-[#D2D2D7] hover:border-[#B0B0B5]",
     ghost:
-      "bg-transparent hover:bg-white/5 text-slate-300 hover:text-white",
+      "bg-transparent hover:bg-[#F5F5F7] text-[#6E6E73] hover:text-[#1D1D1F]",
   };
 
   const combinedClasses = cn(

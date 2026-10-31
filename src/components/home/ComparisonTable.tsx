@@ -63,7 +63,7 @@ export function ComparisonTable() {
   ];
 
   return (
-    <section id="compare" className="py-24 bg-[#090e17]">
+    <section id="compare" className="py-24 bg-[#F5F5F7] border-y border-[#E8E8ED]">
       <Container>
         <SectionHeader
           eyebrow="Objective Comparison"
@@ -72,45 +72,45 @@ export function ComparisonTable() {
         />
 
         <div className="max-w-5xl mx-auto overflow-x-auto">
-          <table className="w-full text-left border-collapse rounded-2xl overflow-hidden bg-[#111726] border border-white/[0.08] shadow-2xl">
+          <table className="w-full text-left border-collapse rounded-2xl overflow-hidden bg-[#FFFFFF] border border-[#E8E8ED] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
             <thead>
-              <tr className="border-b border-white/[0.08] bg-[#161e31]">
-                <th className="py-4 px-6 text-xs font-semibold uppercase tracking-wider text-slate-400">
+              <tr className="border-b border-[#E8E8ED] bg-[#F5F5F7]">
+                <th className="py-4 px-6 text-xs font-semibold uppercase tracking-wider text-[#6E6E73]">
                   Feature / Capability
                 </th>
-                <th className="py-4 px-6 text-xs font-bold uppercase tracking-wider text-blue-400 bg-blue-500/10 border-x border-blue-500/20">
+                <th className="py-4 px-6 text-xs font-bold uppercase tracking-wider text-[#0071E3] bg-[#EAF3FF] border-x border-[#0071E3]/20">
                   MacVoice (macOS)
                 </th>
-                <th className="py-4 px-6 text-xs font-semibold uppercase tracking-wider text-slate-400">
+                <th className="py-4 px-6 text-xs font-semibold uppercase tracking-wider text-[#6E6E73]">
                   Apple Dictation
                 </th>
-                <th className="py-4 px-6 text-xs font-semibold uppercase tracking-wider text-slate-400">
+                <th className="py-4 px-6 text-xs font-semibold uppercase tracking-wider text-[#6E6E73]">
                   Wispr Flow
                 </th>
-                <th className="py-4 px-6 text-xs font-semibold uppercase tracking-wider text-slate-400">
+                <th className="py-4 px-6 text-xs font-semibold uppercase tracking-wider text-[#6E6E73]">
                   Superwhisper
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/[0.06] text-xs sm:text-sm">
+            <tbody className="divide-y divide-[#E8E8ED] text-xs sm:text-sm">
               {rows.map((r, idx) => (
                 <tr
                   key={idx}
-                  className={r.highlight ? "bg-white/[0.02]" : "hover:bg-white/[0.01]"}
+                  className={r.highlight ? "bg-[#F5F5F7]/40" : "hover:bg-[#F5F5F7]/60"}
                 >
-                  <td className="py-4 px-6 font-medium text-slate-200">
+                  <td className="py-4 px-6 font-medium text-[#1D1D1F]">
                     {r.feature}
                   </td>
-                  <td className="py-4 px-6 font-semibold text-white bg-blue-500/10 border-x border-blue-500/20">
+                  <td className="py-4 px-6 font-bold text-[#0071E3] bg-[#EAF3FF] border-x border-[#0071E3]/20">
                     {r.macvoice}
                   </td>
-                  <td className="py-4 px-6 text-slate-400">
+                  <td className="py-4 px-6 text-[#6E6E73]">
                     {r.apple}
                   </td>
-                  <td className="py-4 px-6 text-slate-400">
+                  <td className="py-4 px-6 text-[#6E6E73]">
                     {r.wispr}
                   </td>
-                  <td className="py-4 px-6 text-slate-400">
+                  <td className="py-4 px-6 text-[#6E6E73]">
                     {r.superwhisper}
                   </td>
                 </tr>
@@ -119,7 +119,7 @@ export function ComparisonTable() {
           </table>
         </div>
 
-        <div className="mt-4 text-center text-xs text-slate-500">
+        <div className="mt-4 text-center text-xs text-[#6E6E73]">
           Source: Publicly verifiable technical specifications and reproducible local benchmarks on Apple Silicon.
         </div>
       </Container>

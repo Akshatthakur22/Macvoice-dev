@@ -53,10 +53,7 @@ export function PricingSection() {
   ];
 
   return (
-    <section id="pricing" className="py-24 bg-[#070b12] border-t border-white/[0.06] relative">
-      {/* Background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-blue-600/10 blur-[120px] pointer-events-none rounded-full" />
-
+    <section id="pricing" className="py-24 bg-[#FFFFFF] relative">
       <Container>
         <SectionHeader
           eyebrow="Simple, Honest Pricing"
@@ -65,36 +62,36 @@ export function PricingSection() {
         />
 
         <div className="max-w-xl mx-auto">
-          <div className="rounded-3xl bg-[#111726] border border-blue-500/30 p-8 sm:p-10 shadow-[0_16px_50px_rgba(10,132,255,0.12)] relative overflow-hidden">
+          <div className="rounded-3xl bg-[#FFFFFF] border-2 border-[#0071E3]/25 p-8 sm:p-11 shadow-[0_20px_50px_rgba(0,113,227,0.08)] relative overflow-hidden">
             {/* Top Badge */}
             <div className="flex items-center justify-between mb-6">
-              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/20 font-mono">
+              <span className="px-3.5 py-1 rounded-full text-xs font-semibold bg-[#EAF3FF] text-[#0071E3] border border-[#0071E3]/20 font-mono">
                 Standard Lifetime License
               </span>
-              <span className="text-xs text-slate-400 flex items-center gap-1">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+              <span className="text-xs text-[#6E6E73] flex items-center gap-1.5 font-medium">
+                <ShieldCheck className="w-4 h-4 text-emerald-600" />
                 14-Day Refund Guarantee
               </span>
             </div>
 
             {/* Price display */}
             <div className="flex items-baseline gap-3 mb-4">
-              <span className="text-5xl sm:text-6xl font-extrabold text-white tracking-tight font-mono">
+              <span className="text-5xl sm:text-6xl font-bold text-[#1D1D1F] tracking-tight font-mono">
                 $9
               </span>
-              <span className="text-slate-400 text-sm">
+              <span className="text-[#6E6E73] text-sm font-medium">
                 USD · one-time payment
               </span>
             </div>
 
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-8">
+            <p className="text-sm text-[#6E6E73] leading-relaxed mb-8">
               A single payment of $9 gives you lifetime access and all v1.x updates.
               Download the 784 KB DMG immediately after checkout.
             </p>
 
             {/* Error Message if any */}
             {errorMessage && (
-              <div className="mb-6 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-xs flex items-center gap-2">
+              <div className="mb-6 p-3.5 rounded-2xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
                 <AlertCircle className="w-4 h-4 shrink-0" />
                 <span>{errorMessage}</span>
               </div>
@@ -106,24 +103,24 @@ export function PricingSection() {
               variant="primary"
               size="lg"
               isLoading={loading}
-              className="w-full justify-center text-base py-4 font-bold rounded-xl shadow-lg mb-4"
+              className="w-full justify-center text-base py-4 font-semibold shadow-md mb-4"
             >
               <Sparkles className="w-4 h-4" />
               Get MacVoice for Mac — $9 USD
             </Button>
 
-            <p className="text-[11px] text-center text-slate-500 mb-8">
+            <p className="text-[11px] text-center text-[#6E6E73] mb-8">
               Instant delivery of MacVoice.dmg via secure checkout. No account required.
             </p>
 
             {/* Features list */}
-            <div className="pt-6 border-t border-white/[0.08] space-y-3">
-              <div className="text-xs font-semibold uppercase tracking-wider text-slate-300 mb-3">
+            <div className="pt-6 border-t border-[#E8E8ED] space-y-3">
+              <div className="text-xs font-semibold uppercase tracking-wider text-[#1D1D1F] mb-3">
                 Everything Included:
               </div>
               {features.map((f, idx) => (
-                <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-300">
-                  <Check className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
+                <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-[13px] text-[#1D1D1F]">
+                  <Check className="w-4 h-4 text-[#0071E3] shrink-0 mt-0.5" />
                   <span>{f}</span>
                 </div>
               ))}
@@ -131,8 +128,8 @@ export function PricingSection() {
           </div>
 
           {/* Subscription Fatigue Callout */}
-          <div className="mt-8 text-center text-xs text-slate-400 leading-relaxed">
-            <span className="text-slate-300 font-medium">Why not a monthly subscription?</span> Other AI dictation tools charge $144 to $180 per year to stream your voice to cloud GPUs. MacVoice runs locally on Apple Silicon, requiring zero recurring cloud infrastructure.
+          <div className="mt-8 text-center text-xs text-[#6E6E73] leading-relaxed max-w-md mx-auto">
+            <span className="text-[#1D1D1F] font-semibold">Why not a monthly subscription?</span> Other AI dictation tools charge $144 to $180 per year to stream your voice to cloud GPUs. MacVoice runs locally on Apple Silicon, requiring zero recurring cloud infrastructure.
           </div>
         </div>
       </Container>

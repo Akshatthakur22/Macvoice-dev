@@ -47,7 +47,7 @@ export function CorePillars() {
   ];
 
   return (
-    <section id="features" className="py-24 bg-[#090e17]">
+    <section id="features" className="py-24 bg-[#F5F5F7] border-b border-[#E8E8ED]">
       <Container>
         <SectionHeader
           eyebrow="Engineered for Power Users"
@@ -61,34 +61,34 @@ export function CorePillars() {
             return (
               <div
                 key={idx}
-                className="relative rounded-2xl bg-[#111726] border border-white/[0.08] p-8 flex flex-col justify-between hover:border-blue-500/30 transition-all hover:-translate-y-1 group"
+                className="relative rounded-3xl bg-[#FFFFFF] border border-[#E8E8ED] p-8 flex flex-col justify-between shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] hover:border-[#D2D2D7] transition-all group"
               >
                 <div>
-                  <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                  <div className="w-12 h-12 rounded-2xl bg-[#EAF3FF] border border-[#0071E3]/20 text-[#0071E3] flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
                     <Icon className="w-6 h-6" />
                   </div>
 
-                  <span className="text-xs font-semibold uppercase tracking-wider text-blue-400 mb-2 block font-mono">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-[#0071E3] mb-2 block font-mono">
                     {p.eyebrow}
                   </span>
 
-                  <h3 className="text-xl font-bold text-white mb-2 leading-snug">
+                  <h3 className="text-xl font-bold text-[#1D1D1F] mb-2 leading-snug">
                     {p.title}
                   </h3>
 
-                  <p className="text-sm font-medium text-slate-300 mb-4">
+                  <p className="text-sm font-medium text-[#1D1D1F]/90 mb-4">
                     {p.headline}
                   </p>
 
-                  <p className="text-xs text-slate-400 leading-relaxed mb-6">
+                  <p className="text-xs text-[#6E6E73] leading-relaxed mb-6">
                     {p.description}
                   </p>
                 </div>
 
-                <div className="pt-6 border-t border-white/[0.06] space-y-2.5">
+                <div className="pt-6 border-t border-[#E8E8ED] space-y-2.5">
                   {p.bullets.map((b, bIdx) => (
-                    <div key={bIdx} className="flex items-start gap-2 text-xs text-slate-300">
-                      <Check className="w-3.5 h-3.5 text-blue-400 shrink-0 mt-0.5" />
+                    <div key={bIdx} className="flex items-start gap-2 text-xs text-[#1D1D1F]">
+                      <Check className="w-3.5 h-3.5 text-[#0071E3] shrink-0 mt-0.5" />
                       <span>{b}</span>
                     </div>
                   ))}

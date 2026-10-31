@@ -57,7 +57,7 @@ export function FAQSection() {
   ];
 
   return (
-    <section id="faq" className="py-24 bg-[#090e17]">
+    <section id="faq" className="py-24 bg-[#F5F5F7] border-t border-[#E8E8ED]">
       <Container size="narrow">
         <SectionHeader
           eyebrow="Frequently Asked Questions"
@@ -71,26 +71,26 @@ export function FAQSection() {
             return (
               <div
                 key={idx}
-                className="rounded-2xl bg-[#111726] border border-white/[0.08] overflow-hidden transition-all"
+                className="rounded-2xl bg-[#FFFFFF] border border-[#E8E8ED] overflow-hidden transition-all shadow-sm"
               >
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  className="w-full p-5 text-left flex items-center justify-between gap-4 hover:bg-white/[0.02] transition-colors"
+                  className="w-full p-5 text-left flex items-center justify-between gap-4 hover:bg-[#F5F5F7]/50 transition-colors"
                   aria-expanded={isOpen}
                 >
-                  <span className="text-sm sm:text-base font-semibold text-white">
+                  <span className="text-sm sm:text-base font-semibold text-[#1D1D1F]">
                     {faq.question}
                   </span>
                   <ChevronDown
-                    className={`w-4 h-4 text-slate-400 shrink-0 transition-transform duration-200 ${
-                      isOpen ? "rotate-180 text-blue-400" : ""
+                    className={`w-4 h-4 text-[#6E6E73] shrink-0 transition-transform duration-200 ${
+                      isOpen ? "rotate-180 text-[#0071E3]" : ""
                     }`}
                   />
                 </button>
 
                 {isOpen && (
-                  <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-white/[0.04]">
+                  <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-[#6E6E73] leading-relaxed border-t border-[#E8E8ED]">
                     {faq.answer}
                   </div>
                 )}

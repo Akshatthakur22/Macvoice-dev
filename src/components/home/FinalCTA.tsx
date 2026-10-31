@@ -6,40 +6,40 @@ import { ArrowRight, ShieldCheck } from "lucide-react";
 
 export function FinalCTA() {
   return (
-    <section className="py-24 bg-[#070b12] border-t border-white/[0.06] relative overflow-hidden">
-      {/* Background radial glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-blue-500/10 blur-[140px] pointer-events-none rounded-full" />
+    <section className="py-24 bg-[#FFFFFF] border-t border-[#E8E8ED] relative overflow-hidden">
+      {/* Subtle soft blue background aura */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#EAF3FF]/80 blur-[130px] pointer-events-none rounded-full" />
 
       <Container className="text-center relative">
         <div className="max-w-3xl mx-auto">
           {/* Logo mark */}
           <div className="flex justify-center mb-6">
-            <div className="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shadow-lg">
+            <div className="w-14 h-14 rounded-2xl bg-[#EAF3FF] border border-[#0071E3]/20 flex items-center justify-center shadow-sm">
               <Image
                 src="/brand/macvoice-symbol.svg"
                 alt="MacVoice"
-                width={32}
-                height={32}
-                className="w-8 h-8 object-contain"
+                width={30}
+                height={30}
+                className="w-7 h-7 object-contain"
               />
             </div>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1D1D1F] tracking-tight mb-4">
             Your voice, straight to the cursor.
           </h2>
 
-          <p className="text-slate-300 text-base sm:text-lg mb-8 max-w-xl mx-auto leading-relaxed">
+          <p className="text-[#6E6E73] text-base sm:text-lg mb-8 max-w-xl mx-auto leading-relaxed">
             Stop switching windows and waiting on slow cloud models.
             Experience live, local-first voice typing for macOS today.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
             <Button
               href="/pricing"
               variant="primary"
               size="lg"
-              className="w-full sm:w-auto px-8 py-4 text-base font-semibold group"
+              className="w-full sm:w-auto px-8 py-3.5 text-base font-semibold group shadow-md"
             >
               Get MacVoice for Mac — $9 USD
               <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
@@ -48,20 +48,20 @@ export function FinalCTA() {
               href="/docs"
               variant="secondary"
               size="lg"
-              className="w-full sm:w-auto px-7 py-4 text-base"
+              className="w-full sm:w-auto px-7 py-3.5 text-base"
             >
               Read Documentation
             </Button>
           </div>
 
-          <div className="flex items-center justify-center gap-4 text-xs text-slate-400">
-            <span className="flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+          <div className="flex items-center justify-center gap-4 text-xs text-[#6E6E73]">
+            <span className="flex items-center gap-1.5 font-medium">
+              <ShieldCheck className="w-4 h-4 text-emerald-600" />
               14-Day Money Back Guarantee
             </span>
-            <span>•</span>
+            <span className="text-[#D2D2D7]">•</span>
             <span>784 KB DMG</span>
-            <span>•</span>
+            <span className="text-[#D2D2D7]">•</span>
             <span>macOS 26+ Apple Silicon</span>
           </div>
         </div>

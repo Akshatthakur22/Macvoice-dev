@@ -60,8 +60,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark h-full antialiased">
-      <body className="min-h-full flex flex-col bg-[#090e17] text-[#F8FAFC]">
+    <html lang="en" className="h-full antialiased">
+      <body className="min-h-full flex flex-col bg-[#FFFFFF] text-[#1D1D1F]">
         <Navbar />
         <div className="flex-1">{children}</div>
         <Footer />
