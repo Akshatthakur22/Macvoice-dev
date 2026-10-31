@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-canvas: #090e17;
+    --surface-elevated: #111724;
+    --surface-card: #151c2c;
+    --surface-card-hover: #1c253b;
+    --surface-border: rgba(255, 255, 255, 0.09);
+    --surface-border-highlight: rgba(10, 132, 255, 0.35);
+    --brand-primary: #0A84FF;
+    --brand-primary-hover: #0071E3;
+    --brand-accent: #64D2FF;
+    --brand-graphite: #1D1D1F;
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+  }
+
+  * {
+    border-color: var(--surface-border);
+  }
+
+  html {
+    color-scheme: dark;
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  code, kbd, samp, pre {
+    font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+}
+
+/* Modern Web Guidance: Dialog Modal Scroll Prevention */
+dialog:modal {
+  overscroll-behavior: contain;
+}
+
+dialog::backdrop {
+  overflow: hidden;
+  overscroll-behavior: contain;
+  background: rgba(3, 7, 18, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Apple-style subtle selection */
+::selection {
+  background-color: rgba(10, 132, 255, 0.35);
+  color: #FFFFFF;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #090e17;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Cursor pulse animation */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-cursor {
+  animation: blink 1s step-end infinite;
+}
+
+/* Waveform sound pulse */
+@keyframes soundwave {
+  0%, 100% { height: 4px; }
+  50% { height: 18px; }
+}
+
+.animate-wave-1 { animation: soundwave 0.8s ease-in-out infinite 0.1s; }
+.animate-wave-2 { animation: soundwave 0.8s ease-in-out infinite 0.25s; }
+.animate-wave-3 { animation: soundwave 0.8s ease-in-out infinite 0.4s; }
+.animate-wave-4 { animation: soundwave 0.8s ease-in-out infinite 0.15s; }
+.animate-wave-5 { animation: soundwave 0.8s ease-in-out infinite 0.3s; }
