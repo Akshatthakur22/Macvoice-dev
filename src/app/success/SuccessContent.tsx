@@ -9,12 +9,12 @@ import { CheckCircle2, ArrowDownToLine, ShieldCheck, ExternalLink } from "lucide
 
 export function SuccessContent() {
   const searchParams = useSearchParams();
-  const sessionId = searchParams.get("session_id");
+  const checkoutId = searchParams.get("checkout_id") || searchParams.get("session_id");
   const token = searchParams.get("token");
   const isTestMode = searchParams.get("test_mode") === "true";
 
   const downloadUrl = `/api/download?${new URLSearchParams({
-    ...(sessionId ? { session_id: sessionId } : {}),
+    ...(checkoutId ? { checkout_id: checkoutId } : {}),
     ...(token ? { token } : {}),
   }).toString()}`;
 

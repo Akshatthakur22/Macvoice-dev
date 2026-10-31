@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
-import { stripe } from "@/lib/stripe";
+import { polar } from "@/lib/polar";
 import { verifyDownloadToken } from "@/lib/downloadToken";
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const token = searchParams.get("token");
-  const sessionId = searchParams.get("session_id");
+  const checkoutId = searchParams.get("checkout_id") || searchParams.get("session_id");
 
   let isAuthorized = false;
 
@@ -19,20 +19,20 @@ export async function GET(request: NextRequest) {
     }
   }
 
-  // 2. Verify via Stripe API if session_id provided and Stripe is configured
-  if (!isAuthorized && sessionId && stripe) {
+  // 2. Verify via Polar API if checkout_id provided and Polar is configured
+  if (!isAuthorized && checkoutId && polar) {
     try {
-      const session = await stripe.checkout.sessions.retrieve(sessionId);
-      if (session.payment_status === "paid") {
+      const checkout = await polar.checkouts.get(checkoutId);
+      if (checkout.status === "succeeded" || checkout.status === "confirmed") {
         isAuthorized = true;
       }
     } catch (e) {
-      console.error("Failed to verify Stripe session:", e);
+      console.error("Failed to verify Polar checkout session:", e);
     }
   }
 
   // 3. In non-production environments, allow developer test sessions
-  if (!isAuthorized && sessionId && sessionId.startsWith("test_session_")) {
+  if (!isAuthorized && checkoutId && (checkoutId.startsWith("test_session_") || checkoutId.startsWith("test_"))) {
     if (process.env.NODE_ENV !== "production") {
       isAuthorized = true;
     }
@@ -41,7 +41,7 @@ export async function GET(request: NextRequest) {
   if (!isAuthorized) {
     return NextResponse.json(
       {
-        error: "Access denied. A valid $9 purchase token or paid Stripe session is required to download MacVoice.dmg.",
+        error: "Access denied. A valid $9 purchase token or confirmed Polar checkout is required to download MacVoice.dmg.",
       },
       { status: 403 }
     );

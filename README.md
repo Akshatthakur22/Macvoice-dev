@@ -97,7 +97,7 @@ This repository powers the official marketing and checkout platform for MacVoice
 
 - **Framework:** Next.js 16 (App Router) + React 19 + TypeScript
 - **Styling:** Tailwind CSS v4 + Apple Pure White Design System (`#FFFFFF`, `#F5F5F7`, `#E8E8ED`, `#0071E3`)
-- **Checkout & Licensing:** Stripe Checkout integration verifying server-side payments and issuing tamper-proof HMAC-SHA256 download tokens for `MacVoice.dmg`
+- **Checkout & Licensing:** Polar payment integration verifying server-side webhooks and issuing tamper-proof HMAC-SHA256 download tokens for `MacVoice.dmg`
 - **Interactive Simulators:** Dual-window macOS simulator with real-time text streaming and native control window
 
 ### Local Development
