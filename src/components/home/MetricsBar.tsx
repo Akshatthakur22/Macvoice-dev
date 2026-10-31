@@ -6,17 +6,17 @@ export function MetricsBar() {
     {
       value: "784 KB",
       label: "DMG Package Size",
-      detail: "Smaller than a single screenshot. No bundled Python, Electron, or multi-gigabyte models.",
+      detail: "Smaller than a single screenshot. No Python, Electron, or gigabyte model downloads.",
     },
     {
       value: "~60 MB",
       label: "Resident RAM",
-      detail: "Uses Apple's native SpeechAnalyzer framework. Zero battery or thermal impact.",
+      detail: "Native SpeechAnalyzer framework. Zero battery drain or system throttling.",
     },
     {
       value: "< 150 ms",
-      label: "Streaming Latency",
-      detail: "Words stream progressively to your cursor while speaking, rather than waiting for long batch loops.",
+      label: "Cursor Latency",
+      detail: "Words stream progressively to your cursor while speaking, without batch delay.",
     },
     {
       value: "0 Bytes",
@@ -26,21 +26,18 @@ export function MetricsBar() {
   ];
 
   return (
-    <section className="py-16 bg-[#F5F5F7] border-y border-[#E8E8ED]">
+    <section className="py-16 bg-[#FFFFFF] border-b border-[#E8E8ED]">
       <Container>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {metrics.map((m, idx) => (
-            <div
-              key={idx}
-              className="p-6 rounded-2xl bg-[#FFFFFF] border border-[#E8E8ED] shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:border-[#D2D2D7] transition-all"
-            >
-              <div className="text-3xl sm:text-4xl font-bold text-[#1D1D1F] tracking-tight font-mono mb-1.5">
+            <div key={idx} className="space-y-1.5">
+              <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1D1D1F] tracking-tight font-mono">
                 {m.value}
               </div>
-              <div className="text-xs font-semibold uppercase tracking-wider text-[#0071E3] mb-2">
+              <div className="text-xs font-semibold uppercase tracking-wider text-[#0071E3] pt-0.5">
                 {m.label}
               </div>
-              <p className="text-xs text-[#6E6E73] leading-relaxed">
+              <p className="text-xs text-[#6E6E73] leading-relaxed pt-1">
                 {m.detail}
               </p>
             </div>

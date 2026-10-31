@@ -1,101 +1,127 @@
 import React from "react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { Zap, Sparkles, MessageSquareWarning, Check } from "lucide-react";
+import { Zap, Sparkles, MessageSquareWarning } from "lucide-react";
 
 export function CorePillars() {
-  const pillars = [
-    {
-      icon: Zap,
-      eyebrow: "Streaming Engine",
-      title: "Sub-150ms Live Cursor Streaming",
-      headline: "Speak at 150 WPM. Watch text stream in real time.",
-      description:
-        "Most speech utilities trap you in an awkward batch loop: record audio, press stop, wait 4 seconds for an inference model to process, and copy-paste. MacVoice types words progressively into your active field the moment you utter them.",
-      bullets: [
-        "Keystroke-level insertion via macOS CGEvent",
-        "No waiting for speech end to begin typing",
-        "Keeps your cursor focused in the active app",
-      ],
-    },
-    {
-      icon: Sparkles,
-      eyebrow: "Native Polisher",
-      title: "In-Process Swift Polish (< 0.1ms Latency)",
-      headline: "No more 'um', 'uh', or awkward stutters in your docs.",
-      description:
-        "Apple's built-in dictation transcribes every vocal hesitation and throat clearing. MacVoice's deterministic native Swift polisher strips filler words, fixes contractions ('dont' → 'don't'), and normalizes punctuation spacing in under 0.1ms.",
-      bullets: [
-        "0.1ms deterministic cleanup — zero LLM lag",
-        "Strips vocal fillers without altering intent",
-        "Deterministic fallback preserves original words if safety fails",
-      ],
-    },
-    {
-      icon: MessageSquareWarning,
-      eyebrow: "Chat Protection",
-      title: "Chat-Aware Shift+Enter Safety",
-      headline: "Types everywhere. Never prematurely sends your Slack message.",
-      description:
-        "Saying 'new line' in Slack, Teams, WhatsApp, or Discord usually fires an accidental Enter key, sending an unfinished sentence to your colleagues. MacVoice automatically inspects active window context and issues Shift+Return in chat apps.",
-      bullets: [
-        "Automatic Slack, Discord, WhatsApp & Telegram detection",
-        "Sends Shift+Return for intentional multi-line dictation",
-        "Tested across code editors, terminals, and browsers",
-      ],
-    },
-  ];
-
   return (
-    <section id="features" className="py-24 bg-[#F5F5F7] border-b border-[#E8E8ED]">
+    <section id="features" className="py-28 bg-[#FFFFFF]">
       <Container>
         <SectionHeader
           eyebrow="Engineered for Power Users"
           title="The Three Pillars of Instant Dictation"
-          description="Designed from the ground up for developers, writers, and Mac users who write all day."
+          description="Designed from the ground up for software engineers, writers, and Mac users who write all day."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {pillars.map((p, idx) => {
-            const Icon = p.icon;
-            return (
-              <div
-                key={idx}
-                className="relative rounded-3xl bg-[#FFFFFF] border border-[#E8E8ED] p-8 flex flex-col justify-between shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] hover:border-[#D2D2D7] transition-all group"
-              >
-                <div>
-                  <div className="w-12 h-12 rounded-2xl bg-[#EAF3FF] border border-[#0071E3]/20 text-[#0071E3] flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
-                    <Icon className="w-6 h-6" />
-                  </div>
+        <div className="space-y-24 max-w-5xl mx-auto">
+          {/* Pillar 1: Sub-150ms Live Streaming */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-6 space-y-4">
+              <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#0071E3] font-mono">
+                <Zap className="w-4 h-4" />
+                Sub-150ms Streaming
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-bold text-[#1D1D1F] tracking-tight leading-snug">
+                Speak at 150 WPM. Watch text appear in real time.
+              </h3>
+              <p className="text-[#6E6E73] text-sm sm:text-base leading-relaxed">
+                Most speech tools force you into an awkward batch loop: you record, press stop, wait 4 seconds for an AI model to think, and paste.
+              </p>
+              <p className="text-[#6E6E73] text-sm sm:text-base leading-relaxed">
+                MacVoice synthesizes native macOS keyboard events (CGEvent), typing words progressively into your active text field the moment you utter them.
+              </p>
+            </div>
 
-                  <span className="text-[11px] font-semibold uppercase tracking-wider text-[#0071E3] mb-2 block font-mono">
-                    {p.eyebrow}
-                  </span>
+            <div className="lg:col-span-6 p-6 rounded-3xl bg-[#F5F5F7] border border-[#E8E8ED] space-y-3 font-mono text-xs">
+              <div className="text-[#6E6E73] text-[11px] pb-2 border-b border-[#E8E8ED] flex justify-between">
+                <span>Progressive Insertion</span>
+                <span className="text-emerald-600 font-semibold">&lt; 150ms latency</span>
+              </div>
+              <div className="text-[#1D1D1F] leading-relaxed">
+                <span className="text-[#0071E3]">0.0s</span> → "export async function"<br />
+                <span className="text-[#0071E3]">0.3s</span> → " verifySessionToken("<br />
+                <span className="text-[#0071E3]">0.6s</span> → "req: Request): Promise"<br />
+                <span className="text-[#0071E3]">0.9s</span> → "&lt;Session&gt;"
+              </div>
+              <div className="pt-2 text-[11px] text-[#6E6E73]">
+                Keystroke events post directly into focused window. Clipboard remains untouched.
+              </div>
+            </div>
+          </div>
 
-                  <h3 className="text-xl font-bold text-[#1D1D1F] mb-2 leading-snug">
-                    {p.title}
-                  </h3>
+          {/* Pillar 2: Native Swift Polisher */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-6 lg:order-2 space-y-4">
+              <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#0071E3] font-mono">
+                <Sparkles className="w-4 h-4" />
+                In-Process Swift Polish
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-bold text-[#1D1D1F] tracking-tight leading-snug">
+                No more "um", "uh", or awkward stutters in your docs.
+              </h3>
+              <p className="text-[#6E6E73] text-sm sm:text-base leading-relaxed">
+                Apple's built-in dictation writes down every vocal hesitation and throat-clearing sound. Heavy cloud tools send your voice to cloud GPUs with high latency.
+              </p>
+              <p className="text-[#6E6E73] text-sm sm:text-base leading-relaxed">
+                MacVoice's native Swift polisher strips fillers, fixes unpunctuated contractions ("dont" → "don't"), and normalizes punctuation in less than 0.1 milliseconds with 0 extra RAM.
+              </p>
+            </div>
 
-                  <p className="text-sm font-medium text-[#1D1D1F]/90 mb-4">
-                    {p.headline}
-                  </p>
-
-                  <p className="text-xs text-[#6E6E73] leading-relaxed mb-6">
-                    {p.description}
-                  </p>
-                </div>
-
-                <div className="pt-6 border-t border-[#E8E8ED] space-y-2.5">
-                  {p.bullets.map((b, bIdx) => (
-                    <div key={bIdx} className="flex items-start gap-2 text-xs text-[#1D1D1F]">
-                      <Check className="w-3.5 h-3.5 text-[#0071E3] shrink-0 mt-0.5" />
-                      <span>{b}</span>
-                    </div>
-                  ))}
+            <div className="lg:col-span-6 lg:order-1 p-6 rounded-3xl bg-[#F5F5F7] border border-[#E8E8ED] space-y-4 text-xs">
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#6E6E73] block mb-1">
+                  Spoken Input
+                </span>
+                <div className="p-3 rounded-xl bg-[#FFFFFF] border border-[#E8E8ED] text-[#6E6E73] font-mono">
+                  "hey um can you check the uh redis cache dont forget"
                 </div>
               </div>
-            );
-          })}
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#0071E3] block mb-1">
+                  Inserted Output (<span className="text-emerald-600 font-semibold">0.1ms clean</span>)
+                </span>
+                <div className="p-3 rounded-xl bg-[#FFFFFF] border border-[#0071E3]/25 text-[#1D1D1F] font-mono shadow-xs">
+                  "Hey, can you check the Redis cache? Don't forget"
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Pillar 3: Chat-Safe Typing */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-6 space-y-4">
+              <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#0071E3] font-mono">
+                <MessageSquareWarning className="w-4 h-4" />
+                Chat-Aware Safety
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-bold text-[#1D1D1F] tracking-tight leading-snug">
+                Types everywhere. Never accidentally sends your Slack message.
+              </h3>
+              <p className="text-[#6E6E73] text-sm sm:text-base leading-relaxed">
+                Saying "new line" in Slack, WhatsApp, Teams, or Discord usually sends an unfinished message to your team.
+              </p>
+              <p className="text-[#6E6E73] text-sm sm:text-base leading-relaxed">
+                MacVoice detects your active window and automatically sends <code className="text-[#1D1D1F] font-mono bg-[#F5F5F7] px-1.5 py-0.5 rounded border border-[#E8E8ED]">Shift + Return</code> in messaging apps, keeping your conversations safe.
+              </p>
+            </div>
+
+            <div className="lg:col-span-6 p-6 rounded-3xl bg-[#F5F5F7] border border-[#E8E8ED] space-y-3 text-xs">
+              <div className="p-4 rounded-2xl bg-[#FFFFFF] border border-[#E8E8ED] space-y-2">
+                <div className="flex items-center justify-between text-[11px]">
+                  <span className="font-semibold text-[#1D1D1F]">Slack / Discord / Teams Detection</span>
+                  <span className="text-emerald-700 font-mono font-medium bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                    Active
+                  </span>
+                </div>
+                <p className="text-[#6E6E73] text-xs leading-relaxed">
+                  When you speak "new line", MacVoice injects Shift+Return instead of Return, formatting clean paragraphs without premature message transmission.
+                </p>
+              </div>
+              <div className="text-[11px] text-[#6E6E73] px-1">
+                Also validated across VS Code, Xcode, Obsidian, Safari, and Terminal.
+              </div>
+            </div>
+          </div>
         </div>
       </Container>
     </section>
