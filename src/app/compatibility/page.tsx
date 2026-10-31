@@ -61,7 +61,7 @@ export default function CompatibilityPage() {
 
         <div className="space-y-12 text-[#1D1D1F] text-sm leading-relaxed">
           {/* Hardware & OS Requirements Box */}
-          <div className="p-7 rounded-3xl bg-[#F5F5F7] border border-[#E8E8ED] flex items-start gap-4 shadow-sm">
+          <div id="requirements" className="p-7 rounded-3xl bg-[#F5F5F7] border border-[#E8E8ED] flex items-start gap-4 shadow-sm">
             <div className="p-2.5 rounded-2xl bg-[#EAF3FF] text-[#0071E3] border border-[#0071E3]/20 shrink-0">
               <Laptop className="w-5 h-5" />
             </div>
@@ -82,7 +82,7 @@ export default function CompatibilityPage() {
           </div>
 
           {/* Compatibility Table */}
-          <div>
+          <div id="matrix">
             <h2 className="text-xl font-bold text-[#1D1D1F] mb-4">
               Tested Applications
             </h2>

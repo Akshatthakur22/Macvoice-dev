@@ -23,7 +23,7 @@ export default function DocsPage() {
 
         <div className="space-y-12 text-[#1D1D1F] text-sm leading-relaxed">
           {/* Quickstart */}
-          <section className="space-y-4">
+          <section id="quickstart" className="space-y-4">
             <div className="flex items-center gap-3">
               <div className="p-2.5 rounded-2xl bg-[#EAF3FF] text-[#0071E3] border border-[#0071E3]/20">
                 <BookOpen className="w-5 h-5" />
@@ -49,7 +49,7 @@ export default function DocsPage() {
           </section>
 
           {/* Shortcut Customization */}
-          <section className="space-y-4">
+          <section id="shortcuts" className="space-y-4">
             <div className="flex items-center gap-3">
               <div className="p-2.5 rounded-2xl bg-[#EAF3FF] text-[#0071E3] border border-[#0071E3]/20">
                 <Settings className="w-5 h-5" />
@@ -76,7 +76,7 @@ export default function DocsPage() {
           </section>
 
           {/* Modes Reference */}
-          <section className="space-y-4">
+          <section id="modes" className="space-y-4">
             <div className="flex items-center gap-3">
               <div className="p-2.5 rounded-2xl bg-[#EAF3FF] text-[#0071E3] border border-[#0071E3]/20">
                 <Sliders className="w-5 h-5" />
@@ -102,7 +102,7 @@ export default function DocsPage() {
           </section>
 
           {/* Troubleshooting Permissions */}
-          <section className="space-y-4">
+          <section id="permissions" className="space-y-4">
             <div className="flex items-center gap-3">
               <div className="p-2.5 rounded-2xl bg-[#EAF3FF] text-[#0071E3] border border-[#0071E3]/20">
                 <ShieldAlert className="w-5 h-5" />
@@ -128,7 +128,7 @@ export default function DocsPage() {
           </section>
 
           {/* Uninstall */}
-          <section className="space-y-4">
+          <section id="uninstall" className="space-y-4">
             <div className="flex items-center gap-3">
               <div className="p-2.5 rounded-2xl bg-[#EAF3FF] text-[#0071E3] border border-[#0071E3]/20">
                 <Trash2 className="w-5 h-5" />

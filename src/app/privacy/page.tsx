@@ -22,7 +22,7 @@ export default function PrivacyPage() {
 
         <div className="space-y-12 text-[#1D1D1F] text-sm leading-relaxed">
           {/* Executive Architecture Summary */}
-          <section className="p-8 rounded-3xl bg-[#F5F5F7] border border-[#E8E8ED] shadow-sm">
+          <section id="architecture" className="p-8 rounded-3xl bg-[#F5F5F7] border border-[#E8E8ED] shadow-sm">
             <div className="flex items-center gap-3 mb-4">
               <div className="p-2 rounded-xl bg-emerald-100 text-emerald-700">
                 <ShieldCheck className="w-6 h-6" />
@@ -44,7 +44,7 @@ export default function PrivacyPage() {
           </section>
 
           {/* 1. In-Memory Audio Processing */}
-          <section className="space-y-4">
+          <section id="audio" className="space-y-4">
             <div className="flex items-center gap-3">
               <div className="p-2.5 rounded-xl bg-[#EAF3FF] text-[#0071E3] border border-[#0071E3]/20">
                 <HardDrive className="w-5 h-5" />
