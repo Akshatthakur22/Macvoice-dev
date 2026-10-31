@@ -62,7 +62,7 @@ export function FAQSection() {
     {
       question: "What is your refund policy?",
       answer:
-        "We offer a 14-day no-questions-asked refund guarantee. If MacVoice does not work flawlessly in your workflow, email support@macvoice.app with your checkout receipt and we will refund you in full.",
+        "We offer a 14-day no-questions-asked refund guarantee. If MacVoice does not work flawlessly in your workflow, email akshatthakur22@gmail.com with your checkout receipt and we will refund you in full.",
     },
   ];
 

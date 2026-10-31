@@ -4,7 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://macvoice.app"),
+  metadataBase: new URL("https://macvoice.akshatt.in"),
   title: "MacVoice — Local-First Voice Keyboard for macOS",
   description:
     "Speak naturally and turn speech into text in the app you're already using. Sub-150ms live cursor streaming, instant filler removal, zero cloud servers, and chat-safe newlines for Mac power users.",
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
     "mac dictation utility",
     "developer dictation",
   ],
-  authors: [{ name: "MacVoice Team" }],
-  creator: "MacVoice",
+  authors: [{ name: "Akshat Thakur", url: "https://akshatt.in" }],
+  creator: "Akshat Thakur",
   publisher: "MacVoice",
   icons: {
     icon: [
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://macvoice.app",
+    url: "https://macvoice.akshatt.in",
     title: "MacVoice — Speak. Type. Done.",
     description:
       "The ultra-lightweight, 100% on-device voice typing utility for Mac power users. 784 KB package. Zero cloud audio.",

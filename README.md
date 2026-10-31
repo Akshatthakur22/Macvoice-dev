@@ -11,8 +11,8 @@
 </p>
 
 <p align="center">
-  <a href="https://macvoice.app"><img src="https://img.shields.io/badge/Official%20Website-macvoice.app-0071E3?style=for-the-badge&logo=apple&logoColor=white" alt="Official Website" /></a>
-  <a href="https://macvoice.app/pricing"><img src="https://img.shields.io/badge/Buy%20Once-%249%20USD%20Forever-059669?style=for-the-badge" alt="Price" /></a>
+  <a href="https://macvoice.akshatt.in/"><img src="https://img.shields.io/badge/Official%20Website-macvoice.akshatt.in-0071E3?style=for-the-badge&logo=apple&logoColor=white" alt="Official Website" /></a>
+  <a href="https://macvoice.akshatt.in/#pricing"><img src="https://img.shields.io/badge/Buy%20Once-%249%20USD%20Forever-059669?style=for-the-badge" alt="Price" /></a>
   <img src="https://img.shields.io/badge/Platform-macOS%2026%2B%20Apple%20Silicon-1D1D1F?style=for-the-badge&logo=apple&logoColor=white" alt="Platform" />
   <img src="https://img.shields.io/badge/Privacy-100%25%20On--Device-2563EB?style=for-the-badge" alt="100% Private" />
 </p>
@@ -84,7 +84,7 @@ Switch seamlessly with a single click:
 
 ## 🚀 30-Second Quickstart
 
-1. **Download:** Grab `MacVoice.dmg` (784 KB) from your [purchase confirmation page](https://macvoice.app/pricing).
+1. **Download:** Grab `MacVoice.dmg` (784 KB) from your [purchase confirmation page](https://macvoice.akshatt.in/#pricing).
 2. **Install:** Double-click and drag **MacVoice.app** into your `/Applications` folder.
 3. **Grant Permissions:** Approve standard macOS prompts for **Microphone** (to transcribe audio locally) and **Accessibility** (to type simulated keystrokes into other apps).
 4. **Speak:** Click into any text field in VS Code, Slack, Word, or Safari, press <kbd>Control</kbd> + <kbd>Option</kbd> + <kbd>Space</kbd>, and begin speaking!

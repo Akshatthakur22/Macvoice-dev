@@ -51,7 +51,7 @@ export default function TermsPage() {
           <section id="refund" className="p-7 rounded-3xl bg-[#F5F5F7] border border-[#E8E8ED] space-y-3">
             <h2 className="text-base font-bold text-[#1D1D1F]">5. 14-Day Money-Back Guarantee</h2>
             <p className="text-xs text-[#6E6E73] leading-relaxed">
-              If MacVoice is incompatible with your setup or does not meet your expectations, you may request a 100% full refund within 14 days of purchase. Simply email support@macvoice.app with your checkout receipt or Stripe session ID.
+              If MacVoice is incompatible with your setup or does not meet your expectations, you may request a 100% full refund within 14 days of purchase. Simply email akshatthakur22@gmail.com with your checkout receipt or Stripe session ID.
             </p>
           </section>
 

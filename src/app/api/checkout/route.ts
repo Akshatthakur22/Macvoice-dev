@@ -20,7 +20,7 @@ export async function POST(request: Request) {
 
       // Development / Test mode only: allows validating full end-to-end UI and download delivery
       const testSessionId = `test_session_${Date.now()}`;
-      const testToken = generateDownloadToken(testSessionId, "dev@macvoice.app", 2);
+      const testToken = generateDownloadToken(testSessionId, "akshatthakur22@gmail.com", 2);
       
       return NextResponse.json({
         url: `${baseUrl}/success?session_id=${testSessionId}&token=${testToken}&test_mode=true`,

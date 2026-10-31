@@ -116,7 +116,7 @@ export function SuccessContent() {
       <div className="p-6 rounded-2xl bg-[#F5F5F7] border border-[#E8E8ED] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#6E6E73]">
         <div className="flex items-center gap-2">
           <ShieldCheck className="w-4 h-4 text-emerald-600" />
-          <span>Need help or an invoice? Email support@macvoice.app</span>
+          <span>Need help or an invoice? Email akshatthakur22@gmail.com</span>
         </div>
         <Link
           href="/docs"
