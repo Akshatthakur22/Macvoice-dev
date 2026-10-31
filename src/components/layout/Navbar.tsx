@@ -13,24 +13,26 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-[#E8E8ED] bg-[#FFFFFF]/80 backdrop-blur-xl transition-all">
       <Container className="flex h-14 sm:h-16 items-center justify-between">
-        {/* Brand Logo */}
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="relative w-7 h-7 rounded-lg overflow-hidden flex items-center justify-center bg-[#EAF3FF] border border-[#0071E3]/20 group-hover:border-[#0071E3]/40 transition-colors">
+        {/* Brand Logo: Apple-Grade Solid Blue Squircle with Crisp White Symbol */}
+        <Link href="/" className="flex items-center gap-2.5 group" aria-label="MacVoice Home">
+          <div className="w-8 h-8 rounded-[8.5px] bg-gradient-to-b from-[#0A84FF] to-[#0071E3] flex items-center justify-center shadow-[0_2px_6px_rgba(0,113,227,0.28),inset_0_1px_0_rgba(255,255,255,0.35)] transition-all duration-200 group-hover:scale-105 group-hover:shadow-[0_3px_10px_rgba(0,113,227,0.38)]">
             <Image
-              src="/brand/macvoice-symbol.svg"
-              alt="MacVoice Symbol"
-              width={18}
-              height={18}
-              className="w-4 h-4 object-contain"
+              src="/brand/macvoice-symbol-mono-white.svg"
+              alt="MacVoice Icon"
+              width={19}
+              height={19}
+              className="w-[19px] h-[19px] object-contain drop-shadow-[0_1px_1px_rgba(0,0,0,0.1)]"
               priority
             />
           </div>
-          <span className="font-semibold text-[17px] tracking-tight text-[#1D1D1F] flex items-center gap-1.5">
-            MacVoice
-            <span className="text-[10px] font-mono font-medium px-1.5 py-0.5 rounded bg-[#F5F5F7] text-[#6E6E73] border border-[#E8E8ED]">
-              macOS
+          <div className="flex items-baseline gap-1.5">
+            <span className="font-bold text-[18px] tracking-[-0.03em] text-[#1D1D1F]">
+              MacVoice
             </span>
-          </span>
+            <span className="text-[11px] font-medium text-[#86868B] tracking-tight">
+              for Mac
+            </span>
+          </div>
         </Link>
 
         {/* Desktop Navigation Links */}
