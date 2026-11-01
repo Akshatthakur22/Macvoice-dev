@@ -3,7 +3,7 @@ import { webhooks } from "@polar-sh/sdk/2026-10";
 import { generateDownloadToken } from "@/lib/downloadToken";
 
 export async function POST(request: Request) {
-  const webhookSecret = process.env.POLAR_WEBHOOK_SECRET;
+  const webhookSecret = process.env.POLAR_WEBHOOK_SECRET?.trim();
 
   if (!webhookSecret) {
     console.error("POLAR_WEBHOOK_SECRET is not configured");

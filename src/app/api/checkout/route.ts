@@ -9,8 +9,16 @@ import {
 
 export async function POST(request: Request) {
   try {
-    const origin = request.headers.get("origin") || request.headers.get("referer") || "http://localhost:3000";
-    const baseUrl = new URL(origin).origin;
+    const configuredUrl = process.env.NEXT_PUBLIC_APP_URL?.trim();
+    let baseUrl = configuredUrl || "https://macvoice.akshatt.in";
+    try {
+      const origin = request.headers.get("origin") || request.headers.get("referer");
+      if (origin) {
+        baseUrl = new URL(origin).origin;
+      }
+    } catch {
+      // Fallback safely to configured baseUrl
+    }
 
     // Cryptographic Session Binding:
     // Generate or retrieve the buyer's private session secret.
