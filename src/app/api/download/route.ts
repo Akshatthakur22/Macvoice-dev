@@ -1,65 +1,89 @@
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
-import { polar } from "@/lib/polar";
-import { verifyDownloadToken } from "@/lib/downloadToken";
+import {
+  verifyDownloadTicket,
+  verifyDownloadToken,
+  recordDownload,
+} from "@/lib/downloadToken";
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
-  const token = searchParams.get("token");
-  const checkoutId = searchParams.get("checkout_id") || searchParams.get("session_id");
+  const ticket = searchParams.get("ticket");
+  const legacyToken = searchParams.get("token");
+  const rawCheckoutId = searchParams.get("checkout_id") || searchParams.get("session_id");
 
-  let isAuthorized = false;
-
-  // 1. Verify cryptographic download token
-  if (token) {
-    const verified = verifyDownloadToken(token);
-    if (verified) {
-      isAuthorized = true;
-    }
-  }
-
-  // 2. Verify via Polar API if checkout_id provided and Polar is configured
-  if (!isAuthorized && checkoutId && polar) {
-    try {
-      const checkout = await polar.checkouts.get(checkoutId);
-      if (checkout.status === "succeeded" || checkout.status === "confirmed") {
-        isAuthorized = true;
-      }
-    } catch (e) {
-      console.error("Failed to verify Polar checkout session:", e);
-    }
-  }
-
-  // 3. In non-production environments, allow developer test sessions
-  if (!isAuthorized && checkoutId && (checkoutId.startsWith("test_session_") || checkoutId.startsWith("test_"))) {
-    if (process.env.NODE_ENV !== "production") {
-      isAuthorized = true;
-    }
-  }
-
-  if (!isAuthorized) {
+  // 1. Explicitly reject raw checkout IDs
+  // To prevent URL sharing and tampering, users CANNOT download directly using a checkout ID
+  if (!ticket && !legacyToken && rawCheckoutId) {
     return NextResponse.json(
       {
-        error: "Access denied. A valid $9 purchase token or confirmed Polar checkout is required to download MacVoice.dmg.",
+        error:
+          "Access denied: Direct downloads via checkout ID are disabled for security. Please use the verified one-time link generated on your purchase confirmation page.",
       },
       { status: 403 }
     );
   }
 
-  // Resolve DMG path statically
-  const dmgPath = path.join(process.cwd(), "public", "releases", "MacVoice.dmg");
+  // 2. Cryptographic Verification
+  let verifiedCheckoutId: string | null = null;
 
-  if (!fs.existsSync(/*turbopackIgnore: true*/ dmgPath)) {
-    console.error(`MacVoice.dmg binary not found at path: ${dmgPath}`);
+  if (ticket) {
+    const verifiedTicket = verifyDownloadTicket(ticket);
+    if (verifiedTicket) {
+      verifiedCheckoutId = verifiedTicket.checkoutId;
+    }
+  } else if (legacyToken) {
+    const verifiedToken = verifyDownloadToken(legacyToken);
+    if (verifiedToken) {
+      verifiedCheckoutId = verifiedToken.sessionId;
+    }
+  }
+
+  if (!verifiedCheckoutId) {
     return NextResponse.json(
-      { error: "MacVoice release package not found on server storage." },
-      { status: 500 }
+      {
+        error:
+          "Access denied: Invalid, expired, or tampered download ticket. Download links expire after 15 minutes. Please refresh your confirmation page to generate a fresh link.",
+      },
+      { status: 403 }
     );
   }
 
-  const fileStat = fs.statSync(/*turbopackIgnore: true*/ dmgPath);
-  const fileStream = fs.createReadStream(/*turbopackIgnore: true*/ dmgPath);
+  // 3. Enforce Quota / Abuse Limiting (Max 10 downloads per license)
+  const quota = recordDownload(verifiedCheckoutId);
+  if (!quota.allowed) {
+    return NextResponse.json(
+      {
+        error:
+          "Download limit reached: This purchase license has exceeded its allowed download quota (maximum 10 downloads). Please contact akshatthakur22@gmail.com for assistance.",
+      },
+      { status: 429 }
+    );
+  }
+
+  // 4. Resolve Private File Path (Secure storage outside of public directory)
+  const primaryPath = path.join(process.cwd(), "private", "releases", "MacVoice.dmg");
+  const envPath = process.env.DMG_FILE_PATH;
+  const fallbackPath = path.join(process.cwd(), "releases", "MacVoice.dmg");
+
+  let resolvedPath = primaryPath;
+  if (!fs.existsSync(/*turbopackIgnore: true*/ primaryPath)) {
+    if (envPath && fs.existsSync(/*turbopackIgnore: true*/ envPath)) {
+      resolvedPath = envPath;
+    } else if (fs.existsSync(/*turbopackIgnore: true*/ fallbackPath)) {
+      resolvedPath = fallbackPath;
+    } else {
+      console.error(`MacVoice.dmg binary not found on server storage: looked at ${primaryPath}`);
+      return NextResponse.json(
+        { error: "MacVoice release package not found on server storage." },
+        { status: 500 }
+      );
+    }
+  }
+
+  const fileStat = fs.statSync(/*turbopackIgnore: true*/ resolvedPath);
+  const fileStream = fs.createReadStream(/*turbopackIgnore: true*/ resolvedPath);
 
   // Convert Node readable stream to web standard ReadableStream
   const webStream = new ReadableStream({
@@ -81,6 +105,7 @@ export async function GET(request: NextRequest) {
       "Content-Length": fileStat.size.toString(),
       "Cache-Control": "private, no-cache, no-store, must-revalidate",
       "X-Content-Type-Options": "nosniff",
+      "X-Download-Remaining": quota.remaining.toString(),
     },
   });
 }

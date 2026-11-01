@@ -1,11 +1,35 @@
 import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
 import { polar, POLAR_PRODUCT_ID, POLAR_CHECKOUT_URL } from "@/lib/polar";
-import { generateDownloadToken } from "@/lib/downloadToken";
+import {
+  generateDownloadToken,
+  generatePurchaseSessionSecret,
+  hashPurchaseSession,
+} from "@/lib/downloadToken";
 
 export async function POST(request: Request) {
   try {
     const origin = request.headers.get("origin") || request.headers.get("referer") || "http://localhost:3000";
     const baseUrl = new URL(origin).origin;
+
+    // Cryptographic Session Binding:
+    // Generate or retrieve the buyer's private session secret.
+    // This cookie stays strictly on the purchasing browser (HttpOnly, Secure)
+    // and is hashed and recorded in Polar metadata to prevent link sharing.
+    const cookieStore = await cookies();
+    let purchaseSecret = cookieStore.get("macvoice_purchase_session")?.value;
+    if (!purchaseSecret || purchaseSecret.length < 32) {
+      purchaseSecret = generatePurchaseSessionSecret();
+      cookieStore.set("macvoice_purchase_session", purchaseSecret, {
+        httpOnly: true,
+        sameSite: "lax",
+        secure: process.env.NODE_ENV === "production",
+        maxAge: 30 * 24 * 60 * 60, // 30 days
+        path: "/",
+      });
+    }
+
+    const sessionHash = hashPurchaseSession(purchaseSecret);
 
     // Check if Polar checkout URL or Polar API is configured
     if (!polar && !POLAR_CHECKOUT_URL) {
@@ -39,7 +63,7 @@ export async function POST(request: Request) {
       }
     }
 
-    // Programmatically create Polar Checkout Session via Polar SDK
+    // Programmatically create Polar Checkout Session via Polar SDK with Session Binding
     if (polar && POLAR_PRODUCT_ID) {
       const checkout = await polar.checkouts.create({
         products: [POLAR_PRODUCT_ID],
@@ -48,6 +72,7 @@ export async function POST(request: Request) {
         metadata: {
           product: "macvoice",
           version: "1.0",
+          session_hash: sessionHash,
         },
       });
 
@@ -61,7 +86,6 @@ export async function POST(request: Request) {
     // Polar configured but missing Product ID
     if (polar && !POLAR_PRODUCT_ID) {
       if (process.env.NODE_ENV !== "production") {
-        // Fallback test mode in development if product ID isn't entered yet
         const testSessionId = `test_session_${Date.now()}`;
         const testToken = generateDownloadToken(testSessionId, "akshatthakur22@gmail.com", 2);
         return NextResponse.json({
