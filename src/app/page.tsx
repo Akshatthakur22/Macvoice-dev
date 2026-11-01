@@ -10,10 +10,12 @@ import { OnboardingSteps } from "@/components/home/OnboardingSteps";
 import { PricingSection } from "@/components/home/PricingSection";
 import { FAQSection } from "@/components/home/FAQSection";
 import { FinalCTA } from "@/components/home/FinalCTA";
+import { JsonLd, homePageSchema } from "@/components/seo/JsonLd";
 
 export default function HomePage() {
   return (
     <main className="flex flex-col min-h-screen">
+      <JsonLd schema={homePageSchema} />
       <Hero />
       <MetricsBar />
       <LiveDemo />

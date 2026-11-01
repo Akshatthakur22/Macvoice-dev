@@ -1,0 +1,42 @@
+# MacVoice
+
+> MacVoice is a lightweight (784 KB) native Swift voice-typing keyboard for macOS Apple Silicon. It transcribes human speech in real time (<150ms latency) using on-device SpeechAnalyzer models, removes filler words, and inserts text directly at the cursor via authentic macOS Quartz HID keyboard events with zero cloud server communication.
+
+MacVoice is sold as a single, one-time payment of $9 USD (lifetime ownership, valid on up to 5 personal Macs). It is built for software engineers, writers, founders, and Mac power users who demand private, offline, low-latency dictation without monthly subscriptions.
+
+## Key Capabilities
+- **100% On-Device & Air-Gapped**: Runs entirely in local resident memory (RAM) utilizing Apple Silicon Neural Engine (M1, M2, M3, M4). Zero network requests, zero telemetry, zero audio recordings saved to disk.
+- **Direct Keystroke Synthesis (Quartz HID)**: Injects authentic hardware key events (`CGEvent` at `.cghidEventTap`) instead of system clipboard paste (`NSPasteboard`). Preserves clipboard contents and bypasses website/app paste restrictions.
+- **Smart Chat-Safe Newlines**: In messaging apps (Slack, Discord, Teams, WhatsApp), dictating "new line" automatically emits `Shift+Return` to prevent accidental premature message transmission.
+- **Instant Filler Word Stripping**: Detects and eliminates hesitations ("um", "uh", "ah", "er") in sub-0.1ms with zero latency penalty.
+- **Dual Voice Modes**:
+  - *Polished Mode*: Natural prose formatting with automatic capitalization and punctuation for emails, documentation, and chat.
+  - *Verbatim Mode*: Exact word-for-word dictation tailored for code editors, CLI flags, technical identifiers, and passwords.
+- **Minimal Resource Footprint**: 784 KB DMG download, ~60 MB idle RAM footprint, 0% background CPU usage.
+
+## Pricing & Licensing
+- **Price**: $9.00 USD (one-time payment, lifetime license).
+- **Entitlement**: Install on up to 5 personal Macs. Commercial use permitted.
+- **No Subscriptions**: No monthly or annual charges, no user accounts, no DRM activation daemons.
+- **Guarantee**: 14-day money-back refund guarantee.
+
+## System Requirements
+- macOS 26.0 or later (Sequoia / modern macOS)
+- Apple Silicon Mac (M1, M2, M3, M4)
+- System Permissions: Microphone (speech input) and Accessibility (Quartz HID typing)
+
+## Comparison to Alternatives
+- **MacVoice**: $9 one-time · 784 KB DMG · 60 MB RAM · 0 network requests · Native Swift.
+- **Wispr Flow**: $144/year ($12/mo) · Cloud-dependent · Sends private voice to third-party servers.
+- **Superwhisper**: $250 one-time (or $8/mo) · 1.5 GB+ download · Bundles large local LLMs with high memory overhead.
+- **Apple Dictation**: Free built-in · Obtrusive floating UI · Dictates filler words · Inconsistent in code editors and terminals · Accidental message sends in Slack.
+
+## Core URLs
+- [Home Page](https://macvoice.akshatt.in/): Overview, live interactive simulator, audio architecture, and benchmarks.
+- [Pricing](https://macvoice.akshatt.in/pricing): $9 lifetime license details and comparison calculator.
+- [Documentation](https://macvoice.akshatt.in/docs): Step-by-step quickstart, permission configuration, and keyboard shortcut customization.
+- [Compatibility](https://macvoice.akshatt.in/compatibility): Tested applications (VS Code, Cursor, Slack, Obsidian, Chrome, Safari, Terminal).
+- [Privacy Architecture](https://macvoice.akshatt.in/privacy): Technical air-gap security audit, zero network sockets, memory-only audio buffer.
+- [Terms of Sale](https://macvoice.akshatt.in/terms): Multi-Mac license terms, refund policy, and offline DRM-free agreement.
+- [Full LLM Knowledge Base](https://macvoice.akshatt.in/llms-full.txt): Comprehensive technical specifications and reference for AI agents.
+

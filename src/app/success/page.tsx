@@ -7,6 +7,11 @@ export const metadata: Metadata = {
   title: "Purchase Successful — Download MacVoice.dmg",
   description:
     "Your MacVoice license is active. Download MacVoice.dmg (784 KB) and complete the 3-step setup.",
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true,
+  },
 };
 
 export default function SuccessPage() {

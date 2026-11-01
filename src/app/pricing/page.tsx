@@ -4,16 +4,58 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { PricingSection } from "@/components/home/PricingSection";
 import { ComparisonTable } from "@/components/home/ComparisonTable";
+import { JsonLd, buildBreadcrumbSchema } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Pricing — MacVoice ($9 One-Time)",
+  title: "Pricing — $9 USD One-Time Lifetime License",
   description:
     "MacVoice costs $9 USD one-time. No subscriptions, no user accounts, and no cloud server fees. Run it forever on up to 5 of your personal Macs.",
+  alternates: {
+    canonical: "https://macvoice.akshatt.in/pricing",
+  },
+  openGraph: {
+    title: "Pricing — MacVoice ($9 One-Time Forever)",
+    description:
+      "Buy once for $9 and run on up to 5 personal Macs. 100% on-device speech processing, zero cloud server subscription fees.",
+    url: "https://macvoice.akshatt.in/pricing",
+  },
+};
+
+const pricingBreadcrumb = buildBreadcrumbSchema([
+  { name: "Home", item: "https://macvoice.akshatt.in" },
+  { name: "Pricing", item: "https://macvoice.akshatt.in/pricing" },
+]);
+
+const pricingProductSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "MacVoice Lifetime License",
+  image: "https://macvoice.akshatt.in/brand/macvoice-icon-dark-1024.png",
+  description:
+    "Perpetual lifetime license for MacVoice native macOS speech-to-text keyboard utility. Entitles usage on up to 5 personal Mac devices.",
+  brand: {
+    "@type": "Brand",
+    name: "MacVoice",
+  },
+  offers: {
+    "@type": "Offer",
+    price: "9.00",
+    priceCurrency: "USD",
+    priceValidUntil: "2028-12-31",
+    availability: "https://schema.org/InStock",
+    url: "https://macvoice.akshatt.in/pricing",
+    seller: {
+      "@type": "Person",
+      name: "Akshat Thakur",
+      url: "https://akshatt.in",
+    },
+  },
 };
 
 export default function PricingPage() {
   return (
     <div className="py-16 sm:py-24 bg-[#FFFFFF]">
+      <JsonLd schema={[pricingBreadcrumb, pricingProductSchema]} />
       <Container>
         <SectionHeader
           eyebrow="One-Time Purchase"

@@ -4,16 +4,67 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ShortcutBadge } from "@/components/ui/ShortcutBadge";
 import { BookOpen, Settings, Sliders, ShieldAlert, Trash2, Keyboard } from "lucide-react";
+import { JsonLd, buildBreadcrumbSchema } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Documentation & User Guide — MacVoice",
+  title: "Documentation & User Guide",
   description:
     "Complete user manual for MacVoice: quickstart, permission setup, shortcut customization, modes reference, and troubleshooting.",
+  alternates: {
+    canonical: "https://macvoice.akshatt.in/docs",
+  },
+  openGraph: {
+    title: "Documentation & User Guide — MacVoice",
+    description:
+      "Everything you need to configure, operate, and troubleshoot MacVoice on your Mac.",
+    url: "https://macvoice.akshatt.in/docs",
+  },
+};
+
+const docsBreadcrumb = buildBreadcrumbSchema([
+  { name: "Home", item: "https://macvoice.akshatt.in" },
+  { name: "Documentation", item: "https://macvoice.akshatt.in/docs" },
+]);
+
+const docsHowToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "How to Install and Set Up MacVoice on macOS",
+  description:
+    "Step-by-step instructions to install MacVoice, configure microphone and accessibility permissions, and start voice typing.",
+  totalTime: "PT2M",
+  step: [
+    {
+      "@type": "HowToStep",
+      name: "Download MacVoice",
+      text: "Download MacVoice.dmg (784 KB) from your order confirmation receipt.",
+      position: 1,
+    },
+    {
+      "@type": "HowToStep",
+      name: "Install to Applications",
+      text: "Open MacVoice.dmg and drag MacVoice.app into your /Applications directory.",
+      position: 2,
+    },
+    {
+      "@type": "HowToStep",
+      name: "Grant Permissions",
+      text: "Launch MacVoice and grant Microphone (speech capture) and Accessibility (Quartz HID typing) permissions in macOS System Settings.",
+      position: 3,
+    },
+    {
+      "@type": "HowToStep",
+      name: "Start Voice Typing",
+      text: "Focus any text input in VS Code, Slack, or Safari, press Control + Option + Space, and begin speaking.",
+      position: 4,
+    },
+  ],
 };
 
 export default function DocsPage() {
   return (
     <div className="py-16 sm:py-24 bg-[#FFFFFF]">
+      <JsonLd schema={[docsBreadcrumb, docsHowToSchema]} />
       <Container size="narrow">
         <SectionHeader
           eyebrow="User Manual"

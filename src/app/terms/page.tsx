@@ -2,16 +2,32 @@ import React from "react";
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { JsonLd, buildBreadcrumbSchema } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Terms of Sale & Software License — MacVoice",
+  title: "Terms of Sale & Software License",
   description:
-    "Review our transparent, developer-friendly software license and refund terms for MacVoice.",
+    "Review our transparent, developer-friendly software license, multi-Mac entitlement, and refund terms for MacVoice.",
+  alternates: {
+    canonical: "https://macvoice.akshatt.in/terms",
+  },
+  openGraph: {
+    title: "Terms of Sale & Software License — MacVoice",
+    description:
+      "Transparent, developer-first license terms. No recurring subscription fees. Valid on up to 5 personal Macs.",
+    url: "https://macvoice.akshatt.in/terms",
+  },
 };
+
+const termsBreadcrumb = buildBreadcrumbSchema([
+  { name: "Home", item: "https://macvoice.akshatt.in" },
+  { name: "Terms of Sale", item: "https://macvoice.akshatt.in/terms" },
+]);
 
 export default function TermsPage() {
   return (
     <div className="py-16 sm:py-24 bg-[#FFFFFF]">
+      <JsonLd schema={termsBreadcrumb} />
       <Container size="narrow">
         <SectionHeader
           eyebrow="Legal & Commercial Agreement"

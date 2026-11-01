@@ -3,12 +3,27 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Check, AlertCircle, Info, Laptop } from "lucide-react";
+import { JsonLd, buildBreadcrumbSchema } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Compatibility Matrix — MacVoice",
+  title: "Compatibility Matrix & Tested Apps",
   description:
     "Review tested application compatibility, macOS version requirements, and keyboard-event insertion behavior across Mac apps.",
+  alternates: {
+    canonical: "https://macvoice.akshatt.in/compatibility",
+  },
+  openGraph: {
+    title: "Compatibility Matrix — MacVoice",
+    description:
+      "Tested across VS Code, Slack, Cursor, Safari, Chrome, Obsidian, Terminal, and more.",
+    url: "https://macvoice.akshatt.in/compatibility",
+  },
 };
+
+const compatibilityBreadcrumb = buildBreadcrumbSchema([
+  { name: "Home", item: "https://macvoice.akshatt.in" },
+  { name: "Compatibility", item: "https://macvoice.akshatt.in/compatibility" },
+]);
 
 export default function CompatibilityPage() {
   const testedApps = [
@@ -64,6 +79,7 @@ export default function CompatibilityPage() {
 
   return (
     <div className="py-16 sm:py-24 bg-[#FFFFFF]">
+      <JsonLd schema={compatibilityBreadcrumb} />
       <Container size="narrow">
         <SectionHeader
           eyebrow="Tested Destinations"

@@ -1,0 +1,168 @@
+# MacVoice — Comprehensive Technical & Commercial Documentation (llms-full.txt)
+
+Official URL: https://macvoice.akshatt.in
+Creator: Akshat Thakur (https://akshatt.in)
+Product: MacVoice (Voice-to-Text Native macOS Keyboard)
+Price: $9.00 USD One-Time Lifetime License
+
+---
+
+## 1. Executive Summary
+
+MacVoice is a native macOS speech-to-text keyboard utility designed for software engineers, writers, founders, and power users. Operating strictly on-device on Apple Silicon hardware (M1, M2, M3, M4), MacVoice provides real-time voice typing (<150ms streaming latency) without transmitting audio to external cloud servers.
+
+Unlike legacy dictation solutions and cloud-based AI typing tools, MacVoice:
+1. Synthesizes authentic macOS Quartz HID keyboard events (`CGEvent`) rather than overwriting clipboard pastebuffers (`NSPasteboard`).
+2. Operates entirely in volatile memory (RAM) with zero network sockets opened during dictation.
+3. Weighs only 784 KB as a native Swift compiled binary without heavy Electron runtimes or multi-gigabyte local LLM bundles.
+4. Costs a single, flat fee of $9 USD with zero monthly subscriptions, zero user accounts, and zero DRM daemons.
+
+---
+
+## 2. Technical Architecture & Engineering Specifications
+
+### 2.1 Speech Recognition Pipeline
+- **Engine**: Apple SpeechAnalyzer and on-device Speech framework APIs built into macOS 26+.
+- **Hardware Acceleration**: Apple Neural Engine (ANE) and GPU on Apple Silicon (M1/M2/M3/M4).
+- **Latency**: Sub-150ms streaming latency from phoneme articulation to screen cursor appearance.
+- **Audio Ingestion**: Audio frames captured via macOS AVFoundation / CoreAudio into in-memory ring buffers. Audio is never committed to persistent storage, temporary files, or swap memory.
+- **Language Models**: Relies on Apple's native on-device speech models downloaded and verified by macOS.
+
+### 2.2 Keystroke Injection Architecture (Quartz HID Event Tap)
+- Most third-party dictation utilities capture text, write it to `NSPasteboard.general`, and fire a synthetic `Cmd + V` paste command. This method has severe drawbacks:
+  - Destroys user's previously copied clipboard data (passwords, code blocks, URLs).
+  - Triggers clipboard permission dialogs on modern macOS.
+  - Fails on websites and forms where `onpaste="return false;"` is set.
+- **MacVoice Solution**: MacVoice registers an event source directly with the macOS Window Server via `CGEventSourceCreate` and posts authentic `CGEvent` key-down / key-up pairs into `.cghidEventTap`.
+- **Typing Cadence**: Emits keystrokes with randomized microsecond delays mimicking fast natural typing, preventing race conditions inside rich-text editors and Integrated Development Environments (IDEs).
+
+### 2.3 Chat-Safe Newline Logic
+- In workplace chat clients (Slack, Discord, Microsoft Teams, WhatsApp Desktop, Telegram), pressing the physical `Return` key transmits the message immediately.
+- When dictating punctuation such as "new line" or "next paragraph", standard dictation engines fire a bare `Return` event, causing premature message transmission.
+- **MacVoice Implementation**: MacVoice detects the active window context. When a "new line" command is spoken inside identified chat clients or single-line fields, it synthesizes `Shift + Return`, creating a clean multi-line break without firing the message prematurely.
+
+### 2.4 Sub-0.1ms Vocal Filler Removal
+- Natural human speech contains frequent filler words and hesitations ("um", "uh", "ah", "like", "er", "you know").
+- MacVoice applies a deterministic regex state-machine in native Swift that intercepts token streams in under 0.1ms:
+  - Strips unwanted hesitations without stalling the audio-recognition pipeline.
+  - Normalizes leading and trailing spacing.
+  - Ensures proper capitalization of subsequent words following stripped fillers.
+
+---
+
+## 3. Two Dedicated Voice Modes
+
+1. **Polished Mode** (Default)
+   - Tailored for prose, correspondence, documentation, and messaging.
+   - Automatically handles sentence capitalization, contextual commas, periods, and question marks.
+   - Cleans up vocal filler words and stutters while preserving the speaker's natural tone.
+   - Intelligently applies Chat-Safe newlines in Slack and Discord.
+
+2. **Verbatim Mode**
+   - Tailored for developers, sysadmins, and technical writing.
+   - Inserts exact spoken words without punctuation insertion or natural-language rewrites.
+   - Preserves programming identifiers, command-line arguments (e.g. `--output-dir`, `camelCaseVar`, `snake_case`), and special characters.
+
+---
+
+## 4. Privacy, Security & Air-Gap Audit
+
+MacVoice enforces security through architecture rather than legal trust:
+
+1. **Zero Outbound Sockets**:
+   - During active voice typing, MacVoice makes 0 external network calls.
+   - Users and security engineers can verify network isolation using macOS terminal:
+     `lsof -p $(pgrep MacVoice) -i` (Returns no open network sockets).
+2. **Binary Inspection**:
+   - Inspect loaded dynamic libraries with:
+     `otool -L /Applications/MacVoice.app/Contents/MacOS/VoiceTypingApp`
+     (Confirms linkage only to Apple system frameworks: CoreAudio, AVFoundation, ApplicationServices, QuartzCore, SwiftUI).
+3. **Memory-Only Processing**:
+   - Audio is buffered in RAM and overwritten immediately after token transcription.
+   - No audio files, caches, or logs are created in `~/Library/Application Support`, `/tmp`, or `~/Library/Caches`.
+4. **No Telemetry or Tracking**:
+   - No Google Analytics, no Mixpanel, no PostHog, no Sentry, no telemetry pings.
+5. **No Account Required**:
+   - Download package directly after payment via ephemeral download token. No login or password required.
+
+---
+
+## 5. Compatibility Matrix
+
+MacVoice is tested and verified across key macOS applications:
+- **IDEs & Code Editors**:
+  - Visual Studio Code & Cursor: Progressive keystroke streaming into code, comments, and terminal.
+  - Xcode: Full compatibility with Swift and Objective-C source files.
+  - JetBrains (IntelliJ, WebStorm, PyCharm): Full text insertion support.
+- **Communication & Chat**:
+  - Slack Desktop: Verified with smart Shift+Return newline prevention.
+  - Discord: Verified chat-safe typing.
+  - Microsoft Teams & WhatsApp Desktop: Verified.
+- **Web Browsers**:
+  - Safari, Google Chrome, Arc, Brave, Firefox: Works across standard inputs, textareas, and rich contentEditable canvasses (Google Docs, Notion, Linear).
+- **Notes & Knowledge Bases**:
+  - Obsidian, Apple Notes, Bear, Craft, Notion: Full support for Markdown formatting and bullet lists.
+- **Terminal & Shells**:
+  - macOS Terminal, iTerm2, Ghostty, Warp: Full compatibility (Verbatim Mode recommended).
+
+---
+
+## 6. Economics & Market Comparison
+
+| Feature | MacVoice | Wispr Flow | Superwhisper | Apple Dictation |
+| :--- | :--- | :--- | :--- | :--- |
+| **Pricing Model** | $9.00 USD One-Time | $144.00 USD / year | $250.00 USD One-Time | Free (Built-in) |
+| **Download Size** | 784 KB DMG | ~120 MB | 1.5 GB – 4.5 GB | Pre-installed |
+| **Idle RAM Footprint** | ~60 MB | ~250 MB | ~1.5 GB – 3.0 GB | Dynamic |
+| **Cloud Dependency** | 0% (Air-Gapped) | 100% Cloud Server | 0% (Local LLM) | Mixed / On-Device |
+| **Audio Privacy** | Never leaves RAM | Sent to cloud GPU clusters | Stored locally | Apple privacy terms |
+| **Vocal Filler Stripping** | Instant (<0.1ms) | Handled by cloud LLM | Handled by local model | None (types 'um', 'uh') |
+| **Chat-Safe Newline** | Yes (Shift+Return) | Limited | Partial | No (accidental send) |
+| **Clipboard Protection** | Yes (Quartz HID) | Overwrites pasteboard | Overwrites pasteboard | Mixed |
+| **Multi-Mac License** | Up to 5 personal Macs | 1 user account | 1-2 Macs | Apple ID linked |
+
+### Why $9 Forever?
+Cloud dictation apps require expensive GPU cluster maintenance ($12/month per subscriber). Because MacVoice computes 100% of recognition on the user's Apple Silicon Neural Engine, the marginal cost per user is $0.00. This enables a sustainable, one-time lifetime business model without investor pressure to extract recurring monthly fees.
+
+---
+
+## 7. Installation & Quickstart
+
+1. **Download**: Obtain `MacVoice.dmg` (784 KB) from your order confirmation page.
+2. **Install**: Open DMG and drag `MacVoice.app` into `/Applications`.
+3. **Launch**: Launch MacVoice. The waveform icon appears in the macOS menu bar.
+4. **Grant Permissions**:
+   - *Microphone*: Required to capture speech audio.
+   - *Accessibility*: Required to synthesize Quartz HID keystrokes into active applications.
+5. **Dictate**: Focus any input field, press `Control + Option + Space` (`⌃⌥Space`), speak, and press the shortcut again to finish.
+
+---
+
+## 8. Frequently Asked Questions (FAQ)
+
+### Q: Does MacVoice work without an internet connection?
+A: Yes. MacVoice is 100% offline. Once installed, it never initiates outbound internet connections. You can dictate on airplanes, in secure facilities, and in air-gapped environments.
+
+### Q: Why is the download only 784 KB?
+A: MacVoice is written in pure native Swift and links directly to Apple's modern SpeechAnalyzer frameworks on macOS 26+. Unlike Electron or Python utilities, it does not bundle multi-gigabyte models or web browser runtimes.
+
+### Q: Does MacVoice interfere with my password manager or clipboard?
+A: No. MacVoice uses Quartz HID keystroke injection. Your clipboard (`NSPasteboard`) is never touched, so copied passwords, code snippets, and links remain intact.
+
+### Q: What is the refund policy?
+A: We offer a 14-day no-questions-asked refund guarantee. Email akshatthakur22@gmail.com with your receipt for a prompt full refund.
+
+### Q: How many devices can I install it on?
+A: A single $9 license covers up to 5 personal Mac computers owned or operated by the purchaser.
+
+---
+
+## 9. Contact & Official Citations
+- **Official Website**: https://macvoice.akshatt.in
+- **Pricing & Checkout**: https://macvoice.akshatt.in/pricing
+- **Documentation**: https://macvoice.akshatt.in/docs
+- **Developer**: Akshat Thakur (https://akshatt.in)
+- **GitHub**: https://github.com/Akshatthakur22
+- **Support Email**: akshatthakur22@gmail.com
+- **MacBase Listing**: https://macbase.app/apps/macvoice
+

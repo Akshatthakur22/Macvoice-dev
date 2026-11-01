@@ -3,16 +3,32 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ShieldCheck, WifiOff, HardDrive, FileLock, KeyRound, Terminal } from "lucide-react";
+import { JsonLd, buildBreadcrumbSchema } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Privacy & Air-Gap Architecture — MacVoice",
+  title: "Air-Gap Privacy Architecture & Security Audit",
   description:
     "MacVoice is built with zero cloud dependencies. Audio is processed strictly in local RAM and discarded immediately. Read our architectural privacy audit.",
+  alternates: {
+    canonical: "https://macvoice.akshatt.in/privacy",
+  },
+  openGraph: {
+    title: "Privacy & Air-Gap Architecture — MacVoice",
+    description:
+      "Zero cloud dependencies. 100% on-device speech processing in resident memory. Verify with otool and lsof.",
+    url: "https://macvoice.akshatt.in/privacy",
+  },
 };
+
+const privacyBreadcrumb = buildBreadcrumbSchema([
+  { name: "Home", item: "https://macvoice.akshatt.in" },
+  { name: "Privacy", item: "https://macvoice.akshatt.in/privacy" },
+]);
 
 export default function PrivacyPage() {
   return (
     <div className="py-16 sm:py-24 bg-[#FFFFFF]">
+      <JsonLd schema={privacyBreadcrumb} />
       <Container size="narrow">
         <SectionHeader
           eyebrow="Architectural Integrity"
