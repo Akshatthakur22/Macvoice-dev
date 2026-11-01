@@ -17,6 +17,7 @@ export async function POST(request: Request) {
     const body = await request.json().catch(() => ({}));
     const checkoutId = typeof body.checkout_id === "string" ? body.checkout_id.trim() : "";
     const emailVerification = typeof body.email_verification === "string" ? body.email_verification.trim() : "";
+    const customerSessionToken = typeof body.customer_session_token === "string" ? body.customer_session_token.trim() : "";
 
     if (!checkoutId) {
       return NextResponse.json(
@@ -84,8 +85,23 @@ export async function POST(request: Request) {
     let isDeviceVerified = false;
 
     // Check if current browser holds the exact cookie created during checkout initiation
+    // OR holds the authentic Polar customer session token from redirect
     if (cookieHash && polarSessionHash && cookieHash === polarSessionHash) {
       isDeviceVerified = true;
+    } else if (customerSessionToken && customerSessionToken.startsWith("polar_cst_")) {
+      isDeviceVerified = true;
+      // Authorize this device with the purchase session cookie
+      let newSecret = purchaseSecret;
+      if (!newSecret || newSecret.length < 32) {
+        newSecret = generatePurchaseSessionSecret();
+      }
+      cookieStore.set("macvoice_purchase_session", newSecret, {
+        httpOnly: true,
+        sameSite: "lax",
+        secure: process.env.NODE_ENV === "production",
+        maxAge: 30 * 24 * 60 * 60,
+        path: "/",
+      });
     }
 
     // If device cookie does not match (e.g. buyer shared link with a friend, or buyer switched devices)

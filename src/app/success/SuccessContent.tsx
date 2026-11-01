@@ -21,6 +21,7 @@ import {
 export function SuccessContent() {
   const searchParams = useSearchParams();
   const checkoutId = searchParams.get("checkout_id") || searchParams.get("session_id");
+  const customerSessionToken = searchParams.get("customer_session_token");
   const isTestMode = searchParams.get("test_mode") === "true";
 
   const [status, setStatus] = useState<
@@ -51,7 +52,10 @@ export function SuccessContent() {
         const res = await fetch("/api/download/verify", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ checkout_id: checkoutId }),
+          body: JSON.stringify({
+            checkout_id: checkoutId,
+            customer_session_token: customerSessionToken || undefined,
+          }),
         });
 
         const data = await res.json();
@@ -93,7 +97,7 @@ export function SuccessContent() {
     return () => {
       isMounted = false;
     };
-  }, [checkoutId]);
+  }, [checkoutId, customerSessionToken]);
 
   // Handle email verification submission when device is not recognized
   const handleEmailSubmit = async (e: React.FormEvent) => {
