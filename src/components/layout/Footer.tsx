@@ -49,6 +49,23 @@ export function Footer() {
               </span>
             </div>
 
+            <div className="pt-1">
+              <a
+                href="https://macbase.app/apps/macvoice?ref=badge"
+                target="_blank"
+                rel="noopener"
+                className="inline-block hover:opacity-90 transition-opacity"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="https://macbase.app/badge/featured-on-macbase.svg"
+                  alt="MacVoice is featured on MacBase"
+                  height="72"
+                  style={{ height: "72px", width: "auto" }}
+                />
+              </a>
+            </div>
+
             <p className="text-[12px] leading-relaxed text-[#86868B] pt-1">
               © 2026 MacVoice. Lifetime license ($9 USD).
               <br />
