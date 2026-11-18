@@ -41,13 +41,14 @@ export function PricingSection() {
   const features = [
     "Pay once ($9 USD) — Keep and own forever",
     "No monthly subscriptions or hidden renewal fees",
-    "Works in all apps: Word, Notes, Slack, Safari, Docs, and more",
-    "Types into websites even where copy-paste is blocked",
-    "Never overwrites or tampers with your copied text",
+    "Works in almost any app: Slack, Mail, Notes, Word, Google Docs, VS Code and more",
+    "Types as keyboard input, so it works where paste is blocked",
+    "Never uses or changes your clipboard",
     "Automatically removes 'um' and 'uh' so drafts look polished",
     "Chat-safe: won't accidentally send unfinished Slack messages",
     "100% private: your voice never leaves your Mac",
-    "Instant real-time typing at your cursor as you speak",
+    "Voice commands: new line, bullet point, scratch that…",
+    "Teach it your own words, names and shortcuts",
     "Install and use on up to 5 of your personal Macs",
     "14-day no-questions-asked money-back guarantee",
   ];
@@ -86,7 +87,7 @@ export function PricingSection() {
 
             <p className="text-sm text-[#6E6E73] leading-relaxed mb-8">
               A single payment of $9 gives you lifetime access and all v1.x updates.
-              Download the 784 KB DMG immediately after checkout.
+              Download MacVoice (under 1 MB) right after checkout.
             </p>
 
             {/* Error Message if any */}
@@ -129,7 +130,7 @@ export function PricingSection() {
 
           {/* Subscription Fatigue Callout */}
           <div className="mt-8 text-center text-xs text-[#6E6E73] leading-relaxed max-w-md mx-auto">
-            <span className="text-[#1D1D1F] font-semibold">Why not a monthly subscription?</span> Other AI dictation tools charge $144 to $180 per year to stream your voice to cloud GPUs. MacVoice runs locally on Apple Silicon, requiring zero recurring cloud infrastructure.
+            <span className="text-[#1D1D1F] font-semibold">Why not a monthly subscription?</span> Cloud dictation tools charge around $144 a year because they run your voice through their servers. MacVoice runs on your own Mac, so there&apos;s nothing to charge you for every month.
           </div>
         </div>
       </Container>

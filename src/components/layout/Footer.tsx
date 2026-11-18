@@ -175,6 +175,12 @@ export function Footer() {
                 Documentation
               </Link>
               <Link
+                href="/blog"
+                className="text-[13px] text-[#6E6E73] hover:text-[#0071E3] transition-colors"
+              >
+                Blog
+              </Link>
+              <Link
                 href="/compatibility"
                 className="text-[13px] text-[#6E6E73] hover:text-[#0071E3] transition-colors"
               >

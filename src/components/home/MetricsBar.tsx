@@ -11,12 +11,12 @@ export function MetricsBar() {
     {
       value: "Instant",
       label: "Real-Time Typing",
-      detail: "Words appear right at your cursor as you talk. No waiting around for an AI recording to finish processing.",
+      detail: "Text appears at your cursor while you're still talking. No recording to upload, no waiting for an AI to finish.",
     },
     {
       value: "100% Private",
       label: "Never Leaves Your Mac",
-      detail: "Your voice is processed completely on-device. Zero audio is ever uploaded to cloud servers or used to train models.",
+      detail: "Uses Apple's on-device speech engine. Your audio is never uploaded, never saved, and never used to train anything.",
     },
     {
       value: "$9 Once",

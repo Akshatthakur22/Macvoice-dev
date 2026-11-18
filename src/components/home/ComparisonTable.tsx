@@ -3,78 +3,72 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 
 export function ComparisonTable() {
+  // Competitor facts last checked November 2026 against vendor docs/pricing.
+  // Only list things that can be verified; re-check before changing.
   const rows = [
     {
-      feature: "How Words Are Typed",
-      macvoice: "Real Keyboard Keystrokes (Simulated typing)",
-      apple: "System dictation bubble",
-      wispr: "Clipboard paste (Cmd+V)",
-      superwhisper: "Clipboard paste (Cmd+V)",
-      highlight: true,
-    },
-    {
-      feature: "Works Where Paste is Blocked",
-      macvoice: "Yes (Immune to restrictions)",
-      apple: "Partial",
-      wispr: "No (Blocked by website)",
-      superwhisper: "No (Blocked by website)",
-      highlight: true,
-    },
-    {
-      feature: "Overwrites What You Copied?",
-      macvoice: "Never (Clipboard untouched)",
-      apple: "Never",
-      wispr: "Yes (Wipes your clipboard)",
-      superwhisper: "Yes (Wipes your clipboard)",
-      highlight: false,
-    },
-    {
-      feature: "Removes 'Um' & 'Uh' Hesitations",
-      macvoice: "Instant automatic cleanup",
-      apple: "None (types every stutter)",
-      wispr: "Cloud AI processing",
-      superwhisper: "Local AI model",
-      highlight: true,
-    },
-    {
-      feature: "Typing Latency",
-      macvoice: "< 150ms (Real-time as you speak)",
-      apple: "~200ms",
-      wispr: "~1.0s cloud delay",
-      superwhisper: "2.5s batch wait",
-      highlight: false,
-    },
-    {
-      feature: "Safe in Chat Apps (Slack, Teams)",
-      macvoice: "Yes (Won't accidentally send)",
-      apple: "No (Sends message early)",
-      wispr: "No (Sends message early)",
-      superwhisper: "No (Sends message early)",
-      highlight: true,
-    },
-    {
-      feature: "Voice Privacy",
-      macvoice: "100% on your Mac (Zero cloud audio)",
-      apple: "Apple Cloud / Local",
-      wispr: "Sent to cloud servers",
-      superwhisper: "100% on your Mac",
-      highlight: false,
-    },
-    {
-      feature: "App Size & Memory Footprint",
-      macvoice: "784 KB (~60 MB RAM)",
+      feature: "How text gets into your app",
+      macvoice: "Typed as keyboard input. Clipboard never used",
       apple: "Built into macOS",
-      wispr: "~80 MB (~180 MB RAM)",
-      superwhisper: "1.5 GB+ (500 MB – 1.8 GB RAM)",
+      wispr: "Pasted via clipboard, then clipboard restored",
+      superwhisper: "Pasted via clipboard",
+      highlight: true,
+    },
+    {
+      feature: "Where your voice is processed",
+      macvoice: "On your Mac (Apple's on-device engine)",
+      apple: "On your Mac",
+      wispr: "Cloud servers",
+      superwhisper: "On your Mac or cloud, depending on model",
       highlight: false,
     },
     {
-      feature: "Pricing Model",
-      macvoice: "$9 USD One-Time (Own forever)",
-      apple: "Free with macOS",
-      wispr: "$144 / year subscription",
-      superwhisper: "$250 one-time",
+      feature: "Text appears while you talk",
+      macvoice: "Yes (word by word, or per sentence)",
+      apple: "Yes",
+      wispr: "After you finish speaking",
+      superwhisper: "After you finish speaking",
       highlight: true,
+    },
+    {
+      feature: "Removes 'um' & 'uh'",
+      macvoice: "Yes, instantly, no AI model",
+      apple: "No",
+      wispr: "Yes (cloud AI)",
+      superwhisper: "Yes (AI modes)",
+      highlight: false,
+    },
+    {
+      feature: "Works without internet",
+      macvoice: "Yes (after macOS downloads its speech model once)",
+      apple: "Yes",
+      wispr: "No",
+      superwhisper: "Yes, with local models",
+      highlight: false,
+    },
+    {
+      feature: "App size",
+      macvoice: "Under 1 MB",
+      apple: "Built in",
+      wispr: "Standard desktop app",
+      superwhisper: "App + AI models you download",
+      highlight: false,
+    },
+    {
+      feature: "Price",
+      macvoice: "$9 once",
+      apple: "Free",
+      wispr: "Free up to 2,000 words/week; Pro $144/year",
+      superwhisper: "Free tier; Pro ~$85/year or $249.99 lifetime",
+      highlight: true,
+    },
+    {
+      feature: "Requires",
+      macvoice: "macOS 26+",
+      apple: "Any recent Mac",
+      wispr: "Account + internet",
+      superwhisper: "A Mac (plus model downloads)",
+      highlight: false,
     },
   ];
 
@@ -82,9 +76,9 @@ export function ComparisonTable() {
     <section id="compare" className="py-24 bg-[#F5F5F7] border-y border-[#E8E8ED]">
       <Container>
         <SectionHeader
-          eyebrow="Objective Comparison"
-          title="Why Mac Power Users Choose MacVoice"
-          description="A factual comparison against built-in dictation and heavy AI recorders. Dated October 2026."
+          eyebrow="Honest Comparison"
+          title="How MacVoice compares"
+          description="MacVoice is the small, private, pay-once option. Here's how it stacks up against the tools you may already know."
         />
 
         <div className="max-w-5xl mx-auto overflow-x-auto">
@@ -136,7 +130,7 @@ export function ComparisonTable() {
         </div>
 
         <div className="mt-4 text-center text-xs text-[#6E6E73]">
-          Source: Publicly verifiable technical specifications and reproducible local benchmarks on Apple Silicon.
+          Competitor details from each vendor&apos;s public website and docs, last checked November 2026. Prices change; check their sites for the latest.
         </div>
       </Container>
     </section>

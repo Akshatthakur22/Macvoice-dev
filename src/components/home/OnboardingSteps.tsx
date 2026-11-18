@@ -11,7 +11,7 @@ export function OnboardingSteps() {
       icon: ArrowDownToLine,
       title: "Download & Drag to Applications",
       detail:
-        "Open the compact 784 KB MacVoice.dmg and drag the MacVoice app into your macOS /Applications folder. No terminal setup or dependencies required.",
+        "Open MacVoice.dmg (under 1 MB) and drag MacVoice into your Applications folder. Nothing else to install.",
       badge: "Takes 3 seconds",
     },
     {
@@ -19,15 +19,15 @@ export function OnboardingSteps() {
       icon: ShieldCheck,
       title: "Grant Standard macOS Permissions",
       detail:
-        "On first launch, approve standard macOS prompts for Microphone (to transcribe audio locally) and Accessibility (to synthesize typing into other apps).",
-      badge: "Takes 10 seconds",
+        "Allow Microphone (so MacVoice can hear you) and Accessibility (so it can type into other apps). The first time, macOS may also download Apple's speech model for your language.",
+      badge: "About a minute",
     },
     {
       num: "03",
       icon: Keyboard,
       title: "Press ⌃⌥Space and Start Speaking",
       detail:
-        "Focus any text field in VS Code, Slack, Obsidian, or Safari. Press Control + Option + Space and speak naturally. Text streams live at your cursor.",
+        "Click into any text box (Slack, Mail, Notes, Google Docs, VS Code…), press Control + Option + Space and talk. Press it again to stop.",
       badge: "Instant workflow",
     },
   ];
@@ -37,7 +37,7 @@ export function OnboardingSteps() {
       <Container>
         <SectionHeader
           eyebrow="Frictionless Onboarding"
-          title="Up and Running in Less Than 30 Seconds"
+          title="Up and running in a couple of minutes"
           description="No accounts to create, no verification emails to wait for, and no cloud server provisioning."
         />
 

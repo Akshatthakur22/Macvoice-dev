@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif">
+<rect width="1200" height="400" fill="#FFFFFF"/>
+<text x="600" y="50" text-anchor="middle" font-size="28" font-weight="700" fill="#1D1D1F">Why "new line" can send your chat message</text>
+<rect x="60" y="90" width="500" height="250" rx="24" fill="#FEF2F2" stroke="#DC2626"/>
+<text x="310" y="132" text-anchor="middle" font-size="22" font-weight="700" fill="#DC2626">Return</text>
+<rect x="100" y="160" width="420" height="70" rx="14" fill="#FFFFFF" stroke="#E8E8ED"/><text x="120" y="203" font-size="19" fill="#1D1D1F">Hi team, quick update</text>
+<text x="310" y="285" text-anchor="middle" font-size="19" fill="#DC2626">→ Message sent (half-finished)</text>
+<rect x="640" y="90" width="500" height="250" rx="24" fill="#ECFDF5" stroke="#059669"/>
+<text x="890" y="132" text-anchor="middle" font-size="22" font-weight="700" fill="#059669">Shift + Return</text>
+<rect x="680" y="160" width="420" height="100" rx="14" fill="#FFFFFF" stroke="#E8E8ED"/><text x="700" y="198" font-size="19" fill="#1D1D1F">Hi team, quick update</text><text x="700" y="236" font-size="19" fill="#1D1D1F">- The release is Friday|</text>
+<text x="890" y="300" text-anchor="middle" font-size="19" fill="#059669">→ New line, still a draft</text>
+<text x="600" y="380" text-anchor="middle" font-size="17" fill="#6E6E73">Slack, WhatsApp, Teams, Discord, Telegram and Messages all send on Return.</text>
+</svg>

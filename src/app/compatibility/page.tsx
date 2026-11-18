@@ -26,54 +26,44 @@ const compatibilityBreadcrumb = buildBreadcrumbSchema([
 ]);
 
 export default function CompatibilityPage() {
+  // Status labels must reflect real testing. "Supported" = designed for and
+  // expected to work; move a row to "Tested" only after a recorded check.
   const testedApps = [
     {
-      app: "Apple TextEdit",
-      status: "Verified",
-      notes: "Full support for live cursor streaming, paragraph breaks, and punctuation.",
-      testedOn: "macOS 26.6.2 (Apple Silicon)",
+      app: "TextEdit, Notes, Pages, Word",
+      status: "Supported",
+      notes: "Text typed at the cursor; voice commands for new lines, paragraphs and bullet points.",
+      testedOn: "Desktop writing apps",
     },
     {
-      app: "VS Code / Cursor",
-      status: "Verified",
-      notes: "Progressive keystroke streaming into code files, comments, and integrated terminal.",
-      testedOn: "VS Code 1.95+",
+      app: "Safari, Chrome, Arc, Firefox, Edge",
+      status: "Supported",
+      notes: "Normal text boxes and rich editors like Google Docs, Notion and Gmail. Works in most fields that block paste, because MacVoice doesn't paste.",
+      testedOn: "Websites & web apps",
     },
     {
-      app: "Slack / Discord / Teams",
-      status: "Verified (Chat-Safe)",
-      notes: "Smart Shift+Return integration automatically prevents premature message transmission on 'new line'.",
-      testedOn: "Latest desktop builds",
+      app: "Slack, WhatsApp, Teams, Discord, Telegram, Messages, Signal",
+      status: "Supported (chat-safe)",
+      notes: "\"New line\" sends Shift+Return so messages aren't sent early. Also applies to Slack and WhatsApp in a browser.",
+      testedOn: "Desktop & web chat",
     },
     {
-      app: "Safari / Chrome / Arc",
-      status: "Verified",
-      notes: "Tested across standard text inputs, textareas, and rich-text contentEditable editors (Google Docs, Notion).",
-      testedOn: "WebKit & Chromium engines",
+      app: "VS Code, Cursor, Xcode, JetBrains IDEs",
+      status: "Supported",
+      notes: "Great for comments, commit messages, docs and AI-assistant prompts. Use custom words for project names and jargon.",
+      testedOn: "Code editors",
     },
     {
-      app: "Terminal / iTerm2",
-      status: "Verified",
-      notes: "Verbatim mode recommended to prevent natural-language rewrite of shell flags and identifiers.",
-      testedOn: "macOS Terminal & zsh",
+      app: "Terminal, iTerm2, Warp, Ghostty, kitty, Alacritty, WezTerm",
+      status: "Supported (terminal-safe)",
+      notes: "Polished mode only removes fillers here: no capitals, no trailing period, \"new line\" never presses Enter.",
+      testedOn: "Terminals",
     },
     {
-      app: "Obsidian / Notes",
-      status: "Verified",
-      notes: "Live streaming into Markdown notes with bullet lists and section headers.",
-      testedOn: "macOS Notes & Obsidian 1.7+",
-    },
-    {
-      app: "Paste-Disabled Web Inputs & Secure Forms",
-      status: "Verified (Immune to Paste Blocks)",
-      notes: "Bypasses JavaScript onpaste='return false;' and locked context menus. Injected as true hardware keystrokes directly via WindowServer.",
-      testedOn: "Safari, Chrome, Enterprise Intranets",
-    },
-    {
-      app: "Remote Desktops & VDI (Citrix / RDP / AWS)",
-      status: "Verified (Hardware CGEvent)",
-      notes: "Virtual desktops block clipboard pass-through, but receive MacVoice's synthetic keystrokes as physical client keyboard input.",
-      testedOn: "Citrix Workspace & Microsoft Remote Desktop",
+      app: "Remote desktops & VDI (Citrix, Microsoft Remote Desktop)",
+      status: "Depends on client",
+      notes: "Depends on how your remote-desktop client forwards keyboard input. Try it during the 14-day refund window.",
+      testedOn: "Remote sessions",
     },
   ];
 
@@ -82,9 +72,9 @@ export default function CompatibilityPage() {
       <JsonLd schema={compatibilityBreadcrumb} />
       <Container size="narrow">
         <SectionHeader
-          eyebrow="Tested Destinations"
-          title="Application Compatibility Matrix"
-          description="MacVoice inserts text using native macOS keyboard events (CGEvent). Here is the documented status across major developer and writing destinations."
+          eyebrow="Where It Works"
+          title="Works in the apps you already use"
+          description="MacVoice types your words as keyboard input into whatever text box is focused, so it works in almost any Mac app. Here's what to expect in each kind of app."
         />
 
         <div className="space-y-12 text-[#1D1D1F] text-sm leading-relaxed">
@@ -112,7 +102,7 @@ export default function CompatibilityPage() {
           {/* Compatibility Table */}
           <div id="matrix">
             <h2 className="text-xl font-bold text-[#1D1D1F] mb-4">
-              Tested Applications
+              App compatibility
             </h2>
             <div className="overflow-x-auto rounded-2xl border border-[#E8E8ED] bg-[#FFFFFF] shadow-sm">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
@@ -121,7 +111,7 @@ export default function CompatibilityPage() {
                     <th className="py-3.5 px-5">Application</th>
                     <th className="py-3.5 px-5">Status</th>
                     <th className="py-3.5 px-5">Insertion Behavior</th>
-                    <th className="py-3.5 px-5">Verified On</th>
+                    <th className="py-3.5 px-5">Category</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-[#E8E8ED]">
@@ -131,8 +121,8 @@ export default function CompatibilityPage() {
                         {row.app}
                       </td>
                       <td className="py-3.5 px-5">
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
-                          <Check className="w-3 h-3" />
+                        <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-medium border ${row.status === "Depends on client" ? "bg-amber-50 text-amber-700 border-amber-200" : "bg-emerald-50 text-emerald-700 border-emerald-200"}`}>
+                          {row.status === "Depends on client" ? <Info className="w-3 h-3" /> : <Check className="w-3 h-3" />}
                           {row.status}
                         </span>
                       </td>

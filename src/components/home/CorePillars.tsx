@@ -29,10 +29,10 @@ export function CorePillars() {
                 Ever tried pasting into a bank form, job portal, or secure website and got an annoying message saying <em>"Pasting is disabled"</em>?
               </p>
               <p className="text-[#6E6E73] text-sm sm:text-base leading-relaxed">
-                Most voice tools cheat: they convert speech, wipe your clipboard, and hit <code>Cmd+V</code>. When paste is blocked, they break completely.
+                Most voice tools put your words on the clipboard and press <code>Cmd+V</code> for you. When paste is blocked, that trick fails, and your clipboard gets borrowed along the way.
               </p>
               <p className="text-[#6E6E73] text-sm sm:text-base leading-relaxed">
-                MacVoice simulates genuine keystrokes on your Mac. To any website or app, it looks and feels like you typed each letter by hand. It works anywhere you can put a cursor—and never touches whatever you already have copied.
+                MacVoice types your words as keyboard input, the same way your keyboard does. It doesn&apos;t paste, so it works in most places paste is blocked, and it never touches whatever you already have copied. (Password fields are the one place it deliberately won&apos;t type.)
               </p>
             </div>
 
@@ -49,7 +49,7 @@ export function CorePillars() {
                   Other Dictation Apps
                 </div>
                 <p className="text-[#6E6E73] text-xs leading-relaxed">
-                  They copy your speech and try to paste it. Fails on secure forms, triggers "paste detected" warnings, and overwrites your clipboard.
+                  Put your words on the clipboard and paste them. Fails where paste is blocked, and can trigger &quot;clipboard changed&quot; warnings.
                 </p>
               </div>
 
@@ -60,13 +60,13 @@ export function CorePillars() {
                   MacVoice Real-Time Typing
                 </div>
                 <p className="text-[#1D1D1F] text-xs leading-relaxed">
-                  Simulates actual keyboard keystrokes. Bypasses paste restrictions effortlessly, leaves your clipboard safe, and feels 100% human.
+                  Types your words as keyboard input. Works where paste is blocked, and your clipboard is never used.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Pillar 2: Sub-150ms Live Streaming */}
+          {/* Pillar 2: Live streaming */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-6 lg:order-2 space-y-4">
               <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#0071E3]">
@@ -77,28 +77,28 @@ export function CorePillars() {
                 Speak at your normal speed. Words appear as you talk.
               </h3>
               <p className="text-[#6E6E73] text-sm sm:text-base leading-relaxed">
-                Most voice apps make you record a voice note, press stop, wait 4 seconds for an AI server to think, and then paste a giant block of text.
+                Many voice apps make you finish talking, press stop, wait for the AI to process the recording, and then paste one big block of text.
               </p>
               <p className="text-[#6E6E73] text-sm sm:text-base leading-relaxed">
-                MacVoice streams your words right at your cursor in real time. You talk at 150 words per minute, and the text keeps up with you effortlessly. You stay in your creative flow.
+                MacVoice types while you talk. In Polished mode (the default) each sentence appears as soon as you finish it, already cleaned up. In Verbatim mode words appear one by one, as you say them. Either way you can see what you&apos;re writing and stay in flow.
               </p>
             </div>
 
             <div className="lg:col-span-6 lg:order-1 p-6 rounded-3xl bg-[#F5F5F7] border border-[#E8E8ED] space-y-3 text-xs">
               <div className="text-[#6E6E73] text-[11px] pb-2 border-b border-[#E8E8ED] flex justify-between font-medium">
                 <span>Real-Time Flow</span>
-                <span className="text-emerald-600 font-semibold">Under 150ms delay</span>
+                <span className="text-emerald-600 font-semibold">Types while you talk</span>
               </div>
               <div className="space-y-2 text-[#1D1D1F] leading-relaxed">
                 <div className="p-3 rounded-xl bg-[#FFFFFF] border border-[#E8E8ED]">
                   <span className="text-[#0071E3] font-semibold">You say:</span> "Let's prepare the presentation for the Monday team meeting"
                 </div>
                 <div className="p-3 rounded-xl bg-[#FFFFFF] border border-emerald-200">
-                  <span className="text-emerald-700 font-semibold">It types:</span> Words appear character-by-character as you speak each syllable.
+                  <span className="text-emerald-700 font-semibold">It types:</span> &ldquo;Let&apos;s prepare the presentation for the Monday team meeting.&rdquo; Done before you&apos;ve reached for the keyboard.
                 </div>
               </div>
               <div className="pt-1 text-[11px] text-[#6E6E73]">
-                No countdowns, no loading spinners, no waiting.
+                No recording to upload, no loading spinner, no big paste at the end.
               </div>
             </div>
           </div>
@@ -152,7 +152,7 @@ export function CorePillars() {
                 Never sends an accidental, half-written Slack message.
               </h3>
               <p className="text-[#6E6E73] text-sm sm:text-base leading-relaxed">
-                If you've ever used voice typing in Slack, WhatsApp, or Microsoft Teams, you know the fear: you say "new line", the app hits Enter, and sends an incomplete sentence to your boss.
+                In Slack, WhatsApp or Teams, pressing Enter sends your message. So if a voice tool turns &quot;new line&quot; into Enter, a half-finished sentence goes straight to your boss.
               </p>
               <p className="text-[#6E6E73] text-sm sm:text-base leading-relaxed">
                 MacVoice is smart. When you're inside messaging apps, it automatically inserts a safe line break instead of pressing Send. Your drafts stay drafts until you're ready.
@@ -168,7 +168,7 @@ export function CorePillars() {
                   </span>
                 </div>
                 <p className="text-[#6E6E73] text-xs leading-relaxed">
-                  Slack, WhatsApp, Discord, Teams, Telegram, and Messages. Speak paragraphs naturally without worrying about accidental sends.
+                  Slack, WhatsApp, Discord, Teams, Telegram, Messages and Signal, plus Slack and WhatsApp in your browser. Speak paragraphs without worrying about accidental sends.
                 </p>
               </div>
               <div className="text-[11px] text-[#6E6E73] px-1">
@@ -188,14 +188,14 @@ export function CorePillars() {
               Curious about the technical architecture?
             </h4>
             <p className="text-xs text-[#6E6E73] max-w-xl">
-              MacVoice is pure native Swift (784 KB DMG, ~60 MB RAM), linking directly to macOS Quartz HID event taps and Apple SpeechAnalyzer. Zero Python, zero Electron, zero cloud servers.
+              MacVoice is a native Swift app (under 1 MB) built on Apple&apos;s on-device SpeechAnalyzer and macOS keyboard events (CGEvent). No Python, no Electron, no bundled AI model, no servers.
             </p>
           </div>
           <Link
             href="/privacy#architecture"
             className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0071E3] hover:underline shrink-0"
           >
-            Read Architecture Audit <ArrowRight className="w-3.5 h-3.5" />
+            How it works under the hood <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
       </Container>

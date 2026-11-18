@@ -4,6 +4,7 @@ import { MetricsBar } from "@/components/home/MetricsBar";
 import { LiveDemo } from "@/components/home/LiveDemo";
 import { CorePillars } from "@/components/home/CorePillars";
 import { TwoModes } from "@/components/home/TwoModes";
+import { SmartFeatures } from "@/components/home/SmartFeatures";
 import { ComparisonTable } from "@/components/home/ComparisonTable";
 import { PrivacyGuarantee } from "@/components/home/PrivacyGuarantee";
 import { OnboardingSteps } from "@/components/home/OnboardingSteps";
@@ -21,6 +22,7 @@ export default function HomePage() {
       <LiveDemo />
       <CorePillars />
       <TwoModes />
+      <SmartFeatures />
       <ComparisonTable />
       <PrivacyGuarantee />
       <OnboardingSteps />

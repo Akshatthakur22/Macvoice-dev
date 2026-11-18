@@ -6,11 +6,11 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://macvoice.akshatt.in"),
   title: {
-    default: "MacVoice — Local-First Voice Keyboard for macOS",
+    default: "MacVoice: Private Voice Typing & Dictation App for Mac",
     template: "%s | MacVoice",
   },
   description:
-    "Speak naturally and turn speech into text in the app you're already using. Sub-150ms live cursor streaming, instant filler removal, zero cloud servers, and chat-safe newlines for Mac power users.",
+    "Press a shortcut, talk, and MacVoice types clean text at your cursor in any Mac app. On-device, removes ums, voice commands, never touches your clipboard. $9 once.",
   keywords: [
     "macvoice",
     "voice typing mac",
@@ -60,24 +60,15 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://macvoice.akshatt.in",
     siteName: "MacVoice",
-    title: "MacVoice — Local-First Voice Keyboard for macOS",
+    title: "MacVoice: Private Voice Typing for Mac",
     description:
-      "Sub-150ms real-time voice typing for macOS. 100% on-device speech recognition, zero server uploads, 784 KB native Swift app. $9 one-time purchase.",
-    images: [
-      {
-        url: "/brand/macvoice-icon-dark-1024.png",
-        width: 1024,
-        height: 1024,
-        alt: "MacVoice App Icon — Local Voice Typing for macOS",
-      },
-    ],
+      "Talk, and your Mac types it. On-device voice typing that works in any app, removes filler words, and never uploads your voice. $9 once, no subscription.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "MacVoice — Local-First Voice Keyboard for macOS",
+    title: "MacVoice: Private Voice Typing for Mac",
     description:
-      "Sub-150ms real-time voice typing for macOS. 100% on-device speech recognition, zero server uploads, 784 KB native Swift app.",
-    images: ["/brand/macvoice-icon-dark-1024.png"],
+      "Talk, and your Mac types it. On-device voice typing that works in any app, removes filler words, and never uploads your voice. $9 once.",
     creator: "@akshatthakur22",
   },
   other: {

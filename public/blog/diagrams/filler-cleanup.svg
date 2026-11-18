@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 380" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif">
+<rect width="1200" height="380" fill="#FFFFFF"/>
+<text x="600" y="50" text-anchor="middle" font-size="28" font-weight="700" fill="#1D1D1F">Raw dictation vs. cleaned-up dictation</text>
+<rect x="60" y="90" width="1080" height="100" rx="20" fill="#F5F5F7"/>
+<text x="90" y="128" font-size="17" font-weight="700" fill="#6E6E73">WHAT YOU SAID</text>
+<text x="90" y="165" font-size="23" fill="#1D1D1F">so <tspan fill="#DC2626">um</tspan> I think <tspan fill="#DC2626">the the</tspan> launch is <tspan fill="#DC2626">uh</tspan> on friday <tspan fill="#DC2626">dont</tspan> you think</text>
+<rect x="60" y="215" width="1080" height="100" rx="20" fill="#EAF3FF" stroke="#0071E3"/>
+<text x="90" y="253" font-size="17" font-weight="700" fill="#0071E3">WHAT GETS TYPED</text>
+<text x="90" y="290" font-size="23" fill="#1D1D1F">So I think the launch is on Friday, don't you think?</text>
+<text x="600" y="355" text-anchor="middle" font-size="17" fill="#6E6E73">Fillers and accidental repeats removed, apostrophe fixed, capital letters added.</text>
+</svg>

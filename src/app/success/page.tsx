@@ -6,7 +6,7 @@ import { SuccessContent } from "./SuccessContent";
 export const metadata: Metadata = {
   title: "Purchase Successful — Download MacVoice.dmg",
   description:
-    "Your MacVoice license is active. Download MacVoice.dmg (784 KB) and complete the 3-step setup.",
+    "Your MacVoice license is active. Download MacVoice.dmg (under 1 MB) and complete the quick setup.",
   robots: {
     index: false,
     follow: false,

@@ -91,8 +91,8 @@ export default function PricingPage() {
             </div>
             <div className="p-5 rounded-2xl bg-[#FFFFFF] border border-[#E8E8ED] shadow-xs">
               <div className="font-semibold text-[#1D1D1F] mb-1">Superwhisper</div>
-              <div className="text-amber-600 font-mono text-base font-bold mb-1">$250 once</div>
-              <div className="text-[#6E6E73]">Requires 1.5 GB+ local models</div>
+              <div className="text-amber-600 font-mono text-base font-bold mb-1">$249.99 once</div>
+              <div className="text-[#6E6E73]">Or Pro at ~$85 / year</div>
             </div>
           </div>
         </div>

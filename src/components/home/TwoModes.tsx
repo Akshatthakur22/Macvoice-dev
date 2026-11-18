@@ -9,9 +9,9 @@ export function TwoModes() {
   const [activeTab, setActiveTab] = useState<"verbatim" | "polished">("polished");
 
   const examples = {
-    spoken: "hey um can you check the uh redis cache dont forget to restart it new line thanks",
-    verbatim: "hey um can you check the uh redis cache dont forget to restart it\nthanks",
-    polished: "Hey, can you check the Redis cache? Don't forget to restart it.\nThanks!",
+    spoken: "hey um can you check the uh the cache dont forget to restart it new line thanks",
+    verbatim: "hey um can you check the uh the cache dont forget to restart it new line thanks",
+    polished: "Hey, can you check the cache? Don't forget to restart it.\nThanks.",
   };
 
   return (
@@ -19,8 +19,8 @@ export function TwoModes() {
       <Container>
         <SectionHeader
           eyebrow="Freedom of Choice"
-          title="Two Distinct Modes. Complete User Control."
-          description="Switch between raw, unmodified transcription speed and conservative native polishing in a single keystroke."
+          title="Two modes. You choose."
+          description="Polished cleans up your speech as you go. Verbatim types exactly what you said, word by word. Switch any time in Settings → Modes."
         />
 
         {/* Tab switch */}
@@ -36,7 +36,7 @@ export function TwoModes() {
               }`}
             >
               <FastForward className="w-4 h-4 text-amber-500" />
-              Verbatim Mode (Raw Speed)
+              Verbatim
             </button>
             <button
               type="button"
@@ -48,7 +48,7 @@ export function TwoModes() {
               }`}
             >
               <Shield className="w-4 h-4 text-current" />
-              Polished Mode (Smart Cleanup)
+              Polished (default)
             </button>
           </div>
         </div>
@@ -60,22 +60,22 @@ export function TwoModes() {
             <div>
               <div className="flex items-center justify-between mb-4">
                 <span className="text-xs font-mono uppercase tracking-wider text-[#6E6E73]">
-                  Input Utterance
+                  What you say
                 </span>
                 <span className="text-[11px] font-mono text-[#6E6E73]">
-                  Raw Audio Transcript
+                  Out loud
                 </span>
               </div>
               <div className="p-4 rounded-2xl bg-[#FFFFFF] border border-[#E8E8ED] text-[#1D1D1F] font-mono text-sm leading-relaxed mb-4 shadow-sm">
                 "{examples.spoken}"
               </div>
               <p className="text-xs text-[#6E6E73] leading-relaxed">
-                Notice natural vocal hesitation words ("um", "uh"), unpunctuated contractions ("dont"), and spoken formatting instructions ("new line").
+                Notice the &quot;um&quot;, &quot;uh&quot;, the repeated &quot;the&quot;, the missing apostrophe in &quot;dont&quot;, and the spoken command &quot;new line&quot;.
               </p>
             </div>
 
             <div className="mt-6 pt-4 border-t border-[#E8E8ED] text-xs text-[#6E6E73]">
-              Input captured by macOS SpeechAnalyzer in memory
+              Heard by Apple&apos;s on-device speech engine. Never recorded.
             </div>
           </div>
 
@@ -84,10 +84,10 @@ export function TwoModes() {
             <div>
               <div className="flex items-center justify-between mb-4">
                 <span className="text-xs font-mono uppercase tracking-wider text-[#0071E3] font-bold">
-                  {activeTab === "verbatim" ? "Verbatim Output" : "Polished Output"}
+                  {activeTab === "verbatim" ? "Verbatim types" : "Polished types"}
                 </span>
                 <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-[#EAF3FF] text-[#0071E3] border border-[#0071E3]/20">
-                  {activeTab === "verbatim" ? "< 120ms total" : "< 150ms total"}
+                  {activeTab === "verbatim" ? "word by word" : "sentence by sentence"}
                 </span>
               </div>
 
@@ -100,26 +100,26 @@ export function TwoModes() {
                   <>
                     <div className="flex items-center gap-2 text-[#1D1D1F]">
                       <Check className="w-3.5 h-3.5 text-amber-500 shrink-0" />
-                      <span>Zero post-processing delay; passes speech recognizer text directly</span>
+                      <span>Types each word the moment it&apos;s recognised. No changes.</span>
                     </div>
                     <div className="flex items-center gap-2 text-[#1D1D1F]">
                       <Check className="w-3.5 h-3.5 text-amber-500 shrink-0" />
-                      <span>Ideal for terminal commands, regex, variable names, and code tokens</span>
+                      <span>Good when you want exactly what you said, or prefer to see words appear live</span>
                     </div>
                   </>
                 ) : (
                   <>
                     <div className="flex items-center gap-2 text-[#1D1D1F]">
                       <Check className="w-3.5 h-3.5 text-[#0071E3] shrink-0" />
-                      <span>Strips fillers ("um", "uh") with zero latency overhead</span>
+                      <span>Removes &quot;um&quot;, &quot;uh&quot; and stutters like &quot;the the&quot;</span>
                     </div>
                     <div className="flex items-center gap-2 text-[#1D1D1F]">
                       <Check className="w-3.5 h-3.5 text-[#0071E3] shrink-0" />
-                      <span>Repairs contractions ("dont" → "don't") & normalizes capitalization</span>
+                      <span>Fixes apostrophes (&quot;dont&quot; → &quot;don&apos;t&quot;) and capital letters</span>
                     </div>
                     <div className="flex items-center gap-2 text-[#1D1D1F]">
                       <Check className="w-3.5 h-3.5 text-[#0071E3] shrink-0" />
-                      <span>Safe fallback: if alterations fail safety checks, original text is kept</span>
+                      <span>Follows commands: &quot;new line&quot;, &quot;bullet point&quot;, &quot;scratch that&quot;…</span>
                     </div>
                   </>
                 )}
@@ -127,7 +127,7 @@ export function TwoModes() {
             </div>
 
             <div className="mt-6 pt-4 border-t border-[#E8E8ED] text-xs text-[#6E6E73] font-mono">
-              Toggle modes via menu bar or settings shortcut
+              Runs on your Mac in under a millisecond. No AI model, no internet.
             </div>
           </div>
         </div>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 440" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif">
+<rect width="1200" height="440" fill="#FFFFFF"/>
+<text x="600" y="50" text-anchor="middle" font-size="28" font-weight="700" fill="#1D1D1F">Two ways dictation apps put text into other apps</text>
+<rect x="40" y="90" width="540" height="310" rx="24" fill="#FFF7ED" stroke="#EA580C"/>
+<text x="310" y="135" text-anchor="middle" font-size="23" font-weight="700" fill="#EA580C">Clipboard + paste</text>
+<g font-size="19" fill="#1D1D1F"><text x="80" y="185">1. Save what you had copied</text><text x="80" y="220">2. Put the dictated text on the clipboard</text><text x="80" y="255">3. Press ⌘V for you</text><text x="80" y="290">4. Put your old clipboard back</text></g>
+<text x="80" y="350" font-size="17" fill="#6E6E73">Fast for long text · fails where paste is blocked</text>
+<text x="80" y="375" font-size="17" fill="#6E6E73">shows up in clipboard managers</text>
+<rect x="620" y="90" width="540" height="310" rx="24" fill="#EAF3FF" stroke="#0071E3"/>
+<text x="890" y="135" text-anchor="middle" font-size="23" font-weight="700" fill="#0071E3">Keyboard input</text>
+<g font-size="19" fill="#1D1D1F"><text x="660" y="185">1. Send the text as keyboard events</text><text x="660" y="220">2. The app receives it like typing</text><text x="660" y="255">3. Clipboard is never touched</text></g>
+<text x="660" y="350" font-size="17" fill="#6E6E73">Works where paste is blocked · can appear live</text>
+<text x="660" y="375" font-size="17" fill="#6E6E73">blocked in password fields (by design)</text>
+</svg>

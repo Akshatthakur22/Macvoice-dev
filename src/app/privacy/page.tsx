@@ -80,7 +80,7 @@ export default function PrivacyPage() {
           </section>
 
           {/* 2. Zero Outbound Network Connections */}
-          <section className="space-y-4">
+          <section id="network" className="space-y-4">
             <div className="flex items-center gap-3">
               <div className="p-2.5 rounded-xl bg-[#EAF3FF] text-[#0071E3] border border-[#0071E3]/20">
                 <WifiOff className="w-5 h-5" />
@@ -95,6 +95,7 @@ export default function PrivacyPage() {
             </p>
             <p className="text-[#6E6E73]">
               You can independently verify this at any time by monitoring MacVoice's network activity using macOS Activity Monitor, Little Snitch, or Wireshark. During voice typing, outbound traffic is <strong>0 bytes</strong>.
+              The only download involved is Apple&apos;s own speech model, which macOS fetches once for your language (through Apple&apos;s system services, not MacVoice) if it isn&apos;t already on your Mac.
             </p>
           </section>
 
@@ -115,10 +116,13 @@ export default function PrivacyPage() {
             <p className="text-[#6E6E73]">
               There is no "history" tab, no search archive, and no indexing of past dictations. What you say belongs solely in the destination document you chose to type into.
             </p>
+            <p className="text-[#6E6E73]">
+              The only things MacVoice saves are your settings (mode, shortcut, appearance, sound and typing preferences) and the custom words and replacements you type into the Words tab, stored in standard macOS preferences on your Mac.
+            </p>
           </section>
 
           {/* 4. macOS Permissions Audit */}
-          <section className="space-y-4">
+          <section id="permissions" className="space-y-4">
             <div className="flex items-center gap-3">
               <div className="p-2.5 rounded-xl bg-[#EAF3FF] text-[#0071E3] border border-[#0071E3]/20">
                 <KeyRound className="w-5 h-5" />
@@ -145,7 +149,10 @@ export default function PrivacyPage() {
                   Accessibility Permission (Quartz HID Keystroke Synthesis)
                 </h3>
                 <p className="text-xs text-[#6E6E73] leading-relaxed">
-                  Required by macOS for <code className="text-[#1D1D1F] font-mono">CGEvent.post()</code> so MacVoice can synthesize authentic hardware keystrokes into whichever app holds current focus (e.g. VS Code, Slack, Safari, or remote terminals). Unlike conventional speech tools that monitor or overwrite your clipboard (<code className="text-[#1D1D1F] font-mono">NSPasteboard</code>), MacVoice never touches your clipboard and never inspects, captures, or logs your existing typing activity.
+                  Required by macOS for <code className="text-[#1D1D1F] font-mono">CGEvent.post()</code> so MacVoice can send keyboard input to whichever app is focused (e.g. Slack, Safari, VS Code). MacVoice never touches your clipboard (<code className="text-[#1D1D1F] font-mono">NSPasteboard</code>) and never monitors or logs your own typing.
+                </p>
+                <p className="text-xs text-[#6E6E73] leading-relaxed mt-2">
+                  <strong className="text-[#1D1D1F]">Exactly what MacVoice reads, and why.</strong> When a dictation starts, MacVoice reads up to <strong>3 characters just before your cursor</strong>, so it knows whether to add a space or start with a capital letter. It also checks <strong>which app is in front</strong> (to recognise chat apps and terminals) and, only in web browsers, the <strong>window title</strong> (to recognise Slack or WhatsApp on the web). None of this is stored or sent anywhere; it is used for that one dictation and then discarded.
                 </p>
               </div>
             </div>

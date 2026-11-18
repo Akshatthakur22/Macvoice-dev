@@ -13,7 +13,7 @@ export function Hero() {
         <div className="flex justify-center mb-6">
           <Badge variant="blue" className="py-1 px-4 text-xs font-medium tracking-tight flex items-center gap-1.5">
             <Sparkles className="w-3.5 h-3.5 text-[#0071E3]" />
-            Instant voice typing for Mac · No subscription · $9 once
+            Private voice typing for Mac · No subscription · $9 once
           </Badge>
         </div>
 
@@ -24,8 +24,8 @@ export function Hero() {
 
         {/* Sub-headline: Relatable human benefit */}
         <p className="text-lg sm:text-xl text-[#6E6E73] max-w-2xl mx-auto leading-relaxed mb-9 font-normal">
-          Speak naturally and watch clean, punctuated text appear at your cursor in real time.
-          Works in any app, removes your "ums" and "ahs" automatically, and types even where copy-paste is blocked.
+          Press a shortcut in any app and just talk. MacVoice types clean, punctuated text right at your cursor,
+          removes your &ldquo;ums&rdquo; automatically, and never sends your voice to the cloud.
         </p>
 
         {/* Primary and Secondary CTA Buttons */}

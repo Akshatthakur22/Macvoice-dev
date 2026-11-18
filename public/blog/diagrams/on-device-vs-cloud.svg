@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 470" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif">
+<rect width="1200" height="470" fill="#FFFFFF"/>
+<text x="600" y="50" text-anchor="middle" font-size="28" font-weight="700" fill="#1D1D1F">On-device vs. cloud speech recognition</text>
+<rect x="40" y="90" width="540" height="340" rx="24" fill="#ECFDF5" stroke="#059669"/>
+<text x="310" y="135" text-anchor="middle" font-size="24" font-weight="700" fill="#059669">On-device</text>
+<rect x="90" y="170" width="440" height="150" rx="18" fill="#FFFFFF" stroke="#059669" stroke-dasharray="6 6"/>
+<text x="310" y="200" text-anchor="middle" font-size="18" fill="#6E6E73">Your Mac</text>
+<g font-size="19" text-anchor="middle" fill="#1D1D1F"><text x="170" y="265">Voice</text><text x="310" y="265">→ Model →</text><text x="450" y="265">Text</text></g>
+<g font-size="18" fill="#3A3A3C"><text x="90" y="365">✓ Audio never leaves the computer</text><text x="90" y="395">✓ Works offline · ✗ Limited by your hardware</text></g>
+<rect x="620" y="90" width="540" height="340" rx="24" fill="#FEF2F2" stroke="#DC2626"/>
+<text x="890" y="135" text-anchor="middle" font-size="24" font-weight="700" fill="#DC2626">Cloud</text>
+<rect x="660" y="170" width="200" height="150" rx="18" fill="#FFFFFF" stroke="#D2D2D7"/><text x="760" y="200" text-anchor="middle" font-size="18" fill="#6E6E73">Your Mac</text><text x="760" y="265" text-anchor="middle" font-size="19" fill="#1D1D1F">Voice</text>
+<rect x="920" y="170" width="200" height="150" rx="18" fill="#FFFFFF" stroke="#D2D2D7"/><text x="1020" y="200" text-anchor="middle" font-size="18" fill="#6E6E73">Company server</text><text x="1020" y="265" text-anchor="middle" font-size="19" fill="#1D1D1F">Model → Text</text>
+<g stroke="#DC2626" stroke-width="3" fill="#DC2626"><line x1="862" y1="235" x2="910" y2="235"/><polygon points="910,228 918,235 910,242"/><line x1="918" y1="275" x2="870" y2="275"/><polygon points="870,268 862,275 870,282"/></g>
+<g font-size="18" fill="#3A3A3C"><text x="660" y="365">✓ Can use very large models</text><text x="660" y="395">✗ Needs internet · audio is uploaded</text></g>
+</svg>

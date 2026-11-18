@@ -75,6 +75,12 @@ export function Navbar() {
             Docs
           </Link>
           <Link
+            href="/blog"
+            className="hover:text-[#0071E3] transition-colors"
+          >
+            Blog
+          </Link>
+          <Link
             href="/pricing"
             className="hover:text-[#0071E3] transition-colors"
           >
@@ -144,6 +150,13 @@ export function Navbar() {
               className="py-1 hover:text-[#0071E3]"
             >
               Quickstart & Documentation
+            </Link>
+            <Link
+              href="/blog"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-1 hover:text-[#0071E3]"
+            >
+              Blog
             </Link>
             <Link
               href="/pricing"

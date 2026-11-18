@@ -202,7 +202,7 @@ export function SuccessContent() {
               Download Your Release Package
             </h2>
             <p className="text-xs text-[#6E6E73] mb-8">
-              MacVoice.dmg · Version 1.0.0 · 784 KB package · macOS 26+ (Apple Silicon)
+              MacVoice.dmg · Under 1 MB · macOS 26+
             </p>
 
             <div className="flex flex-col items-center justify-center gap-3 mb-8">
@@ -213,7 +213,7 @@ export function SuccessContent() {
                 className="text-base px-9 py-4 font-semibold shadow-md"
               >
                 <ArrowDownToLine className="w-5 h-5" />
-                Download MacVoice.dmg (784 KB)
+                Download MacVoice.dmg
               </Button>
               <div className="text-[11px] text-[#6E6E73] flex flex-wrap items-center justify-center gap-2">
                 <span>⏱️ Link valid for 15 minutes</span>

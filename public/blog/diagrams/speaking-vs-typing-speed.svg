@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 380" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif">
+<rect width="1200" height="380" fill="#FFFFFF"/>
+<text x="60" y="55" font-size="28" font-weight="700" fill="#1D1D1F">Speaking vs. typing (English, smartphone study)</text>
+<text x="60" y="90" font-size="18" fill="#6E6E73">Words per minute. Ruan, Wobbrock, Liou, Ng &amp; Landay (2017), Stanford / University of Washington / Baidu</text>
+<text x="60" y="165" font-size="21" font-weight="600" fill="#1D1D1F">Speech</text>
+<rect x="200" y="135" width="900" height="48" rx="10" fill="#0071E3"/><text x="1085" y="167" text-anchor="end" font-size="22" font-weight="700" fill="#FFFFFF">153 wpm</text>
+<text x="60" y="255" font-size="21" font-weight="600" fill="#1D1D1F">Keyboard</text>
+<rect x="200" y="225" width="306" height="48" rx="10" fill="#C7C7CC"/><text x="520" y="258" font-size="22" font-weight="700" fill="#1D1D1F">52 wpm</text>
+<text x="60" y="340" font-size="17" fill="#6E6E73">Lab conditions, quiet room, phone keyboard. Desktop typists are faster than phone typists, so the gap at a desk is smaller.</text>
+</svg>
