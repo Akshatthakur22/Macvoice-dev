@@ -62,7 +62,7 @@ export default function CompatibilityPage() {
     {
       app: "Remote desktops & VDI (Citrix, Microsoft Remote Desktop)",
       status: "Depends on client",
-      notes: "Depends on how your remote-desktop client forwards keyboard input. Try it during the 14-day refund window.",
+      notes: "Depends on how your remote-desktop client forwards keyboard input. It’s free, so try it on your setup.",
       testedOn: "Remote sessions",
     },
   ];
@@ -72,6 +72,7 @@ export default function CompatibilityPage() {
       <JsonLd schema={compatibilityBreadcrumb} />
       <Container size="narrow">
         <SectionHeader
+          as="h1"
           eyebrow="Where It Works"
           title="Works in the apps you already use"
           description="MacVoice types your words as keyboard input into whatever text box is focused, so it works in almost any Mac app. Here's what to expect in each kind of app."

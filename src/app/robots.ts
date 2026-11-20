@@ -8,23 +8,23 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/success", "/success/"],
+        disallow: ["/api/", "/success", "/success/", "/download"],
       },
       // Search Engines
       {
         userAgent: "Googlebot",
         allow: "/",
-        disallow: ["/api/", "/success", "/success/"],
+        disallow: ["/api/", "/success", "/success/", "/download"],
       },
       {
         userAgent: "Bingbot",
         allow: "/",
-        disallow: ["/api/", "/success", "/success/"],
+        disallow: ["/api/", "/success", "/success/", "/download"],
       },
       {
         userAgent: "Applebot",
         allow: "/",
-        disallow: ["/api/", "/success", "/success/"],
+        disallow: ["/api/", "/success", "/success/", "/download"],
       },
       // AI Crawlers & Answer Engines (AEO / GEO)
       {
@@ -43,7 +43,7 @@ export default function robots(): MetadataRoute.Robots {
           "Bytespider",
         ],
         allow: ["/", "/llms.txt", "/llms-full.txt"],
-        disallow: ["/api/", "/success", "/success/"],
+        disallow: ["/api/", "/success", "/success/", "/download"],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,

@@ -1,16 +1,29 @@
 import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { RevealObserver } from "@/components/ui/Reveal";
 import "./globals.css";
+
+const geist = Geist({ subsets: ["latin"], variable: "--font-geist", display: "swap" });
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+  display: "swap",
+  preload: false,
+});
+
+const TITLE = "MacVoice — Talk to any Mac app, typed as you speak";
+const DESCRIPTION =
+  "Press a shortcut, talk, and MacVoice types clean text at your cursor in any Mac app. On-device and private. Free, with no account or subscription.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://macvoice.akshatt.in"),
   title: {
-    default: "MacVoice: Private Voice Typing & Dictation App for Mac",
+    default: TITLE,
     template: "%s | MacVoice",
   },
-  description:
-    "Press a shortcut, talk, and MacVoice types clean text at your cursor in any Mac app. On-device, removes ums, voice commands, never touches your clipboard. $9 once.",
+  description: DESCRIPTION,
   keywords: [
     "macvoice",
     "voice typing mac",
@@ -60,15 +73,13 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://macvoice.akshatt.in",
     siteName: "MacVoice",
-    title: "MacVoice: Private Voice Typing for Mac",
-    description:
-      "Talk, and your Mac types it. On-device voice typing that works in any app, removes filler words, and never uploads your voice. $9 once, no subscription.",
+    title: TITLE,
+    description: DESCRIPTION,
   },
   twitter: {
     card: "summary_large_image",
-    title: "MacVoice: Private Voice Typing for Mac",
-    description:
-      "Talk, and your Mac types it. On-device voice typing that works in any app, removes filler words, and never uploads your voice. $9 once.",
+    title: TITLE,
+    description: DESCRIPTION,
     creator: "@akshatthakur22",
   },
   other: {
@@ -82,14 +93,31 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="h-full antialiased">
+    <html
+      lang="en"
+      className={`${geist.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
+    >
       <head>
         <link rel="help" type="text/plain" href="/llms.txt" title="LLM Context" />
+        {/* Lets CSS hide reveal-on-scroll content only when JS can reveal it again. */}
+        <script
+          dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }}
+        />
       </head>
-      <body className="min-h-full flex flex-col bg-[#FFFFFF] text-[#1D1D1F]">
+      <body className="min-h-full flex flex-col bg-bg text-ink">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:text-white"
+        >
+          Skip to content
+        </a>
         <Navbar />
-        <div className="flex-1">{children}</div>
+        <div id="main" tabIndex={-1} className="flex-1 outline-none">
+          {children}
+        </div>
         <Footer />
+        <RevealObserver />
       </body>
     </html>
   );

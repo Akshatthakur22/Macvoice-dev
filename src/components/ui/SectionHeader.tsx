@@ -3,38 +3,46 @@ import { cn } from "@/lib/utils";
 
 interface SectionHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   eyebrow?: string;
+  /** The claim, in ink. */
   title: string;
+  /** The qualifier, in grey (two-tone heading). */
+  muted?: string;
   description?: string;
   align?: "left" | "center";
+  as?: "h1" | "h2";
 }
 
 export function SectionHeader({
   eyebrow,
   title,
+  muted,
   description,
   align = "center",
+  as: Heading = "h2",
   className,
   ...props
 }: SectionHeaderProps) {
   return (
     <div
       className={cn(
-        "max-w-3xl mb-12 sm:mb-16",
+        "mb-12 max-w-4xl sm:mb-16",
         align === "center" ? "mx-auto text-center" : "text-left",
         className
       )}
       {...props}
     >
-      {eyebrow ? (
-        <span className="text-xs sm:text-sm font-semibold tracking-wide uppercase text-[#0071E3] mb-3 inline-block">
-          {eyebrow}
-        </span>
-      ) : null}
-      <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#1D1D1F] mb-4">
+      {eyebrow ? <p className="text-eyebrow mb-4 text-ink-2">{eyebrow}</p> : null}
+      <Heading className="text-h2 text-balance text-ink">
         {title}
-      </h2>
+        {muted ? <span className="text-ink-3 sm:block"> {muted}</span> : null}
+      </Heading>
       {description ? (
-        <p className="text-base sm:text-lg text-[#6E6E73] leading-relaxed max-w-2xl mx-auto">
+        <p
+          className={cn(
+            "text-body-lg mt-5 max-w-[640px] text-pretty text-ink-2",
+            align === "center" && "mx-auto"
+          )}
+        >
           {description}
         </p>
       ) : null}

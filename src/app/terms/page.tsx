@@ -5,23 +5,23 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { JsonLd, buildBreadcrumbSchema } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Terms of Sale & Software License",
+  title: "Terms of Use & Contributions",
   description:
-    "Review our transparent, developer-friendly software license, multi-Mac entitlement, and refund terms for MacVoice.",
+    "MacVoice's license terms: free to use on any number of your Macs, plus how optional one-time contributions and refunds work.",
   alternates: {
     canonical: "https://macvoice.akshatt.in/terms",
   },
   openGraph: {
-    title: "Terms of Sale & Software License — MacVoice",
+    title: "Terms of Use & Contributions — MacVoice",
     description:
-      "Transparent, developer-first license terms. No recurring subscription fees. Valid on up to 5 personal Macs.",
+      "MacVoice is free to use, including at work, on any number of your Macs. Optional contributions come with a 14-day refund.",
     url: "https://macvoice.akshatt.in/terms",
   },
 };
 
 const termsBreadcrumb = buildBreadcrumbSchema([
   { name: "Home", item: "https://macvoice.akshatt.in" },
-  { name: "Terms of Sale", item: "https://macvoice.akshatt.in/terms" },
+  { name: "Terms", item: "https://macvoice.akshatt.in/terms" },
 ]);
 
 export default function TermsPage() {
@@ -30,23 +30,24 @@ export default function TermsPage() {
       <JsonLd schema={termsBreadcrumb} />
       <Container size="narrow">
         <SectionHeader
-          eyebrow="Legal & Commercial Agreement"
-          title="Terms of Sale & License Agreement"
-          description="Clear, fair, developer-first terms. No hidden recurring fees, no arbitrary restrictions."
+          as="h1"
+          eyebrow="Terms"
+          title="Terms of Use & Contributions"
+          description="Short and plain: MacVoice is free to use, and contributions are optional."
         />
 
         <div className="space-y-8 text-[#1D1D1F] text-sm leading-relaxed">
           <section className="p-7 rounded-3xl bg-[#F5F5F7] border border-[#E8E8ED] space-y-3">
-            <h2 className="text-base font-bold text-[#1D1D1F]">1. One-Time Purchase & Ownership</h2>
+            <h2 className="text-base font-bold text-[#1D1D1F]">1. Free License</h2>
             <p className="text-xs text-[#6E6E73] leading-relaxed">
-              MacVoice is sold as a single, one-time payment of $9.00 USD. Your purchase grants you a perpetual, non-exclusive license to use the software. You will never be charged recurring subscription or renewal fees for the purchased version.
+              MacVoice is free. Downloading it grants you a perpetual, non-exclusive, non-transferable license to use the software at no cost. You may not resell or redistribute modified copies of the app.
             </p>
           </section>
 
           <section className="p-7 rounded-3xl bg-[#F5F5F7] border border-[#E8E8ED] space-y-3">
-            <h2 className="text-base font-bold text-[#1D1D1F]">2. Multi-Mac Entitlement (Up to 5 Devices)</h2>
+            <h2 className="text-base font-bold text-[#1D1D1F]">2. Any Number of Macs, Including at Work</h2>
             <p className="text-xs text-[#6E6E73] leading-relaxed">
-              You are permitted to install and run MacVoice on up to 5 (five) Mac computers that you personally own or operate (including your personal MacBook, work Mac, and home desktop). Commercial use in professional work environments is explicitly permitted.
+              You may install and run MacVoice on as many Macs as you use, personal or work. Commercial use is permitted.
             </p>
           </section>
 
@@ -58,16 +59,16 @@ export default function TermsPage() {
           </section>
 
           <section className="p-7 rounded-3xl bg-[#F5F5F7] border border-[#E8E8ED] space-y-3">
-            <h2 className="text-base font-bold text-[#1D1D1F]">4. Updates & Maintenance</h2>
+            <h2 className="text-base font-bold text-[#1D1D1F]">4. Updates & What Stays Free</h2>
             <p className="text-xs text-[#6E6E73] leading-relaxed">
-              Your license includes all minor updates, performance optimizations, bug fixes, and feature additions released under the MacVoice v1.x release cycle.
+              Every feature MacVoice offers today stays free, including future updates and fixes to those features. If paid Pro features are ever added, they will be new features, and anyone who made a contribution before then gets them free.
             </p>
           </section>
 
           <section id="refund" className="p-7 rounded-3xl bg-[#F5F5F7] border border-[#E8E8ED] space-y-3">
-            <h2 className="text-base font-bold text-[#1D1D1F]">5. 14-Day Money-Back Guarantee</h2>
+            <h2 className="text-base font-bold text-[#1D1D1F]">5. Contributions & 14-Day Refunds</h2>
             <p className="text-xs text-[#6E6E73] leading-relaxed">
-              If MacVoice is incompatible with your setup or does not meet your expectations, you may request a 100% full refund within 14 days of purchase. Simply email akshatthakur22@gmail.com with your checkout receipt or Polar order ID.
+              Contributions are optional, one-time payments processed by Polar, which acts as the merchant of record. They don&apos;t unlock or change any part of the app. You can request a full refund within 14 days of a contribution by emailing akshatthakur22@gmail.com with your receipt or Polar order ID.
             </p>
           </section>
 

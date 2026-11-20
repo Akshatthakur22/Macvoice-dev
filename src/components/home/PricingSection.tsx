@@ -1,138 +1,82 @@
-"use client";
-
-import React, { useState } from "react";
+import React from "react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { Button } from "@/components/ui/Button";
-import { Check, ShieldCheck, Sparkles, AlertCircle } from "lucide-react";
+import { TrustLine } from "@/components/ui/TrustLine";
+import { Waveform } from "@/components/ui/Waveform";
+import { Reveal } from "@/components/ui/Reveal";
+import { SupportPicker } from "@/components/support/SupportPicker";
 
-export function PricingSection() {
-  const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-
-  const handleCheckout = async () => {
-    try {
-      setLoading(true);
-      setErrorMessage(null);
-
-      const res = await fetch("/api/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.error || "Failed to initiate checkout");
-      }
-
-      if (data.url) {
-        window.location.href = data.url;
-      }
-    } catch (err: unknown) {
-      console.error("Checkout initiation error:", err);
-      const message = err instanceof Error ? err.message : "Unable to proceed to checkout. Please try again.";
-      setErrorMessage(message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const features = [
-    "Pay once ($9 USD) — Keep and own forever",
-    "No monthly subscriptions or hidden renewal fees",
-    "Works in almost any app: Slack, Mail, Notes, Word, Google Docs, VS Code and more",
-    "Types as keyboard input, so it works where paste is blocked",
-    "Never uses or changes your clipboard",
-    "Automatically removes 'um' and 'uh' so drafts look polished",
-    "Chat-safe: won't accidentally send unfinished Slack messages",
-    "100% private: your voice never leaves your Mac",
-    "Voice commands: new line, bullet point, scratch that…",
-    "Teach it your own words, names and shortcuts",
-    "Install and use on up to 5 of your personal Macs",
-    "14-day no-questions-asked money-back guarantee",
-  ];
-
+export function PricingSection({ withHeader = true }: { withHeader?: boolean }) {
   return (
-    <section id="pricing" className="py-24 bg-[#FFFFFF] relative">
+    <section id="pricing" className="py-12 lg:py-20">
       <Container>
-        <SectionHeader
-          eyebrow="Simple, Honest Pricing"
-          title="Own It Forever. Zero Subscriptions."
-          description="Because MacVoice runs 100% on your Mac with $0 cloud server expenses, we refuse to charge you rent for software you run on your own hardware."
-        />
+        {withHeader ? (
+          <Reveal>
+            <SectionHeader eyebrow="Pricing" title="Free for everyone." muted="Funded by people who love it." />
+          </Reveal>
+        ) : null}
 
-        <div className="max-w-xl mx-auto">
-          <div className="rounded-3xl bg-[#FFFFFF] border-2 border-[#0071E3]/25 p-8 sm:p-11 shadow-[0_20px_50px_rgba(0,113,227,0.08)] relative overflow-hidden">
-            {/* Top Badge */}
-            <div className="flex items-center justify-between mb-6">
-              <span className="px-3.5 py-1 rounded-full text-xs font-semibold bg-[#EAF3FF] text-[#0071E3] border border-[#0071E3]/20 font-mono">
-                Standard Lifetime License
-              </span>
-              <span className="text-xs text-[#6E6E73] flex items-center gap-1.5 font-medium">
-                <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                14-Day Refund Guarantee
-              </span>
-            </div>
-
-            {/* Price display */}
-            <div className="flex items-baseline gap-3 mb-4">
-              <span className="text-5xl sm:text-6xl font-bold text-[#1D1D1F] tracking-tight font-mono">
-                $9
-              </span>
-              <span className="text-[#6E6E73] text-sm font-medium">
-                USD · one-time payment
-              </span>
-            </div>
-
-            <p className="text-sm text-[#6E6E73] leading-relaxed mb-8">
-              A single payment of $9 gives you lifetime access and all v1.x updates.
-              Download MacVoice (under 1 MB) right after checkout.
-            </p>
-
-            {/* Error Message if any */}
-            {errorMessage && (
-              <div className="mb-6 p-3.5 rounded-2xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
-                <AlertCircle className="w-4 h-4 shrink-0" />
-                <span>{errorMessage}</span>
+        <Reveal className="mx-auto max-w-[600px]">
+          {/* The themed object: a small recording-studio panel */}
+          <div className="rounded-panel bg-ink p-3 shadow-e3">
+            <div className="rounded-[20px] bg-[oklch(0.23_0.01_286)] p-6 text-white ring-1 ring-white/5 sm:p-8">
+              <div className="flex items-center justify-between font-mono text-[12px] uppercase tracking-[0.08em] text-white/60">
+                <span>MacVoice · Free</span>
+                <span className="flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-success" aria-hidden="true" />
+                  Every feature
+                </span>
               </div>
-            )}
 
-            {/* Buy Button */}
-            <Button
-              onClick={handleCheckout}
-              variant="primary"
-              size="lg"
-              isLoading={loading}
-              className="w-full justify-center text-base py-4 font-semibold shadow-md mb-4"
-            >
-              <Sparkles className="w-4 h-4" />
-              Get MacVoice for Mac — $9 USD
-            </Button>
-
-            <p className="text-[11px] text-center text-[#6E6E73] mb-8">
-              Instant delivery of MacVoice.dmg via secure checkout. No account required.
-            </p>
-
-            {/* Features list */}
-            <div className="pt-6 border-t border-[#E8E8ED] space-y-3">
-              <div className="text-xs font-semibold uppercase tracking-wider text-[#1D1D1F] mb-3">
-                Everything Included:
+              <div
+                aria-hidden="true"
+                className="mt-6 flex h-16 items-center justify-center rounded-tile bg-black/30 ring-1 ring-white/5"
+              >
+                <Waveform active cycles={3} bars={7} className="h-10 gap-1.5" barClassName="w-1.5 bg-[oklch(0.75_0.14_256)]" />
               </div>
-              {features.map((f, idx) => (
-                <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-[13px] text-[#1D1D1F]">
-                  <Check className="w-4 h-4 text-[#0071E3] shrink-0 mt-0.5" />
-                  <span>{f}</span>
-                </div>
-              ))}
+
+              {/* The key: this is the download */}
+              <Link
+                href="/download"
+                className="group mt-6 flex w-full items-center justify-between rounded-[18px] bg-gradient-to-b from-[oklch(0.74_0.15_50)] to-accent-warm px-6 py-5 text-[oklch(0.2_0.05_45)] shadow-[0_4px_0_0_oklch(0.52_0.14_40),0_12px_24px_-8px_oklch(0.68_0.16_45/0.6)] transition-[translate,box-shadow] duration-100 ease-out hover:translate-y-[2px] hover:shadow-[0_2px_0_0_oklch(0.52_0.14_40),0_6px_16px_-8px_oklch(0.68_0.16_45/0.6)] active:translate-y-[4px] active:shadow-none"
+              >
+                <span>
+                  <span className="block text-[52px] font-semibold leading-none tracking-[-0.04em]">Free</span>
+                  <span className="mt-1 block text-[15px] font-medium">No trial. No subscription. No account.</span>
+                </span>
+                <span className="inline-flex items-center gap-2 rounded-full bg-black/10 px-4 py-2 text-[15px] font-semibold">
+                  Download
+                  <ArrowRight className="h-4 w-4 transition-transform duration-200 ease-soft group-hover:translate-x-[2px]" aria-hidden="true" />
+                </span>
+              </Link>
+
+              <div className="mt-8 border-t border-white/10 pt-6">
+                <h3 className="text-[17px] font-semibold">Want to back it? Optional.</h3>
+                <p className="mt-1 text-[15px] text-white/65">A one-time contribution, any amount from $3.</p>
+                <SupportPicker dark className="mt-4" />
+              </div>
             </div>
           </div>
 
-          {/* Subscription Fatigue Callout */}
-          <div className="mt-8 text-center text-xs text-[#6E6E73] leading-relaxed max-w-md mx-auto">
-            <span className="text-[#1D1D1F] font-semibold">Why not a monthly subscription?</span> Cloud dictation tools charge around $144 a year because they run your voice through their servers. MacVoice runs on your own Mac, so there&apos;s nothing to charge you for every month.
-          </div>
-        </div>
+          <TrustLine className="mt-5 justify-center" />
+
+          {/* Why it's free, in the maker's words */}
+          <figure className="mt-8 rounded-card border border-line bg-surface p-6 shadow-e1">
+            <blockquote className="text-body text-ink-2">
+              &ldquo;MacVoice runs on your Mac, so it costs me almost nothing when you use it. I&apos;d rather it reach
+              everyone who types all day than sit behind a paywall. If it saves you time, backing it keeps the
+              updates coming.&rdquo;
+            </blockquote>
+            <figcaption className="mt-3 text-caption text-ink-2">
+              <a href="https://akshatt.in/" target="_blank" rel="noreferrer" className="font-medium text-ink hover:text-accent">
+                Akshat Thakur
+              </a>
+              , who makes MacVoice
+            </figcaption>
+          </figure>
+        </Reveal>
       </Container>
     </section>
   );

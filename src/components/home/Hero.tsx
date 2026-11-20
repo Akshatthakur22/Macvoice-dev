@@ -1,73 +1,56 @@
 import React from "react";
+import { ArrowDown } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { ShortcutBadge } from "@/components/ui/ShortcutBadge";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { DefaultShortcut } from "@/components/ui/Keycap";
+import { TrustLine } from "@/components/ui/TrustLine";
+import { Waveform } from "@/components/ui/Waveform";
 
+/** Hero copy. Rendered inside <Stage>, above the MacBook. */
 export function Hero() {
   return (
-    <section className="pt-16 pb-16 md:pt-24 md:pb-24 bg-[#FFFFFF]">
-      <Container className="text-center">
-        {/* Friendly, human eyebrow pill */}
-        <div className="flex justify-center mb-6">
-          <Badge variant="blue" className="py-1 px-4 text-xs font-medium tracking-tight flex items-center gap-1.5">
-            <Sparkles className="w-3.5 h-3.5 text-[#0071E3]" />
-            Private voice typing for Mac · No subscription · $9 once
-          </Badge>
-        </div>
+    <Container className="flex flex-col items-center pt-14 text-center sm:pt-20 lg:pt-20">
+      <h1 className="text-display text-balance">
+        <span className="block text-ink">
+          Talk
+          <Waveform
+            active
+            cycles={3}
+            bars={5}
+            className="mx-[0.12em] h-[0.6em] gap-[0.05em] align-middle"
+            barClassName="w-[0.075em]"
+          />
+          to any Mac app.
+        </span>
+        <span className="block text-ink-3">
+          Press{" "}
+          <span className="whitespace-nowrap">
+            <DefaultShortcut size="inline" />,
+          </span>{" "}
+          it types.
+        </span>
+      </h1>
 
-        {/* Primary H1 Headline: Punchy, human, confident */}
-        <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-[#1D1D1F] max-w-4xl mx-auto leading-[1.08] mb-6">
-          Type at the speed of thought.
-        </h1>
+      <p className="text-body-lg mt-6 max-w-[560px] text-pretty text-ink-2 sm:text-[20px]">
+        Clean, punctuated text appears at your cursor while you speak. It all runs on your Mac, so your voice
+        never leaves it.
+      </p>
 
-        {/* Sub-headline: Relatable human benefit */}
-        <p className="text-lg sm:text-xl text-[#6E6E73] max-w-2xl mx-auto leading-relaxed mb-9 font-normal">
-          Press a shortcut in any app and just talk. MacVoice types clean, punctuated text right at your cursor,
-          removes your &ldquo;ums&rdquo; automatically, and never sends your voice to the cloud.
-        </p>
+      <div className="mt-8 flex w-full flex-col items-center justify-center gap-3 sm:w-auto sm:flex-row">
+        <Button href="/download" size="lg" arrow className="w-full sm:w-auto">
+          Download free
+        </Button>
+        <Button href="#demo" variant="secondary" size="lg" className="w-full sm:w-auto">
+          Watch it type
+          <ArrowDown className="h-4 w-4" aria-hidden="true" />
+        </Button>
+      </div>
 
-        {/* Primary and Secondary CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 mb-5">
-          <Button
-            href="/pricing"
-            variant="primary"
-            size="lg"
-            className="w-full sm:w-auto text-[15px] px-8 py-3.5 font-medium group"
-          >
-            Get MacVoice for Mac — $9 USD
-            <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-0.5 transition-transform" />
-          </Button>
-
-          <Button
-            href="#demo"
-            variant="secondary"
-            size="lg"
-            className="w-full sm:w-auto text-[15px] px-7 py-3.5"
-          >
-            See How It Works
-          </Button>
-        </div>
-
-        {/* Micro-copy beneath CTA: Reassuring, zero-friction */}
-        <p className="text-xs text-[#6E6E73] mb-12 flex items-center justify-center gap-2 flex-wrap">
-          <span>One-time purchase ($9).</span>
-          <span className="text-[#D2D2D7]">•</span>
-          <span>No monthly subscription.</span>
-          <span className="text-[#D2D2D7]">•</span>
-          <span>100% private on your Mac.</span>
-          <span className="text-[#D2D2D7]">•</span>
-          <span>14-day money-back guarantee.</span>
-        </p>
-
-        {/* Shortcut Quick Indicator */}
-        <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-[#F5F5F7] border border-[#E8E8ED] text-xs text-[#1D1D1F]">
-          <span className="text-[#6E6E73]">Press shortcut and talk:</span>
-          <ShortcutBadge keys={["Control", "Option", "Space"]} size="sm" />
-          <span className="text-[#6E6E73]">or choose your own keys</span>
-        </div>
-      </Container>
-    </section>
+      <p className="mt-5 text-[15px]">
+        <span className="font-semibold text-ink">Free, every feature.</span>{" "}
+        <span className="text-ink-2">No trial, no subscription.</span>
+      </p>
+      <TrustLine className="mt-1.5 justify-center" />
+    </Container>
   );
 }

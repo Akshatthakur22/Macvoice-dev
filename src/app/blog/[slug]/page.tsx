@@ -172,10 +172,10 @@ export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">
             <h2 className="text-xl font-bold text-[#1D1D1F] mb-2">Voice typing that stays on your Mac</h2>
             <p className="text-sm text-[#6E6E73] leading-relaxed mb-5">
               MacVoice types what you say at your cursor in any Mac app. It removes the “ums”, follows commands like “new line”
-              and “scratch that”, never touches your clipboard, and never uploads your voice. $9 once, 14-day refund.
+              and “scratch that”, never touches your clipboard, and never uploads your voice. Free, with no account.
             </p>
-            <Button href="/pricing" variant="primary" size="md" className="group">
-              Get MacVoice for $9
+            <Button href="/download" variant="primary" size="md" className="group">
+              Download MacVoice free
               <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-0.5 transition-transform" />
             </Button>
           </aside>

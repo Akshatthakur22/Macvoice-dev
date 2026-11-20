@@ -31,6 +31,7 @@ export default function PrivacyPage() {
       <JsonLd schema={privacyBreadcrumb} />
       <Container size="narrow">
         <SectionHeader
+          as="h1"
           eyebrow="Architectural Integrity"
           title="Privacy by Architecture, Not Policy."
           description="Most software asks you to trust their legal privacy policy while routing your voice through cloud servers. MacVoice eliminates the cloud server entirely."

@@ -44,7 +44,7 @@ You can choose the language from the menu above the microphone.
 | Internet needed | Yes | Not for on-device languages | No (after one-time model download) |
 | Removes "um" | No | No | Yes |
 | Editing commands | Yes (English) | Basic | "scratch that" |
-| Price | Free | Free | $9 once |
+| Price | Free | Free | Free |
 
 ## Tips for writing long documents by voice
 
