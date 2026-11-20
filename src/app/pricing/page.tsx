@@ -58,13 +58,15 @@ export default function PricingPage() {
       <JsonLd schema={[pricingBreadcrumb, pricingProductSchema]} />
       <Container>
         <SectionHeader
-          eyebrow="One-Time Purchase"
-          title="Buy Once, Own Forever."
+          as="h1"
+          eyebrow="Pricing"
+          title="Pay once."
+          muted="Own it for good."
           description="We believe desktop software should be an asset you own, not a never-ending rent payment."
         />
 
         {/* Embedded Pricing Card */}
-        <PricingSection />
+        <PricingSection withHeader={false} />
 
         {/* Value Comparison vs Subscriptions */}
         <div className="mt-16 max-w-4xl mx-auto p-8 rounded-3xl bg-[#F5F5F7] border border-[#E8E8ED] shadow-sm">

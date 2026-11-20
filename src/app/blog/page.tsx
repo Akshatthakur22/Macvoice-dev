@@ -43,6 +43,7 @@ export default function BlogIndexPage() {
       <JsonLd schema={schemas} />
       <Container>
         <SectionHeader
+          as="h1"
           eyebrow="Blog"
           title="Dictation & speech-to-text, explained"
           description={`${total} practical guides to talking instead of typing on your Mac: how to set it up, fix it, keep it private, and get faster at it.`}

@@ -72,6 +72,7 @@ export default function CompatibilityPage() {
       <JsonLd schema={compatibilityBreadcrumb} />
       <Container size="narrow">
         <SectionHeader
+          as="h1"
           eyebrow="Where It Works"
           title="Works in the apps you already use"
           description="MacVoice types your words as keyboard input into whatever text box is focused, so it works in almost any Mac app. Here's what to expect in each kind of app."

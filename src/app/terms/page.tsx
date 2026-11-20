@@ -30,6 +30,7 @@ export default function TermsPage() {
       <JsonLd schema={termsBreadcrumb} />
       <Container size="narrow">
         <SectionHeader
+          as="h1"
           eyebrow="Legal & Commercial Agreement"
           title="Terms of Sale & License Agreement"
           description="Clear, fair, developer-first terms. No hidden recurring fees, no arbitrary restrictions."

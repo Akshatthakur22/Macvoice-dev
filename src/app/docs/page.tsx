@@ -105,6 +105,7 @@ export default function DocsPage() {
       <JsonLd schema={[docsBreadcrumb, docsHowToSchema]} />
       <Container size="narrow">
         <SectionHeader
+          as="h1"
           eyebrow="User Guide"
           title="MacVoice Guide"
           description="Set up in a couple of minutes, then learn the handful of things that make MacVoice feel like magic."

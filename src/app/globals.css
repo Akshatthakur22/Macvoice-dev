@@ -1,50 +1,227 @@
 @import "tailwindcss";
 
+/* ==========================================================================
+   MacVoice design tokens (see the UI/UX playbook, 20 Nov 2026)
+   One sans + one mono, a neutral oklch palette, one accent, 8px grid.
+   ========================================================================== */
+/* Desktops with a mouse and motion allowed get the scroll-driven 3D stage.
+   Keep in sync with STAGE_QUERY in components/home/Stage.tsx. */
+@custom-variant stage (@media (hover: hover) and (pointer: fine) and (min-width: 1024px) and (prefers-reduced-motion: no-preference));
+
+@theme inline {
+  --font-sans: var(--font-geist), -apple-system, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+@theme {
+  /* Colour */
+  --color-bg: oklch(0.985 0.002 95);
+  --color-surface: oklch(1 0 0);
+  --color-sunken: oklch(0.965 0.003 286);
+  --color-ink: oklch(0.18 0.01 286);
+  --color-ink-2: oklch(0.45 0.01 286);
+  --color-ink-3: oklch(0.62 0.01 286);
+  --color-line: oklch(0.92 0.004 286);
+  --color-line-strong: oklch(0.86 0.005 286);
+  /* Voice blue. Darker than the playbook default so white labels pass 4.5:1. */
+  --color-accent: oklch(0.57 0.2 256);
+  --color-accent-hover: oklch(0.52 0.2 256);
+  /* One hero moment only: the price key. */
+  --color-accent-warm: oklch(0.68 0.16 45);
+  --color-success: oklch(0.7 0.17 150);
+  --color-success-ink: oklch(0.48 0.13 150);
+
+  /* Radius */
+  --radius-tile: 12px;
+  --radius-card: 20px;
+  --radius-panel: 28px;
+
+  /* Elevation (3 levels max) */
+  --shadow-e1: 0 1px 2px rgb(0 0 0 / 0.06);
+  --shadow-e2: 0 1px 2px rgb(0 0 0 / 0.06), 0 8px 24px rgb(0 0 0 / 0.06);
+  --shadow-e3: 0 2px 4px rgb(0 0 0 / 0.06), 0 24px 48px -12px rgb(0 0 0 / 0.16);
+
+  /* Motion */
+  --ease-soft: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 @layer base {
-  :root {
-    --bg-pure-white: #FFFFFF;
-    --bg-apple-light-grey: #F5F5F7;
-    --border-soft-grey: #E8E8ED;
-    --border-mid-grey: #D2D2D7;
-    --text-secondary-grey: #6E6E73;
-    --text-primary-black: #1D1D1F;
-    --apple-blue: #0071E3;
-    --apple-blue-hover: #0077ED;
-    --soft-blue-highlight: #EAF3FF;
-  }
-
-  * {
-    border-color: var(--border-soft-grey);
-  }
-
   html {
     color-scheme: light;
-    background-color: var(--bg-pure-white);
-    color: var(--text-primary-black);
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
-    letter-spacing: -0.011em;
   }
 
   body {
-    background-color: var(--bg-pure-white);
-    color: var(--text-primary-black);
+    background-color: var(--color-bg);
+    color: var(--color-ink);
     overflow-x: hidden;
     min-height: 100vh;
   }
 
+  * {
+    border-color: var(--color-line);
+  }
+
   code, kbd, samp, pre {
-    font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family: var(--font-mono);
+  }
+
+  /* Anchor targets clear the floating nav (64px + 12px offset + air). */
+  [id] {
+    scroll-margin-top: 96px;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background-color: oklch(0.57 0.2 256 / 0.18);
+    color: var(--color-ink);
   }
 }
 
-/* Modern Web Guidance: Native <dialog> Modal Scroll Prevention */
+/* ---------- Type scale ---------- */
+@utility text-display {
+  font-size: clamp(44px, 6vw, 72px);
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -0.045em;
+}
+@utility text-h2 {
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.05;
+  font-weight: 600;
+  letter-spacing: -0.045em;
+}
+@utility text-h3 {
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+@utility text-body-lg {
+  font-size: 18px;
+  line-height: 1.55;
+}
+@utility text-body {
+  font-size: 16px;
+  line-height: 1.6;
+}
+@utility text-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+@utility text-caption {
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+@layer components {
+/* ---------- Keycap: the shortcut, as a physical key ---------- */
+.keycap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  color: var(--color-ink);
+  background: linear-gradient(to bottom, oklch(1 0 0), oklch(0.955 0.003 286));
+  border: 1px solid var(--color-line-strong);
+  box-shadow: 0 2px 0 0 var(--color-line-strong), 0 3px 8px rgb(0 0 0 / 0.06);
+  transition: transform 100ms ease-out, box-shadow 100ms ease-out;
+  user-select: none;
+  vertical-align: middle;
+}
+.keycap:hover {
+  transform: translateY(2px);
+  box-shadow: 0 0 0 0 var(--color-line-strong), 0 1px 2px rgb(0 0 0 / 0.06);
+}
+
+/* ---------- Waveform: MacVoice's signature ---------- */
+@keyframes wave {
+  0%, 100% { transform: scaleY(0.35); }
+  50% { transform: scaleY(1); }
+}
+.wave-bar {
+  transform-origin: center;
+  transform: scaleY(var(--rest, 0.5));
+}
+.wave-on .wave-bar {
+  animation: wave 900ms var(--ease-soft) var(--delay, 0ms) var(--iter, infinite);
+}
+
+/* ---------- Text caret in mocks ---------- */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.caret {
+  animation: blink 1s step-end infinite;
+}
+
+/* ---------- Footer wordmark: giant and outlined ---------- */
+.wordmark-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--color-line-strong);
+}
+
+}
+
+/* ---------- Section reveals: fade + 12px rise ----------
+   Only hidden once JS has run (html.js), so content is always visible
+   without JS, and targets of anchor jumps are revealed instantly. */
+[data-reveal] {
+  /* Also carries hover lift (translate) and shadow, since this unlayered rule wins over utilities. */
+  transition:
+    opacity 600ms var(--ease-expo),
+    transform 600ms var(--ease-expo),
+    translate 350ms var(--ease-soft),
+    box-shadow 350ms var(--ease-soft);
+}
+.js [data-reveal]:not([data-in]) {
+  opacity: 0;
+  transform: translateY(12px);
+}
+[data-reveal][data-in="instant"] {
+  transition: none;
+}
+
+/* ---------- Reduced motion: no parallax, auto-play or loops ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .js [data-reveal]:not([data-in]) {
+    opacity: 1;
+    transform: none;
+  }
+  .keycap:hover {
+    transform: none;
+  }
+}
+
+/* ---------- Native <dialog> ---------- */
 dialog:modal {
   overscroll-behavior: contain;
 }
-
 dialog::backdrop {
   overflow: hidden;
   overscroll-behavior: contain;
@@ -53,74 +230,14 @@ dialog::backdrop {
   -webkit-backdrop-filter: blur(10px);
 }
 
-/* Apple-style subtle text selection */
-::selection {
-  background-color: rgba(0, 113, 227, 0.18);
-  color: #1D1D1F;
-}
-
-/* Apple-style discreet scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
+/* ---------- Discreet scrollbar ---------- */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: #D2D2D7;
+  background: var(--color-line-strong);
   border-radius: 9999px;
-  border: 2px solid #FFFFFF;
+  border: 2px solid var(--color-bg);
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #A1A1A6;
-}
-
-/* Cursor pulse animation */
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-.animate-cursor {
-  animation: blink 1s step-end infinite;
-}
-
-/* Waveform sound pulse */
-@keyframes soundwave {
-  0%, 100% { height: 4px; }
-  50% { height: 18px; }
-}
-
-.animate-wave-1 { animation: soundwave 0.8s ease-in-out infinite 0.1s; }
-.animate-wave-2 { animation: soundwave 0.8s ease-in-out infinite 0.25s; }
-.animate-wave-3 { animation: soundwave 0.8s ease-in-out infinite 0.4s; }
-.animate-wave-4 { animation: soundwave 0.8s ease-in-out infinite 0.15s; }
-.animate-wave-5 { animation: soundwave 0.8s ease-in-out infinite 0.3s; }
-
-/* Apple-style Architectural Wordmark Bleed */
-.footer-bleed-wrap {
-  width: 100%;
-  overflow: hidden;
-  text-align: center;
-  margin-top: 28px;
-  line-height: 0.75;
-  user-select: none;
-  pointer-events: none;
-}
-
-.footer-bleed-text {
-  display: inline-block;
-  font-size: clamp(68px, 16vw, 210px);
-  font-weight: 850;
-  letter-spacing: -0.05em;
-  line-height: 0.75;
-  color: #E5E5EA;
-  margin-bottom: -0.12em;
-  white-space: nowrap;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
-}
-
 
 /* ---------- Blog article typography (rendered Markdown) ---------- */
 .post-body { color: #3A3A3C; font-size: 1rem; line-height: 1.75; }
