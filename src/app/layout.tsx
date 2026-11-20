@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 const TITLE = "MacVoice — Talk to any Mac app, typed as you speak";
 const DESCRIPTION =
-  "Press a shortcut, talk, and MacVoice types clean text at your cursor in any Mac app. On-device and private. Pay once, $9. No subscription.";
+  "Press a shortcut, talk, and MacVoice types clean text at your cursor in any Mac app. On-device and private. Free, with no account or subscription.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://macvoice.akshatt.in"),

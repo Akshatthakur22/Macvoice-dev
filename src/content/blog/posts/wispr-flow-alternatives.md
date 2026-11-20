@@ -4,7 +4,7 @@ description: "Looking for a Wispr Flow alternative? Compare on-device and one-ti
 published: "2026-11-18"
 category: "guides-and-comparisons"
 primaryKeyword: "wispr flow alternative"
-tldr: "Wispr Flow is a polished cloud dictation app with AI rewriting, priced as a subscription (Pro is about $144/year; free tier up to 2,000 words a week). If you want something private, offline or one-time, consider Apple Dictation (free), MacVoice ($9 once, on-device, types as you speak), VoiceInk (open source, local models) or Superwhisper (local or cloud models, lifetime option)."
+tldr: "Wispr Flow is a polished cloud dictation app with AI rewriting, priced as a subscription (Pro is about $144/year; free tier up to 2,000 words a week). If you want something private, offline or one-time, consider Apple Dictation (free), MacVoice (free, on-device, types as you speak), VoiceInk (open source, local models) or Superwhisper (local or cloud models, lifetime option)."
 faq: [{"q":"Is there a free alternative to Wispr Flow?","a":"Apple Dictation is free and built into macOS. It lacks AI rewriting and filler removal, but works in every app and is often on-device."},{"q":"Is there an offline alternative to Wispr Flow?","a":"Yes. MacVoice (Apple’s on-device engine), VoiceInk and Superwhisper with local models all work without internet."}]
 ---
 
@@ -30,13 +30,13 @@ Wispr Flow is one of the best-known AI dictation apps, and for good reason: it's
 | | Privacy | Price | AI rewriting | Text while you talk |
 |---|---|---|---|---|
 | **Apple Dictation** | On-device (many languages) | Free | No | Yes |
-| **MacVoice** | On-device | $9 once | No (rule-based cleanup) | Yes |
+| **MacVoice** | On-device | Free | No (rule-based cleanup) | Yes |
 | **VoiceInk** | Local models | One-time, from ~$25 | Optional (bring your own AI) | No |
 | **Superwhisper** | Local or cloud | Free tier; ~$85/yr; $249.99 lifetime | Yes (modes) | No |
 
 ### MacVoice: closest for "fast and private"
 
-[MacVoice](/) runs on Apple's on-device engine, so nothing is uploaded, no account is needed, and it costs **$9 once**. It types *while* you talk, removes fillers instantly, follows "new line", "bullet point" and "scratch that", sends Shift+Return in Slack and WhatsApp, and never touches your clipboard.
+[MacVoice](/) runs on Apple's on-device engine, so nothing is uploaded, no account is needed, and it's **free**. It types *while* you talk, removes fillers instantly, follows "new line", "bullet point" and "scratch that", sends Shift+Return in Slack and WhatsApp, and never touches your clipboard.
 
 What you give up vs Wispr: **AI rewriting** (MacVoice cleans up, it doesn't rephrase), **Windows/iPhone apps**, and it needs **macOS 26+**.
 

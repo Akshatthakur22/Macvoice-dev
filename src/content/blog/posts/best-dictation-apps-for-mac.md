@@ -4,7 +4,7 @@ description: "Apple Dictation, MacVoice, Wispr Flow, Superwhisper, VoiceInk and 
 published: "2026-11-18"
 category: "guides-and-comparisons"
 primaryKeyword: "best dictation app for mac"
-tldr: "Start with free Apple Dictation. Pick an on-device app like MacVoice if you want cleanup, voice commands and privacy for $9 once (macOS 26+). Pick Wispr Flow if you want cloud AI rewriting and don’t mind a subscription. Pick Superwhisper or VoiceInk if you want local Whisper models, more languages or older macOS support."
+tldr: "Start with free Apple Dictation. Pick an on-device app like MacVoice if you want cleanup, voice commands and privacy for free (macOS 26+). Pick Wispr Flow if you want cloud AI rewriting and don’t mind a subscription. Pick Superwhisper or VoiceInk if you want local Whisper models, more languages or older macOS support."
 faq: [{"q":"What is the best free dictation app for Mac?","a":"Apple’s built-in Dictation. It’s free, often runs on-device, and works in every app. Voice Control is also free if you need full hands-free control."},{"q":"Which Mac dictation app is most private?","a":"Apps that process speech on your Mac: Apple Dictation (on-device languages), MacVoice, and Whisper-based apps using local models. Test with Wi-Fi off."}]
 ---
 
@@ -18,7 +18,7 @@ There are now dozens of dictation apps for Mac, and most "best of" lists are wri
 |---|---|
 | Free and built in | **Apple Dictation** |
 | Hands-free control of the whole Mac | **Voice Control** (free) |
-| Private, typed as you speak, cleanup + commands, cheap | **MacVoice** ($9 once, macOS 26+) |
+| Private, typed as you speak, cleanup + commands, free | **MacVoice** (free, macOS 26+) |
 | Cloud AI rewriting and tone changes | **Wispr Flow** (subscription) |
 | Local Whisper models, custom AI modes | **Superwhisper** |
 | Open source, local models, one-time price | **VoiceInk** |
@@ -36,7 +36,7 @@ There are now dozens of dictation apps for Mac, and most "best of" lists are wri
 | Custom words | Voice Control only | Yes | Yes | Yes | Yes |
 | Inserts text by | System | Keyboard input | Clipboard paste (then restores) | Clipboard paste (restore option) | Clipboard paste (restores by default) |
 | Platforms | Mac, iOS | Mac (macOS 26+) | Mac, Windows, iPhone | Mac, Windows, iPhone | Mac (Apple silicon) |
-| Price | Free | $9 once | Free 2,000 words/week; Pro ~$144/yr | Free tier; Pro ~$85/yr; $249.99 lifetime | One-time, from ~$25 (open source) |
+| Price | Free | Free | Free 2,000 words/week; Pro ~$144/yr | Free tier; Pro ~$85/yr; $249.99 lifetime | One-time, from ~$25 (open source) |
 
 ## Apple Dictation
 
@@ -44,7 +44,7 @@ There are now dozens of dictation apps for Mac, and most "best of" lists are wri
 
 ## MacVoice (ours)
 
-**Best for:** people who write a lot in many apps and want privacy without a subscription. Built on Apple's on-device engine, types as you talk, removes fillers instantly, "scratch that", custom words, chat- and terminal-aware, never touches the clipboard, under 1 MB, $9 once.
+**Best for:** people who write a lot in many apps and want privacy without a subscription. Built on Apple's on-device engine, types as you talk, removes fillers instantly, "scratch that", custom words, chat- and terminal-aware, never touches the clipboard, under 1 MB, free.
 
 **Not for you if:** you're on macOS 15 or earlier, need a language Apple's engine doesn't support yet, or want AI to rewrite your tone. Full English cleanup only.
 

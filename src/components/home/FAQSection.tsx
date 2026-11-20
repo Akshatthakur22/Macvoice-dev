@@ -9,7 +9,7 @@ import { Reveal } from "@/components/ui/Reveal";
 /**
  * Native <details>/<summary>: every answer is in the server-rendered HTML
  * (crawlable) and it needs no client JavaScript.
- * Grid: Privacy and Buying stack on the left, The app spans the right.
+ * Grid: Privacy and Pricing stack on the left, The app spans the right.
  */
 export function FAQSection() {
   return (

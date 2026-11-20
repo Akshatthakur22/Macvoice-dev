@@ -27,7 +27,7 @@ export const homePageSchema = {
       url: "https://macvoice.akshatt.in",
       image: "https://macvoice.akshatt.in/brand/macvoice-icon-dark-1024.png",
       description:
-        "Private voice typing for Mac. Press a shortcut, speak, and MacVoice types clean text at your cursor in any app, using Apple's on-device speech engine. Removes filler words, follows spoken commands, never uses your clipboard. $9 one-time.",
+        "Private voice typing for Mac. Press a shortcut, speak, and MacVoice types clean text at your cursor in any app, using Apple's on-device speech engine. Removes filler words, follows spoken commands, never uses your clipboard. Free to download and use.",
       applicationCategory: "UtilitiesApplication",
       applicationSubCategory: "Dictation / Speech to Text",
       operatingSystem: "macOS 26 or later",
@@ -35,7 +35,7 @@ export const homePageSchema = {
       fileSize: "1MB",
       offers: {
         "@type": "Offer",
-        price: "9.00",
+        price: "0",
         priceCurrency: "USD",
         availability: "https://schema.org/InStock",
         url: "https://macvoice.akshatt.in/pricing",
@@ -56,7 +56,7 @@ export const homePageSchema = {
         "Terminal-aware: keeps shell commands runnable",
         "Verbatim and Polished modes",
         "Under 1 MB native Swift app, no account, no analytics",
-        "One license for up to 5 personal Macs",
+        "Free: every feature, no account, no trial, no subscription",
       ],
       author: {
         "@type": "Person",

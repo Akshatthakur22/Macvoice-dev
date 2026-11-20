@@ -42,7 +42,7 @@ Quick voice typing anywhere, often on-device ([guide](/blog/how-to-use-dictation
 
 ### Modern dictation apps
 
-- **[MacVoice](/)** (on-device, $9 once): types as you speak, removes fillers, "scratch that", custom words and replacements. Writing-focused; no click commands.
+- **[MacVoice](/)** (on-device, free): types as you speak, removes fillers, "scratch that", custom words and replacements. Writing-focused; no click commands.
 - **Wispr Flow** (cloud, subscription): AI-polished output.
 - **Superwhisper / VoiceInk** (local Whisper models): flexible, more languages.
 

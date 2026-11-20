@@ -16,7 +16,7 @@ const ROWS: Row[] = [
   { label: "Voice stays on your Mac", macvoice: true, apple: true, wispr: false, superwhisper: "Local models" },
   { label: "Leaves your clipboard alone", macvoice: true, apple: true, wispr: "Pastes, then restores", superwhisper: "Pastes" },
   { label: "Works offline", macvoice: true, apple: true, wispr: false, superwhisper: "Local models" },
-  { label: "Price", macvoice: "$9 once", apple: "Free", wispr: "$144/yr Pro", superwhisper: "~$85/yr Pro" },
+  { label: "Price", macvoice: "Free", apple: "Free", wispr: "$144/yr Pro", superwhisper: "~$85/yr Pro" },
   { label: "What you need", macvoice: "macOS 26+", apple: "Built in", wispr: "Account + internet", superwhisper: "Model downloads" },
 ];
 

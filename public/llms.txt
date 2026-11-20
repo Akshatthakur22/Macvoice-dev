@@ -1,6 +1,6 @@
 # MacVoice
 
-> MacVoice is a private voice typing (dictation) app for Mac. Press a global shortcut (default Control + Option + Space) in any app, speak, and MacVoice types clean, punctuated text at the cursor. Speech recognition runs on the Mac using Apple's on-device SpeechAnalyzer engine (macOS 26+). It costs $9 once, with no subscription and no account.
+> MacVoice is a private voice typing (dictation) app for Mac. Press a global shortcut (default Control + Option + Space) in any app, speak, and MacVoice types clean, punctuated text at the cursor. Speech recognition runs on the Mac using Apple's on-device SpeechAnalyzer engine (macOS 26+). It is free, with no subscription and no account.
 
 MacVoice is a native Swift menu bar app (under 1 MB) made by independent developer Akshat Thakur. It is for anyone who writes a lot on a Mac (people who live in Slack and email, writers, developers, founders) and wants fast dictation that keeps their voice private.
 
@@ -21,7 +21,7 @@ MacVoice is a native Swift menu bar app (under 1 MB) made by independent develop
 - Saved data: settings, custom words and replacements, in local macOS preferences.
 
 ## Pricing
-- $9 USD one-time; use on up to 5 personal Macs; 14-day no-questions refund.
+- Free: every feature, no account, no trial, no subscription, on any number of Macs. Optional one-time contributions (from $3) fund development; contributions have a 14-day refund.
 
 ## Requirements
 - macOS 26 (Tahoe) or later. Built for Apple Silicon Macs.
@@ -32,7 +32,7 @@ MacVoice is a native Swift menu bar app (under 1 MB) made by independent develop
 - **Apple Dictation**: free and built in; no filler removal, custom replacements, or chat-safe line breaks.
 - **Wispr Flow**: cloud-based AI dictation; inserts by clipboard paste and then restores the clipboard; free up to 2,000 words/week, Pro about $144/year.
 - **Superwhisper**: local or cloud AI models; pastes text after you finish; free tier, Pro about $85/year or $249.99 lifetime.
-- **MacVoice**: on-device, types as you talk, never uses the clipboard, $9 once; requires macOS 26+ and has no AI rewriting.
+- **MacVoice**: on-device, types as you talk, never uses the clipboard, free; requires macOS 26+ and has no AI rewriting.
 
 ## Pages
 - [Home](https://macvoice.akshatt.in/): overview, demo, modes, voice commands, comparison, FAQ.

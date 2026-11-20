@@ -1,8 +1,8 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 
-/** Goes directly under every Buy button. Every item must stay true. */
-const TRUST_ITEMS = ["macOS 26+", "14-day refund", "Works offline", "No account"];
+/** Goes directly under every Download button. Every item must stay true. */
+const TRUST_ITEMS = ["Free download", "macOS 26+", "Works offline", "No account"];
 
 export function TrustLine({ className }: { className?: string }) {
   return (

@@ -62,7 +62,7 @@ export default function CompatibilityPage() {
     {
       app: "Remote desktops & VDI (Citrix, Microsoft Remote Desktop)",
       status: "Depends on client",
-      notes: "Depends on how your remote-desktop client forwards keyboard input. Try it during the 14-day refund window.",
+      notes: "Depends on how your remote-desktop client forwards keyboard input. It’s free, so try it on your setup.",
       testedOn: "Remote sessions",
     },
   ];

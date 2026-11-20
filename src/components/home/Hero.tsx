@@ -2,7 +2,6 @@ import React from "react";
 import { ArrowDown } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { BuyButton } from "@/components/ui/BuyButton";
 import { DefaultShortcut } from "@/components/ui/Keycap";
 import { TrustLine } from "@/components/ui/TrustLine";
 import { Waveform } from "@/components/ui/Waveform";
@@ -38,9 +37,9 @@ export function Hero() {
       </p>
 
       <div className="mt-8 flex w-full flex-col items-center justify-center gap-3 sm:w-auto sm:flex-row">
-        <div className="flex w-full flex-col items-center sm:w-auto">
-          <BuyButton className="w-full sm:w-auto">Buy MacVoice</BuyButton>
-        </div>
+        <Button href="/download" size="lg" arrow className="w-full sm:w-auto">
+          Download free
+        </Button>
         <Button href="#demo" variant="secondary" size="lg" className="w-full sm:w-auto">
           Watch it type
           <ArrowDown className="h-4 w-4" aria-hidden="true" />
@@ -48,8 +47,8 @@ export function Hero() {
       </div>
 
       <p className="mt-5 text-[15px]">
-        <span className="font-semibold text-ink">Pay once, $9.</span>{" "}
-        <span className="text-ink-2">No subscription. Use it on up to 5 Macs.</span>
+        <span className="font-semibold text-ink">Free, every feature.</span>{" "}
+        <span className="text-ink-2">No trial, no subscription.</span>
       </p>
       <TrustLine className="mt-1.5 justify-center" />
     </Container>

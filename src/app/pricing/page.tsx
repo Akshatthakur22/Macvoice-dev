@@ -5,18 +5,19 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { PricingSection } from "@/components/home/PricingSection";
 import { ComparisonTable } from "@/components/home/ComparisonTable";
 import { JsonLd, buildBreadcrumbSchema } from "@/components/seo/JsonLd";
+import { homeFaqs } from "@/lib/faq";
 
 export const metadata: Metadata = {
-  title: "Pricing — $9 USD One-Time Lifetime License",
+  title: "Pricing — Free, Every Feature",
   description:
-    "MacVoice costs $9 USD one-time. No subscriptions, no user accounts, and no cloud server fees. Run it forever on up to 5 of your personal Macs.",
+    "MacVoice is free to download and use: every feature, no account, no trial, no subscription. Back it with a one-time contribution if it earns its place.",
   alternates: {
     canonical: "https://macvoice.akshatt.in/pricing",
   },
   openGraph: {
-    title: "Pricing — MacVoice ($9 One-Time Forever)",
+    title: "MacVoice is free. Every feature.",
     description:
-      "Buy once for $9 and run on up to 5 personal Macs. 100% on-device speech processing, zero cloud server subscription fees.",
+      "Private, on-device voice typing for Mac. Free to download and use. Optional one-time contributions fund development.",
     url: "https://macvoice.akshatt.in/pricing",
   },
 };
@@ -29,81 +30,56 @@ const pricingBreadcrumb = buildBreadcrumbSchema([
 const pricingProductSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
-  name: "MacVoice Lifetime License",
+  name: "MacVoice",
   image: "https://macvoice.akshatt.in/brand/macvoice-icon-dark-1024.png",
   description:
-    "Perpetual lifetime license for MacVoice native macOS speech-to-text keyboard utility. Entitles usage on up to 5 personal Mac devices.",
-  brand: {
-    "@type": "Brand",
-    name: "MacVoice",
-  },
+    "Free on-device voice typing for macOS. Every feature included, no account or subscription. Optional one-time contributions support development.",
+  brand: { "@type": "Brand", name: "MacVoice" },
   offers: {
     "@type": "Offer",
-    price: "9.00",
+    price: "0",
     priceCurrency: "USD",
-    priceValidUntil: "2028-12-31",
     availability: "https://schema.org/InStock",
-    url: "https://macvoice.akshatt.in/pricing",
-    seller: {
-      "@type": "Person",
-      name: "Akshat Thakur",
-      url: "https://akshatt.in",
-    },
+    url: "https://macvoice.akshatt.in/download",
+    seller: { "@type": "Person", name: "Akshat Thakur", url: "https://akshatt.in" },
   },
 };
 
+const pricingFaqs = homeFaqs.filter((f) => f.group === "Pricing");
+
 export default function PricingPage() {
   return (
-    <div className="py-16 sm:py-24 bg-[#FFFFFF]">
+    <div className="py-12 lg:py-20">
       <JsonLd schema={[pricingBreadcrumb, pricingProductSchema]} />
       <Container>
         <SectionHeader
           as="h1"
           eyebrow="Pricing"
-          title="Pay once."
-          muted="Own it for good."
-          description="We believe desktop software should be an asset you own, not a never-ending rent payment."
+          title="Free for everyone."
+          muted="Funded by people who love it."
+          description="Every feature, no account, no trial, no subscription. If MacVoice earns its place on your Mac, you can back it with a one-time contribution."
         />
-
-        {/* Embedded Pricing Card */}
-        <PricingSection withHeader={false} />
-
-        {/* Value Comparison vs Subscriptions */}
-        <div className="mt-16 max-w-4xl mx-auto p-8 rounded-3xl bg-[#F5F5F7] border border-[#E8E8ED] shadow-sm">
-          <h3 className="text-xl font-bold text-[#1D1D1F] mb-4">
-            The Economics of Zero Cloud Cost
-          </h3>
-          <p className="text-[#1D1D1F]/90 text-sm leading-relaxed mb-6">
-            Cloud dictation services charge <span className="text-[#1D1D1F] font-semibold">$12 to $15 per month ($144–$180/year)</span> because they must maintain expensive GPU server clusters to process your audio.
-          </p>
-          <p className="text-[#1D1D1F]/90 text-sm leading-relaxed mb-6">
-            MacVoice performs 100% of its speech recognition and native text polishing locally on your Mac's Apple Silicon hardware. Because our marginal cost to serve you is <span className="text-[#0071E3] font-mono font-semibold">$0.00</span>, we pass those savings directly to you with a fair, one-time <span className="text-[#1D1D1F] font-semibold">$9 price tag</span>.
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-[#E8E8ED] text-xs">
-            <div className="p-5 rounded-2xl bg-[#FFFFFF] border border-[#E8E8ED] shadow-xs">
-              <div className="font-semibold text-[#1D1D1F] mb-1">MacVoice</div>
-              <div className="text-emerald-600 font-mono text-base font-bold mb-1">$9 total</div>
-              <div className="text-[#6E6E73]">1 year: $9 · 3 years: $9</div>
-            </div>
-            <div className="p-5 rounded-2xl bg-[#FFFFFF] border border-[#E8E8ED] shadow-xs">
-              <div className="font-semibold text-[#1D1D1F] mb-1">Wispr Flow</div>
-              <div className="text-red-600 font-mono text-base font-bold mb-1">$144 / year</div>
-              <div className="text-[#6E6E73]">1 year: $144 · 3 years: $432</div>
-            </div>
-            <div className="p-5 rounded-2xl bg-[#FFFFFF] border border-[#E8E8ED] shadow-xs">
-              <div className="font-semibold text-[#1D1D1F] mb-1">Superwhisper</div>
-              <div className="text-amber-600 font-mono text-base font-bold mb-1">$249.99 once</div>
-              <div className="text-[#6E6E73]">Or Pro at ~$85 / year</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Comparison Table */}
-        <div className="mt-20">
-          <ComparisonTable />
-        </div>
       </Container>
+
+      <PricingSection withHeader={false} />
+
+      <Container className="max-w-[760px]">
+        <h2 className="text-h3 text-ink">Questions about pricing</h2>
+        <dl className="mt-4 divide-y divide-line rounded-card border border-line bg-surface px-6 shadow-e1">
+          {pricingFaqs.map((f) => (
+            <div key={f.question} className="py-5">
+              <dt className="text-[16px] font-medium text-ink">{f.question}</dt>
+              <dd className="text-body mt-2 space-y-2 text-ink-2">
+                {f.answer.split("\n\n").map((p) => (
+                  <p key={p}>{p}</p>
+                ))}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </Container>
+
+      <ComparisonTable />
     </div>
   );
 }

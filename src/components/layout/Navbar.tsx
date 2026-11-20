@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { AppIcon } from "@/components/ui/AppIcon";
-import { useCheckout, CheckoutError } from "@/components/ui/BuyButton";
 import { cn } from "@/lib/utils";
 
 const LINKS = [
@@ -18,17 +17,13 @@ const LINKS = [
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
-  const { start, loading, error } = useCheckout();
-
-  const buy = (
-    <button
-      type="button"
-      onClick={start}
-      disabled={loading}
-      className="inline-flex h-9 cursor-pointer items-center rounded-full bg-accent px-4 text-[13px] font-medium text-white transition-colors duration-100 hover:bg-accent-hover disabled:opacity-60"
+  const download = (
+    <Link
+      href="/download"
+      className="inline-flex h-9 items-center rounded-full bg-accent px-4 text-[13px] font-medium text-white transition-colors duration-100 hover:bg-accent-hover"
     >
-      {loading ? "Opening…" : "Buy — $9"}
-    </button>
+      Download free
+    </Link>
   );
 
   return (
@@ -53,7 +48,7 @@ export function Navbar() {
           </nav>
 
           <div className="flex items-center gap-1">
-            {buy}
+            {download}
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
@@ -84,11 +79,6 @@ export function Navbar() {
           ))}
         </nav>
       </div>
-      {error ? (
-        <div className="mt-2 rounded-2xl bg-surface p-3 shadow-e2">
-          <CheckoutError message={error} />
-        </div>
-      ) : null}
     </header>
   );
 }

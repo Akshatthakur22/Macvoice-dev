@@ -1,6 +1,6 @@
 import React from "react";
 import { AppIcon } from "@/components/ui/AppIcon";
-import { BuyButton } from "@/components/ui/BuyButton";
+import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { TrustLine } from "@/components/ui/TrustLine";
 import { Reveal } from "@/components/ui/Reveal";
@@ -16,7 +16,9 @@ export function FinalCTA() {
             <span className="text-ink-3">is one shortcut away.</span>
           </h2>
           <div className="mt-9 flex flex-col items-center">
-            <BuyButton>Buy MacVoice — $9</BuyButton>
+            <Button href="/download" size="lg" arrow>
+              Download MacVoice free
+            </Button>
           </div>
           <TrustLine className="mt-4 justify-center" />
         </Reveal>

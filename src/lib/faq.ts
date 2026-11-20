@@ -9,7 +9,7 @@
  * Style: plain words first. Technical detail, if any, goes in a second
  * paragraph separated by a blank line ("\n\n").
  */
-export type FAQGroup = "Privacy" | "The app" | "Buying";
+export type FAQGroup = "Privacy" | "The app" | "Pricing";
 
 export interface FAQItem {
   group: FAQGroup;
@@ -17,7 +17,7 @@ export interface FAQItem {
   answer: string;
 }
 
-export const FAQ_GROUPS: FAQGroup[] = ["Privacy", "The app", "Buying"];
+export const FAQ_GROUPS: FAQGroup[] = ["Privacy", "The app", "Pricing"];
 
 export const homeFaqs: FAQItem[] = [
   // ---------------- Privacy ----------------
@@ -100,23 +100,35 @@ export const homeFaqs: FAQItem[] = [
     answer:
       "MacVoice uses the speech engine already built into macOS instead of bundling its own AI model, so the app is under 1 MB.\n\nIf your Mac has never used on-device speech for your language, macOS downloads Apple's model once on first use.",
   },
-  // ---------------- Buying ----------------
+  // ---------------- Pricing ----------------
   {
-    group: "Buying",
-    question: "Is it a subscription?",
+    group: "Pricing",
+    question: "Is MacVoice really free?",
     answer:
-      "No. You pay $9 once and keep MacVoice for good, including all 1.x updates.",
+      "Yes. Every feature is free to download and use, with no account, no trial and no time limit. Use it on as many of your Macs as you like.",
   },
   {
-    group: "Buying",
-    question: "Can I use my license on multiple Macs?",
+    group: "Pricing",
+    question: "Why is it free?",
     answer:
-      "Yes. One $9 purchase covers up to 5 Macs that you personally own. There are no accounts, serial numbers or activation servers.",
+      "MacVoice runs entirely on your Mac, so there are no servers to pay for each time you talk. I'd rather it reach everyone who types all day than sit behind a paywall.\n\nPeople who love it can back it with a one-time contribution, and that funds development.",
   },
   {
-    group: "Buying",
-    question: "What is your refund policy?",
+    group: "Pricing",
+    question: "Will it stay free?",
     answer:
-      "14 days, no questions asked. If MacVoice doesn't work well for you, email akshatthakur22@gmail.com with your receipt and you'll get a full refund.",
+      "Everything MacVoice does today stays free. If I ever add paid Pro features, they'll be new features, and early supporters get them free.",
+  },
+  {
+    group: "Pricing",
+    question: "What do supporters get?",
+    answer:
+      "Any future MacVoice Pro features free, early builds before public release, and a direct line to me. Contributions are one-time, from $3, paid through Polar.",
+  },
+  {
+    group: "Pricing",
+    question: "Can I get a refund on a contribution?",
+    answer:
+      "Yes, within 14 days, no questions asked. Email akshatthakur22@gmail.com with your receipt.",
   },
 ];

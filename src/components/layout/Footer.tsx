@@ -43,7 +43,7 @@ export function Footer() {
               <span className="text-[18px] font-semibold tracking-[-0.02em] text-ink">MacVoice</span>
             </Link>
             <p className="text-body text-ink-2">
-              Private voice typing for Mac. Talk, and it types at your cursor in any app. $9 once.
+              Private voice typing for Mac. Talk, and it types at your cursor in any app. Free, every feature.
             </p>
             <a
               href="https://macbase.app/apps/macvoice?ref=badge"

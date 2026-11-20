@@ -47,7 +47,7 @@ const docsHowToSchema = {
     {
       "@type": "HowToStep",
       name: "Download MacVoice",
-      text: "Download MacVoice.dmg (under 1 MB) from your purchase confirmation page.",
+      text: "Download MacVoice.dmg (under 1 MB) for free from macvoice.akshatt.in/download.",
       position: 1,
     },
     {
@@ -132,7 +132,7 @@ export default function DocsPage() {
             <DocHeading icon={BookOpen}>1. Install & start</DocHeading>
             <ol className="list-decimal list-inside space-y-3 pl-2 text-[#6E6E73]">
               <li>
-                Download <code className={code}>MacVoice.dmg</code> from your purchase confirmation page.
+                Download <code className={code}>MacVoice.dmg</code> for free from the <a href="/download" className="text-[#0071E3] hover:underline">download page</a>.
               </li>
               <li>
                 Open the DMG and drag <strong>MacVoice</strong> onto the <strong>Applications</strong> shortcut. Don&apos;t run it from inside the disk image.

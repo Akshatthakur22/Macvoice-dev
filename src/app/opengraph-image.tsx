@@ -51,7 +51,7 @@ export default function Image() {
         </div>
 
         <div style={{ display: "flex", gap: 16, fontSize: 26 }}>
-          {["$9 once", "Never uploads your voice", "Removes the ums", "Works in any app"].map((t) => (
+          {["Free", "Never uploads your voice", "Removes the ums", "Works in any app"].map((t) => (
             <div
               key={t}
               style={{
